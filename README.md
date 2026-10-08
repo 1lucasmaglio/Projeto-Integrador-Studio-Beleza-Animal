@@ -135,6 +135,7 @@ http://localhost:7070
 Principais rotas:
 
 ```text
+/administradores
 /clientes
 /animais
 /servicos
