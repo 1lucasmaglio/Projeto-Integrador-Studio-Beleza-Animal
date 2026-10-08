@@ -14,7 +14,7 @@ Um sistema para auxiliar no gerenciamento de um estabelecimento de banho e tosa.
 
 O projeto foi separado em camadas com responsabilidades diferentes:
 
-- `model` — representa os objetos do sistema, como Cliente, Animal, Serviço e Agendamento.
+- `model` — representa os objetos do sistema, como Administrador, Cliente, Animal, Serviço e Agendamento.
 - `dao` — realiza a leitura e escrita dos dados nos arquivos CSV.
 - `service` — concentra as operações e regras do sistema.
 - `view` — contém a interface gráfica feita com Java Swing.
@@ -26,6 +26,7 @@ Os dados são armazenados em arquivos **CSV**, permitindo que continuem disponí
 
 ## Funcionalidades
 
+- Cadastro e gerenciamento de administradores
 - Cadastro de clientes
 - Cadastro de animais vinculados aos clientes
 - Cadastro de serviços
