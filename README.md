@@ -1,183 +1,158 @@
-# Sistema-de-Agendamento
-![GitHub repo size](https://img.shields.io/github/repo-size/1lucasmaglio/Sistema-de-Agendamento?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/1lucasmaglio/Sistema-de-Agendamento?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/1lucasmaglio/Sistema-de-Agendamento?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Sistema-de-Agendamento/painel-de-atendimento?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/1lucasmaglio/Sistema-de-Agendamento?style=for-the-badge)
+# 🐾 Studio de Beleza Animal
 
-<img src="https://www.magnific.com/br/fotos-gratis/belo-retrato-de-cachorro-pequeno-com-bolhas_21249117.htm#fromView=keyword&page=1&position=2&uuid=fbe1c365-9107-42c6-95bd-cc1d1854aff1&query=Banho+tosa" alt="PlaceHolderdoBanhoeTosa">
+Sistema de agendamento para um estabelecimento de banho e tosa, desenvolvido em **Java** como projeto acadêmico de Análise e Desenvolvimento de Sistemas.
 
-# Sistema de Agendamento para Banho e tosa
-  Um projeto focado em desenvolver competências e adquirir experiência de forma prática, o aplicativo é dividido em duas partes:
-  ## Desktop:
-  Onde será possível verificar os horários disponíveis, administrando se será possível ou não receber clientes. 
-  ## Web:
-  Verificar por um sistema de usuário quando haverá hotários disponíveis, além de marcar um horário para o seu pet.
-  Também será possível verificar o valor de cada serviço oferecido pelo estabelecimento.
+---
 
-# 🔄Fluxograma do projeto:
-### Cliente
+## Sobre o projeto
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                   USUÁRIO (PET OWNER)                       │
-└──────────────────┬──────────────────────────────────────────┘
-                   │
-        ┌──────────┴──────────┐
-        │                     │
-        ▼                     ▼
-   [ACESSO]              [NOVO USUÁRIO]
-        │                     │
-        ├──Login──────────Register─┐
-        │                     │   │
-        └─────────┬───────────┘   │
-                  │               │
-                  ▼               │
-         ┌─────────────────┐      │
-         │ DASHBOARD       │◄─────┘
-         │ (HOME)          │
-         └────────┬────────┘
-                  │
-        ┌─────────┼─────────┐
-        │         │         │
-        ▼         ▼         ▼
-    [SERVIÇOS] [PETS]   [AGENDAMENTOS]
-        │         │         │
-        └─────────┼─────────┘
-                  │
-                  ▼
-        ┌──────────────────┐
-        │ BOOKING FORM     │
-        ├──────────────────┤
-        │ • Selecionar Pet │
-        │ • Serviço        │
-        │ • Data/Hora      │
-        │ • Confirmação    │
-        └────────┬─────────┘
-                 │
-                 ▼
-        ┌─────────────────────┐
-        │ CONFIRMAÇÃO DO AGEND.│
-        └────────┬────────────┘
-                 │
-        ┌────────┴────────┐
-        │                 │
-        ▼                 ▼
-    [NOTIFICAÇÃO]   [FEEDBACK]
-    Email/SMS        Reviews
-        │                 │
-        └────────┬────────┘
-                 │
-         ┌───────▼────────┐
-         │ HISTÓRICO DE   │
-         │ AGENDAMENTOS   │
-         │ (Editar/Canc.) │
-         └────────────────┘
-```         
-### Adiministrador:
+**O que é?**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│               ADMINISTRADOR/STAFF                           │
-└──────────────────┬──────────────────────────────────────────┘
-                   │
-                   ▼
-            [LOGIN ADMIN]
-                   │
-                   ▼
-         ┌──────────────────────┐
-         │ PAINEL ADMINISTRATIVO│
-         ├──────────────────────┤
-         │ • Dashboard          │
-         │ • Gerenciar Clientes │
-         │ • Gerenciar Pets     │
-         │ • Gerenciar Serviços │
-         │ • Calendarário       │
-         │ • Relatórios         │
-         │ • Configurações      │
-         └──────────────────────┘
-                   │
-        ┌──────────┼──────────┬──────────┐
-        │          │          │          │
-        ▼          ▼          ▼          ▼
-    [APROVA]  [EDITA]   [CANCELA]  [NOTIFICA]
-     AGENDS.   SERVIÇOS  AGENDAMS.  CLIENTES
+Um sistema para auxiliar no gerenciamento de um estabelecimento de banho e tosa. A aplicação permite cadastrar clientes, seus animais, os serviços oferecidos e realizar agendamentos.
+
+**Como funciona?**
+
+O projeto foi separado em camadas com responsabilidades diferentes:
+
+- `model` — representa os objetos do sistema, como Cliente, Animal, Serviço e Agendamento.
+- `dao` — realiza a leitura e escrita dos dados nos arquivos CSV.
+- `service` — concentra as operações e regras do sistema.
+- `view` — contém a interface gráfica feita com Java Swing.
+- `api` — disponibiliza os dados através de uma API HTTP utilizando Javalin.
+
+Os dados são armazenados em arquivos **CSV**, permitindo que continuem disponíveis mesmo depois que o programa é encerrado.
+
+---
+
+## Funcionalidades
+
+- Cadastro de clientes
+- Cadastro de animais vinculados aos clientes
+- Cadastro de serviços
+- Criação e gerenciamento de agendamentos
+- Controle de conflito de horários
+- Persistência dos dados em CSV
+- Interface gráfica desktop
+- API para consulta dos dados
+
+---
+
+## Arquitetura
+
+```text
+                ┌─────────────────┐
+                │      VIEW       │
+                │  Java Swing     │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │     SERVICE     │
+                │ Regras do       │
+                │ sistema         │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │       DAO       │
+                │ Persistência    │
+                │ em CSV          │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │     dados/      │
+                │ Arquivos CSV    │
+                └─────────────────┘
+
+API (Javalin) ──────► SERVICE
 ```
 
-# 🗺️ Roadmap do Projeto:
+---
 
-## MVP(Produto Mínimo Viável) - Semanas 1 - 4
-Status: 🟠 50% Concluído
-- [x] Setup inicial
-- [x] CRUD menu
-- [ ] Frontend Desktop (Em progresso)
-- [ ] Sistema de Login (Prioridade Alta)
-- [ ] Sistema de gerenciamento de banco de dados (Prioridade Alta) 
+## Tecnologias utilizadas
 
-## Funções Essenciais - Semanas 4 - 6
-Status: 🔴 0% Iniciado
-- [ ] Autenticação
-- [ ] Perfil de usuário (web)
-- [ ] Perfil de Adiministrador (web)
-- [ ] Gerenciamento de agenda
-- [ ] Histórico de agendamentos anteriores
-- [ ] Notificação para o cliente
-- [ ] Cancelamento e edição
-Objetivo: Plataforma funcional.
+- **Java**
+- **Java Swing** — interface gráfica
+- **Javalin** — API HTTP
+- **Maven** — gerenciamento de dependências
+- **CSV** — persistência dos dados
 
-## Dashboard Adiministrativo - Semanas 7 - 10
-Status: 🔴 0% Iniciado
-- [ ] Tabelas e powerBI com estatísticas
-- [ ] Gerenciamento de Clientes
-- [ ] Ajuste de serviços (mudar preço etc.)
-- [ ] Gestão de agendamentos em fortmato de calendário
-- [ ] Relatórios de final de mês
-- [ ] UI Simples, Bonita e Funcional
-Objetivo: Lapidar funcionalidades, corrigir bugs e "Embelezar" o aplicativo.
+---
 
-### Otimização e Finalização - Semanas 10 - 14
-Status: 🔴 0% Iniciado
-- [ ] Utilizar o feedback sobre a UI
-- [ ] Sistema de pagamento via pix
-- [ ] Integração com calendários (Proton calendar, google calendar etc)
-- [ ] Testes automatizados
-- [ ] Deploy
-Objetivo: Produto pronto para ser usado. 
+## Estrutura do projeto
 
-## 🤝 Colaboradores
+```text
+StudioDeBelezaAnimalJava/
+├── dados/
+│   ├── administradores.csv
+│   ├── agendamentos.csv
+│   ├── animais.csv
+│   ├── clientes.csv
+│   └── servicos.csv
+│
+├── src/main/java/
+│   ├── api/
+│   ├── dao/
+│   ├── model/
+│   ├── service/
+│   ├── view/
+│   └── Main.java
+│
+├── pom.xml
+└── README.md
+```
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+---
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/1lucasmaglio" title="Sobre">
-        <img src="https://avatars.githubusercontent.com/u/266368513?v=4" width="100px;"   alt="Foto do Lucas Maglio no GitHub"/><br>
-        <sub>
-          <b>Lucas Maglio</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/YannEscobar" title="Sobre">
-        <img src="https://avatars.githubusercontent.com/u/240530528?v=4" width="100px;" alt="Foto do Yann no GitHub"/><br>
-        <sub>
-          <b>Yann Escobar</b>
-        </sub>
-      </a>
-      <td align="center">
-      <a href="https://github.com/ThiagoALM626" title="Sobre">
-        <img src="https://avatars.githubusercontent.com/u/288315951?v=4" width="100px;" alt="Foto do ThiagoALM626 no GitHub"/><br>
-        <sub>
-          <b>ThiagoALM626</b>
-        </sub>
-      </a>
-      <td align="center">
-      <a href="https://github.com/thiagobasilio887-sys" title="Sobre">
-        <img src="https://avatars.githubusercontent.com/u/288312813?v=4" width="100px;" alt="Foto do thiagobasilio887-sys no GitHub"/><br>
-        <sub>
-          <b>ThiagoALM626</b>
-        </sub>
-      </a>
-  </tr>
-</table>
+## Como executar
+
+### Interface gráfica
+
+Execute:
+
+```text
+src/main/java/Main.java
+```
+
+O `Main` inicia a `TelaPrincipal`, que contém a interface gráfica do sistema.
+
+### API
+
+Execute:
+
+```text
+src/main/java/api/api.java
+```
+
+A API será iniciada em:
+
+```text
+http://localhost:7070
+```
+
+Principais rotas:
+
+```text
+/clientes
+/animais
+/servicos
+/agendamentos
+```
+
+---
+
+## Status
+
+🚧 **Em desenvolvimento**
+
+A versão atual possui a estrutura principal do sistema, interface desktop, persistência em CSV e API. O projeto continuará sendo atualizado conforme novos requisitos forem implementados.
+
+---
+
+## Integrantes
+
+- Lucas Maglio Chiabai
+- Thiago Alexandre Marques Basílio
+- Thiago Santos de Almeida
+- Yann Sahmuel Escobar de Campos
