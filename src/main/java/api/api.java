@@ -1,17 +1,16 @@
 package api;
 
 import io.javalin.Javalin;
-
-import model.Cliente;
-import model.Animal;
-import model.Servico;
+import model.Administrador;
 import model.Agendamento;
-
-import service.ClienteService;
-import service.AnimalService;
-import service.ServicoService;
-import service.AgendamentoService;
+import model.Animal;
+import model.Cliente;
+import model.Servico;
 import service.AdministradorService;
+import service.AgendamentoService;
+import service.AnimalService;
+import service.ClienteService;
+import service.ServicoService;
 
 public class api {
 
@@ -51,6 +50,10 @@ public class api {
         // =========================
 
         var app = Javalin.create();
+
+        app.before(ctx -> {
+            ctx.contentType("text/plain; charset=UTF-8");
+        });
 
         // =========================
         // ROTA INICIAL
@@ -303,6 +306,59 @@ public class api {
                 + agendamento.getHora()
                 + " - "
                 + agendamento.getStatus()
+            );
+        });
+
+        // =========================
+        // ADMINISTRADORES
+        // =========================
+
+        app.get("/administradores", ctx -> {
+
+            StringBuilder resposta =
+                    new StringBuilder();
+
+            for (Administrador administrador :
+                    administradorService.listar()) {
+
+                resposta
+                    .append(administrador.getCodigo())
+                    .append(" - ")
+                    .append(administrador.getNome())
+                    .append(" - ")
+                    .append(administrador.getEmail())
+                    .append("\n");
+            }
+
+            ctx.result(resposta.toString());
+        });
+
+        app.get("/administradores/{id}", ctx -> {
+
+            int id = Integer.parseInt(
+                ctx.pathParam("id")
+            );
+
+            Administrador administrador =
+                    administradorService.buscarPorId(id);
+
+            if (administrador == null) {
+
+                ctx.status(404);
+
+                ctx.result(
+                    "Administrador não encontrado."
+                );
+
+                return;
+            }
+
+            ctx.result(
+                administrador.getCodigo()
+                + " - "
+                + administrador.getNome()
+                + " - "
+                + administrador.getEmail()
             );
         });
 

@@ -16,11 +16,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import model.Administrador;
 import model.Agendamento;
 import model.Animal;
 import model.Cliente;
 import model.Servico;
-
+import service.AdministradorService;
 import service.AgendamentoService;
 import service.AnimalService;
 import service.ClienteService;
@@ -36,6 +37,7 @@ public class TelaPrincipal extends JFrame {
     private AnimalService animalService;
     private ServicoService servicoService;
     private AgendamentoService agendamentoService;
+    private AdministradorService administradorService;
 
     // =========================
     // CLIENTES
@@ -89,6 +91,17 @@ public class TelaPrincipal extends JFrame {
     private JTable tabelaAgendamentos;
 
     // =========================
+    // ADMINISTRADORES
+    // =========================
+
+    private JTextField txtNomeAdministrador;
+    private JTextField txtEmailAdministrador;
+    private JTextField txtSenhaAdministrador;
+
+    private DefaultTableModel modeloAdministradores;
+    private JTable tabelaAdministradores;
+
+    // =========================
     // CONSTRUTOR
     // =========================
 
@@ -98,6 +111,7 @@ public class TelaPrincipal extends JFrame {
         animalService = new AnimalService();
         servicoService = new ServicoService();
         agendamentoService = new AgendamentoService();
+        administradorService = new AdministradorService();
 
         carregarDados();
 
@@ -112,6 +126,7 @@ public class TelaPrincipal extends JFrame {
         abas.addTab("Animais", criarPainelAnimais());
         abas.addTab("Serviços", criarPainelServicos());
         abas.addTab("Agendamentos", criarPainelAgendamentos());
+        abas.addTab("Administradores", criarPainelAdministradores());
 
         add(abas);
 
@@ -130,6 +145,7 @@ public class TelaPrincipal extends JFrame {
             animalService.carregar();
             servicoService.carregar();
             agendamentoService.carregar();
+            administradorService.carregar();
 
         } catch (Exception e) {
 
@@ -908,6 +924,138 @@ public class TelaPrincipal extends JFrame {
     }
 
     // ============================================================
+    // ADMINISTRADORES
+    // ============================================================
+
+    private JPanel criarPainelAdministradores() {
+
+        JPanel painel = new JPanel(new BorderLayout(10, 10));
+
+        painel.setBorder(
+            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        );
+
+        JPanel formulario = new JPanel(new GridLayout(4, 2, 5, 5));
+
+        txtNomeAdministrador = new JTextField();
+        txtEmailAdministrador = new JTextField();
+        txtSenhaAdministrador = new JTextField();
+
+        JButton btnCadastrar = new JButton("Cadastrar Administrador");
+
+        formulario.add(new JLabel("Nome:"));
+        formulario.add(txtNomeAdministrador);
+
+        formulario.add(new JLabel("E-mail:"));
+        formulario.add(txtEmailAdministrador);
+
+        formulario.add(new JLabel("Senha:"));
+        formulario.add(txtSenhaAdministrador);
+
+        formulario.add(new JLabel(""));
+        formulario.add(btnCadastrar);
+
+        modeloAdministradores = new DefaultTableModel(
+            new Object[] {
+                "Código",
+                "Nome",
+                "E-mail"
+            },
+            0
+        );
+
+        tabelaAdministradores = new JTable(modeloAdministradores);
+
+        painel.add(formulario, BorderLayout.NORTH);
+        painel.add(
+            new JScrollPane(tabelaAdministradores),
+            BorderLayout.CENTER
+        );
+
+        btnCadastrar.addActionListener(e -> cadastrarAdministrador());
+
+        return painel;
+    }
+
+    private void cadastrarAdministrador() {
+
+        String nome = txtNomeAdministrador.getText().trim();
+        String email = txtEmailAdministrador.getText().trim();
+        String senha = txtSenhaAdministrador.getText().trim();
+
+        if (nome.isEmpty()
+                || email.isEmpty()
+                || senha.isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                this,
+                "Preencha todos os campos do administrador."
+            );
+
+            return;
+        }
+
+        Administrador administrador = new Administrador(
+            nome,
+            email,
+            senha
+        );
+
+        administradorService.adicionar(administrador);
+
+        try {
+
+            administradorService.salvar();
+
+            atualizarTabelaAdministradores();
+
+            limparCamposAdministrador();
+
+            JOptionPane.showMessageDialog(
+                this,
+                "Administrador cadastrado com sucesso."
+            );
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                this,
+                "Erro ao salvar administrador:\n" + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+
+    private void atualizarTabelaAdministradores() {
+
+        if (modeloAdministradores == null) {
+            return;
+        }
+
+        modeloAdministradores.setRowCount(0);
+
+        for (Administrador administrador :
+                administradorService.listar()) {
+
+            modeloAdministradores.addRow(
+                new Object[] {
+                    administrador.getCodigo(),
+                    administrador.getNome(),
+                    administrador.getEmail()
+                }
+            );
+        }
+    }
+
+    private void limparCamposAdministrador() {
+
+        txtNomeAdministrador.setText("");
+        txtEmailAdministrador.setText("");
+        txtSenhaAdministrador.setText("");
+    }
+
+    // ============================================================
     // ATUALIZAR TODAS AS TABELAS
     // ============================================================
 
@@ -917,5 +1065,6 @@ public class TelaPrincipal extends JFrame {
         atualizarTabelaAnimais();
         atualizarTabelaServicos();
         atualizarTabelaAgendamentos();
+        atualizarTabelaAdministradores();
     }
 }
