@@ -42,6 +42,37 @@ public class AnimalService {
         return animais;
     }
 
+    public boolean atualizar(int codigo, Animal dadosAtualizados) {
+
+    Animal animal = buscarPorId(codigo);
+
+    if (animal == null) {
+        return false;
+    }
+
+    animal.setNome(dadosAtualizados.getNome());
+    animal.setEspecie(dadosAtualizados.getEspecie());
+    animal.setRaca(dadosAtualizados.getRaca());
+    animal.setPorte(dadosAtualizados.getPorte());
+
+    return true;
+
+    
+    }
+
+    public boolean excluir(int codigo) {
+
+        Animal animal = buscarPorId(codigo);
+
+        if (animal == null) {
+            return false;
+        }
+
+        animais.remove(animal);
+
+        return true;
+    }
+
     public Animal buscarPorId(int codigo) {
 
         for (Animal animal : animais) {
@@ -65,4 +96,31 @@ public class AnimalService {
 
         return resultado;
     }
+
+    public boolean validarAnimal(Animal animal) {
+
+        if (animal.getNome() == null || animal.getNome().isBlank()) {
+            return false;
+        }
+
+        boolean especieValida = "Cachorro".equals(animal.getEspecie()) ||
+                                    "Gato".equals(animal.getEspecie());
+
+        if (!especieValida) {
+            return false;
+        }
+
+        String porte = animal.getPorte();
+
+        boolean porteValido = "P".equals(porte) ||
+                              "M".equals(porte) ||
+                              "G".equals(porte);
+
+            if (!porteValido) {
+                return false;
+            }
+
+        return true;
+    }
+    
 }

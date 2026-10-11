@@ -26,6 +26,8 @@ public class AgendamentoService {
 
     public boolean horarioDisponivel(String data, String hora) {
 
+        int quantidade = 0;
+
         for (Agendamento agendamento : agendamentos) {
 
             if (agendamento.getData().equals(data)
@@ -33,11 +35,11 @@ public class AgendamentoService {
                     && !agendamento.getStatus()
                         .equalsIgnoreCase("Cancelado")) {
 
-                return false;
+                quantidade++;
             }
         }
 
-        return true;
+        return quantidade < 5;
     }
 
     public boolean adicionar(Agendamento agendamento) {

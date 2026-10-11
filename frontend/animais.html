@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Animais - Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Studio de Beleza Animal</h1>
+    <h2>Meus Animais</h2>
+
+    <main>
+        <h3>Cadastrar Animal</h3>
+
+        <form id="formAnimal">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="especie">Espécie:</label>
+            <select id="especie" required>
+                <option value="">Selecione</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+            </select>
+
+            <label for="raca">Raça:</label>
+            <input type="text" id="raca" required>
+
+            <label for="porte">Porte:</label>
+            <select id="porte" required>
+                <option value="">Selecione</option>
+                <option value="P">Pequeno</option>
+                <option value="M">Médio</option>
+                <option value="G">Grande</option>
+            </select>
+
+            <button type="submit">Cadastrar Animal</button>
+        </form>
+
+        <h3>Animais Cadastrados</h3>
+        <div id="listaAnimais"></div>
+
+        <p><a href="cliente.html">Voltar para Área do Cliente</a></p>
+
+        <script src="animais.js"></script>
+        
+    </main>
+</body>
+</html>

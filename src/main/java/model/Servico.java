@@ -5,26 +5,32 @@ public class Servico {
     private int codigo;
     private String nome;
     private String descricao;
-    private double valor;
+    private double valorP;
+    private double valorM;
+    private double valorG;
     private int duracao;
 
     public Servico() {
     }
 
     public Servico(int codigo, String nome, String descricao,
-                   double valor, int duracao) {
+                double valorP, double valorM, double valorG, int duracao) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
-        this.valor = valor;
+        this.valorP = valorP;
+        this.valorM = valorM;
+        this.valorG = valorG;
         this.duracao = duracao;
     }
 
     public Servico(String nome, String descricao,
-                   double valor, int duracao) {
+                double valorP, double valorM, double valorG, int duracao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.valor = valor;
+        this.valorP = valorP;
+        this.valorM = valorM;
+        this.valorG = valorG;
         this.duracao = duracao;
     }
 
@@ -52,12 +58,28 @@ public class Servico {
         this.descricao = descricao;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValorP() {
+        return valorP;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setValorP(double valorP) {
+        this.valorP = valorP;
+    }
+
+    public double getValorM() {
+        return valorM;
+    }
+
+    public void setValorM(double valorM) {
+        this.valorM = valorM;
+    }
+
+    public double getValorG() {
+        return valorG;
+    }
+
+    public void setValorG(double valorG) {
+        this.valorG = valorG;
     }
 
     public int getDuracao() {

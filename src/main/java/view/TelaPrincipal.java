@@ -70,7 +70,9 @@ public class TelaPrincipal extends JFrame {
 
     private JTextField txtNomeServico;
     private JTextField txtDescricaoServico;
-    private JTextField txtValorServico;
+    private JTextField txtValorPServico;
+    private JTextField txtValorMServico;
+    private JTextField txtValorGServico;
     private JTextField txtDuracaoServico;
 
     private DefaultTableModel modeloServicos;
@@ -487,11 +489,13 @@ public class TelaPrincipal extends JFrame {
             BorderFactory.createEmptyBorder(10, 10, 10, 10)
         );
 
-        JPanel formulario = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel formulario = new JPanel(new GridLayout(7, 2, 5, 5));
 
         txtNomeServico = new JTextField();
         txtDescricaoServico = new JTextField();
-        txtValorServico = new JTextField();
+        txtValorPServico = new JTextField();
+        txtValorMServico = new JTextField();
+        txtValorGServico = new JTextField();
         txtDuracaoServico = new JTextField();
 
         JButton btnCadastrar = new JButton("Cadastrar Serviço");
@@ -502,8 +506,14 @@ public class TelaPrincipal extends JFrame {
         formulario.add(new JLabel("Descrição:"));
         formulario.add(txtDescricaoServico);
 
-        formulario.add(new JLabel("Valor:"));
-        formulario.add(txtValorServico);
+        formulario.add(new JLabel("Valor P (R$):"));
+        formulario.add(txtValorPServico);
+
+        formulario.add(new JLabel("Valor M (R$):"));
+        formulario.add(txtValorMServico);
+
+        formulario.add(new JLabel("Valor G (R$):"));
+        formulario.add(txtValorGServico);
 
         formulario.add(new JLabel("Duração (minutos):"));
         formulario.add(txtDuracaoServico);
@@ -516,7 +526,9 @@ public class TelaPrincipal extends JFrame {
                 "Código",
                 "Nome",
                 "Descrição",
-                "Valor",
+                "Valor P",
+                "Valor M",
+                "Valor G",
                 "Duração"
             },
             0
@@ -542,7 +554,9 @@ public class TelaPrincipal extends JFrame {
         String descricao = txtDescricaoServico.getText().trim();
 
         if (nome.isEmpty()
-                || txtValorServico.getText().trim().isEmpty()
+                || txtValorPServico.getText().trim().isEmpty()
+                || txtValorMServico.getText().trim().isEmpty()
+                || txtValorGServico.getText().trim().isEmpty()
                 || txtDuracaoServico.getText().trim().isEmpty()) {
 
             JOptionPane.showMessageDialog(
@@ -555,19 +569,36 @@ public class TelaPrincipal extends JFrame {
 
         try {
 
-            String valorTexto =
-                txtValorServico.getText().trim().replace(",", ".");
+            double valorP = Double.parseDouble(
+                txtValorPServico.getText().trim().replace(",", ".")
+            );
 
-            double valor = Double.parseDouble(valorTexto);
+            double valorM = Double.parseDouble(
+                txtValorMServico.getText().trim().replace(",", ".")
+            );
+
+            double valorG = Double.parseDouble(
+                txtValorGServico.getText().trim().replace(",", ".")
+            );
 
             int duracao = Integer.parseInt(
                 txtDuracaoServico.getText().trim()
             );
 
+            if (valorP < 0 || valorM < 0 || valorG < 0 || duracao <= 0) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    "Os valores não podem ser negativos e a duração deve ser maior que zero."
+                );
+                return;
+            }
+
             Servico servico = new Servico(
                 nome,
                 descricao,
-                valor,
+                valorP,
+                valorM,
+                valorG,
                 duracao
             );
 
@@ -575,7 +606,6 @@ public class TelaPrincipal extends JFrame {
             servicoService.salvar();
 
             atualizarTabelaServicos();
-
             limparCamposServico();
 
             JOptionPane.showMessageDialog(
@@ -587,7 +617,7 @@ public class TelaPrincipal extends JFrame {
 
             JOptionPane.showMessageDialog(
                 this,
-                "Valor e duração precisam ser números."
+                "Valores e duração precisam ser números."
             );
 
         } catch (Exception e) {
@@ -616,7 +646,9 @@ public class TelaPrincipal extends JFrame {
                     servico.getCodigo(),
                     servico.getNome(),
                     servico.getDescricao(),
-                    servico.getValor(),
+                    servico.getValorP(),
+                    servico.getValorM(),
+                    servico.getValorG(),
                     servico.getDuracao()
                 }
             );
@@ -627,7 +659,9 @@ public class TelaPrincipal extends JFrame {
 
         txtNomeServico.setText("");
         txtDescricaoServico.setText("");
-        txtValorServico.setText("");
+        txtValorPServico.setText("");
+        txtValorMServico.setText("");
+        txtValorGServico.setText("");
         txtDuracaoServico.setText("");
     }
 

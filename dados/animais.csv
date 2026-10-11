@@ -1,2 +1,7 @@
 codigo;nome;especie;raca;porte;codigoCliente
 1;Kumo;Gato;Vira-lata;P;1
+2;AnimalPequenoExemplo;Cachorro;Não sei;P;1
+3;AnimalMédioExemplo;Cachorro;Não sei;M;1
+4;AnimalGrandeExemplo;Cachorro;Não sei;G;1
+5;Exemplo;Cachorro;Não sei;M;1
+6;Exemplo 2;Cachorro;Não sei;M;1

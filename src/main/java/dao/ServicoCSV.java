@@ -20,7 +20,7 @@ public class ServicoCSV {
 
         List<String> linhas = new ArrayList<>();
 
-        linhas.add("codigo;nome;descricao;valor;duracao");
+        linhas.add("codigo;nome;descricao;valorP;valorM;valorG;duracao");
 
         for (Servico servico : servicos) {
 
@@ -28,12 +28,14 @@ public class ServicoCSV {
                     servico.getCodigo() + ";" +
                     servico.getNome() + ";" +
                     servico.getDescricao() + ";" +
-                    servico.getValor() + ";" +
+                    servico.getValorP() + ";" +
+                    servico.getValorM() + ";" +
+                    servico.getValorG() + ";" +
                     servico.getDuracao();
 
-            linhas.add(linha);
-        }
-
+                    linhas.add(linha);
+                    }
+                    
         Files.createDirectories(caminho.getParent());
         Files.write(caminho, linhas);
     }
@@ -55,15 +57,19 @@ public class ServicoCSV {
             int codigo = Integer.parseInt(dados[0]);
             String nome = dados[1];
             String descricao = dados[2];
-            double valor = Double.parseDouble(dados[3]);
-            int duracao = Integer.parseInt(dados[4]);
+            double valorP = Double.parseDouble(dados[3]);
+            double valorM = Double.parseDouble(dados[4]);
+            double valorG = Double.parseDouble(dados[5]);
+            int duracao = Integer.parseInt(dados[6]);
 
             servicos.add(
                 new Servico(
                     codigo,
                     nome,
                     descricao,
-                    valor,
+                    valorP,
+                    valorM,
+                    valorG,
                     duracao
                 )
             );

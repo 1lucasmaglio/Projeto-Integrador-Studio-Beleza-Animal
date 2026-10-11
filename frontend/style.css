@@ -1,0 +1,305 @@
+
+/* ========================================
+   ESTILOS GERAIS
+   Aplicados a todas as páginas HTML
+======================================== */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    color: #4a6fa5;
+}
+
+h2 {
+    color: #333;
+}
+
+
+/* ========================================
+   FORMULÁRIOS
+   Utilizados em cadastro.html e login.html
+======================================== */
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 30px auto;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #345580;
+}
+
+
+/* ========================================
+   PÁGINA DE LOGIN
+   Mensagens de sucesso ou erro
+======================================== */
+
+#mensagemLogin {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   ÁREA DO CLIENTE
+   Conteúdo principal de cliente.html
+======================================== */
+
+main {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   MENU DE NAVEGAÇÃO
+   Links para animais e agendamentos
+======================================== */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+nav a {
+    padding: 12px;
+    background-color: #4a6fa5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #345580;
+}
+
+
+/* ========================================
+   CADASTRO DE ANIMAIS
+   Campos de seleção
+======================================== */
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   PÁGINA INICIAL
+   Estilos exclusivos de index.html
+======================================== */
+
+.pagina-inicial {
+    padding: 0;
+    text-align: left;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    background-color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Menu horizontal */
+
+.menu-inicial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-inicial a {
+    background-color: transparent;
+    color: #333;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.menu-inicial a:hover {
+    background-color: transparent;
+    color: #4a6fa5;
+}
+
+/* Conteúdo principal */
+
+.pagina-inicial .conteudo-inicial {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+/* Apresentação */
+
+.apresentacao {
+    background-color: #e8eef7;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.apresentacao h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.apresentacao p {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+/* Botões */
+
+.botao-inicial {
+    display: inline-block;
+    background-color: #4a6fa5;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.botao-inicial:hover {
+    background-color: #345580;
+}
+
+/* Seções */
+
+.secao-inicial {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.secao-inicial h2 {
+    margin-bottom: 30px;
+}
+
+.secao-inicial p {
+    line-height: 1.6;
+}
+
+/* Serviços */
+
+.servicos-iniciais {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cartao-servico {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cartao-servico h3 {
+    color: #4a6fa5;
+}
+
+/* Chamada final */
+
+.chamada-final {
+    background-color: #e8eef7;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.chamada-final p {
+    margin-bottom: 30px;
+}
+
+/* Rodapé */
+
+.rodape-inicial {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Telas menores */
+
+@media (max-width: 750px) {
+    .cabecalho {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-inicial {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .apresentacao {
+        padding: 60px 20px;
+    }
+
+    .apresentacao h2 {
+        font-size: 28px;
+    }
+}
+
+

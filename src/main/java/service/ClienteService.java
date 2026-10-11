@@ -38,6 +38,31 @@ public class ClienteService {
         clientes.add(cliente);
     }
 
+    public boolean validarCliente(Cliente cliente) {
+
+    if (cliente == null) {
+        return false;
+    }
+
+    if (cliente.getNome() == null || cliente.getNome().isBlank()) {
+        return false;
+    }
+
+    if (cliente.getTelefone() == null || cliente.getTelefone().isBlank()) {
+        return false;
+    }
+
+    if (cliente.getEmail() == null || cliente.getEmail().isBlank()) {
+        return false;
+    }
+
+    if (cliente.getSenha() == null || cliente.getSenha().isBlank()) {
+        return false;
+    }
+
+    return true;
+    }
+
     public List<Cliente> listar() {
         return clientes;
     }

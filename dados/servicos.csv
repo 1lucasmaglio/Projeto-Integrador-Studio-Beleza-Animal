@@ -1,2 +1,6 @@
-codigo;nome;descricao;valor;duracao
-1;Banho;Animal é lavado;50.0;60
+codigo;nome;descricao;valorP;valorM;valorG;duracao
+1;Banho;Banho completo com limpeza de ouvidos e corte de unhas.;45.0;60.0;80.0;60
+2;Banho e Tosa na Máquina;Tosa realizada com tesoura, com banho incluso.;80.0;110.0;150.0;120
+3;Banho e Tosa na Tesoura;Tosa realizada com tesoura, com banho incluso.;120.0;160.0;210.0;150
+4;Banho e Tosa Higiênica;Higienização das partes íntimas, arredondamento das patas e pequenos ajustes, com banho incluso.;55.0;75.0;100.0;75
+5;Banho com Hidratação;Banho completo com tratamento de hidratação da pelagem.;60.0;80.0;105.0;60

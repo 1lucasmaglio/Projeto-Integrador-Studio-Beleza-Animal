@@ -49,10 +49,12 @@ public class api {
         // JAVALIN
         // =========================
 
-        var app = Javalin.create();
-
-        app.before(ctx -> {
-            ctx.contentType("text/plain; charset=UTF-8");
+        var app = Javalin.create(config -> {
+            config.bundledPlugins.enableCors(cors -> {
+                cors.addRule(rule -> {
+                    rule.allowHost("http://127.0.0.1:5500");
+                });
+            });
         });
 
         // =========================
@@ -123,34 +125,60 @@ public class api {
             );
         });
 
+        app.post("/clientes", ctx -> {
+
+            Cliente cliente = ctx.bodyAsClass(Cliente.class);
+
+            if (!clienteService.validarCliente(cliente)) {
+                ctx.status(400);
+                ctx.result("Dados do cliente inválidos.");
+                return;
+            }
+
+            clienteService.adicionar(cliente);
+            clienteService.salvar();
+
+            ctx.status(201);
+            ctx.json(java.util.Map.of(
+                "codigo", cliente.getCodigo(),
+                "nome", cliente.getNome(),
+                "telefone", cliente.getTelefone(),
+                "email", cliente.getEmail()
+            ));
+            
+        });
+
+        app.post("/login", ctx -> {
+
+            java.util.Map<String, String> dados = ctx.bodyAsClass(java.util.Map.class);
+
+            String email = dados.get("email");
+            String senha = dados.get("senha");
+
+            Cliente cliente = clienteService.autenticar(email, senha);
+
+            if (cliente == null) {
+                ctx.status(401);
+                ctx.result("E-mail ou senha incorretos.");
+                return;
+            }
+
+            ctx.status(200);
+            ctx.json(java.util.Map.of(
+                "codigo", cliente.getCodigo(),
+                "nome", cliente.getNome(),
+                "email", cliente.getEmail()
+            ));
+        });
+
         // =========================
         // ANIMAIS
         // =========================
 
         app.get("/animais", ctx -> {
 
-            StringBuilder resposta =
-                    new StringBuilder();
+            ctx.json(animalService.listar());
 
-            for (Animal animal :
-                    animalService.listar()) {
-
-                resposta
-                    .append(animal.getCodigo())
-                    .append(" - ")
-                    .append(animal.getNome())
-                    .append(" - ")
-                    .append(animal.getEspecie())
-                    .append(" - ")
-                    .append(animal.getRaca())
-                    .append(" - ")
-                    .append(animal.getPorte())
-                    .append(" - Cliente: ")
-                    .append(animal.getCodigoCliente())
-                    .append("\n");
-            }
-
-            ctx.result(resposta.toString());
         });
 
         app.get("/animais/{id}", ctx -> {
@@ -165,25 +193,92 @@ public class api {
             if (animal == null) {
 
                 ctx.status(404);
-
-                ctx.result(
-                    "Animal não encontrado."
-                );
+                ctx.result("Animal não encontrado.");
 
                 return;
             }
 
-            ctx.result(
-                animal.getCodigo()
-                + " - "
-                + animal.getNome()
-                + " - "
-                + animal.getEspecie()
-                + " - "
-                + animal.getRaca()
-                + " - "
-                + animal.getPorte()
-            );
+            ctx.json(animal);
+        });
+
+        app.post("/animais", ctx -> {
+
+            Animal animal = ctx.bodyAsClass(Animal.class);
+
+            Cliente cliente = clienteService.buscarPorId(animal.getCodigoCliente());
+
+            if (cliente == null) {
+                ctx.status(400);
+                ctx.result("Cliente não encontrado.");
+                return;
+            }
+           
+            boolean animalValido = animalService.validarAnimal(animal);
+
+            if (!animalValido) {
+                ctx.status(400);
+                ctx.result("Dados do animal inválidos.");
+                return;
+            }
+            
+            if (animal.getRaca() == null || animal.getRaca().isBlank()) {
+                animal.setRaca("Não informada");
+            }
+
+            animalService.adicionar(animal);
+            animalService.salvar();
+
+            ctx.status(201);
+            ctx.json(animal);
+
+        });
+
+        app.put("/animais/{id}", ctx -> {
+
+            int id = Integer.parseInt(ctx.pathParam("id"));
+ 
+            Animal dadosAtualizados = ctx.bodyAsClass(Animal.class);
+
+            boolean animalValido = animalService.validarAnimal(dadosAtualizados);
+
+            if (!animalValido) {
+                ctx.status(400);
+                ctx.result("Dados do animal inválidos.");
+                return;
+            }
+
+            if (dadosAtualizados.getRaca() == null || dadosAtualizados.getRaca().isBlank()) {
+                dadosAtualizados.setRaca("Não informada");
+            }       
+
+            boolean atualizado = animalService.atualizar(id, dadosAtualizados);
+
+            if (!atualizado) {
+                ctx.status(404);
+                ctx.result("Animal não encontrado.");
+                return;
+            }
+
+            animalService.salvar();
+            ctx.json(animalService.buscarPorId(id));
+
+        });
+
+        app.delete("/animais/{id}", ctx -> {
+
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            boolean excluido = animalService.excluir(id);
+
+            if (!excluido) {
+                ctx.status(404);
+                ctx.result("Animal não encontrado.");
+                return;
+            }
+
+            animalService.salvar();
+            ctx.status(204);
+
         });
 
         // =========================
@@ -191,57 +286,22 @@ public class api {
         // =========================
 
         app.get("/servicos", ctx -> {
-
-            StringBuilder resposta =
-                    new StringBuilder();
-
-            for (Servico servico :
-                    servicoService.listar()) {
-
-                resposta
-                    .append(servico.getCodigo())
-                    .append(" - ")
-                    .append(servico.getNome())
-                    .append(" - R$ ")
-                    .append(servico.getValor())
-                    .append(" - ")
-                    .append(servico.getDuracao())
-                    .append(" minutos")
-                    .append("\n");
-            }
-
-            ctx.result(resposta.toString());
+            ctx.json(servicoService.listar());
         });
 
         app.get("/servicos/{id}", ctx -> {
 
-            int id = Integer.parseInt(
-                ctx.pathParam("id")
-            );
+            int id = Integer.parseInt(ctx.pathParam("id"));
 
-            Servico servico =
-                    servicoService.buscarPorId(id);
+            Servico servico = servicoService.buscarPorId(id);
 
             if (servico == null) {
-
                 ctx.status(404);
-
-                ctx.result(
-                    "Serviço não encontrado."
-                );
-
+                ctx.result("Serviço não encontrado.");
                 return;
             }
 
-            ctx.result(
-                servico.getCodigo()
-                + " - "
-                + servico.getNome()
-                + " - "
-                + servico.getDescricao()
-                + " - R$ "
-                + servico.getValor()
-            );
+            ctx.json(servico);
         });
 
         // =========================
@@ -249,35 +309,9 @@ public class api {
         // =========================
 
         app.get("/agendamentos", ctx -> {
-
-            StringBuilder resposta =
-                    new StringBuilder();
-
-            for (Agendamento agendamento :
-                    agendamentoService.listar()) {
-
-                resposta
-                    .append(agendamento.getCodigo())
-                    .append(" - ")
-                    .append(agendamento.getData())
-                    .append(" ")
-                    .append(agendamento.getHora())
-                    .append(" - ")
-                    .append(agendamento.getStatus())
-                    .append(" - Animal: ")
-                    .append(
-                        agendamento.getCodigoAnimal()
-                    )
-                    .append(" - Serviço: ")
-                    .append(
-                        agendamento.getCodigoServico()
-                    )
-                    .append("\n");
-            }
-
-            ctx.result(resposta.toString());
+            ctx.json(agendamentoService.listar());
         });
-
+        
         app.get("/agendamentos/{id}", ctx -> {
 
             int id = Integer.parseInt(
@@ -307,6 +341,42 @@ public class api {
                 + " - "
                 + agendamento.getStatus()
             );
+        });
+
+        app.post("/agendamentos", ctx -> {
+
+            Agendamento agendamento = ctx.bodyAsClass(Agendamento.class);
+
+            Animal animal = animalService.buscarPorId(agendamento.getCodigoAnimal());
+            Servico servico = servicoService.buscarPorId(agendamento.getCodigoServico());
+
+            if (animal == null || servico == null) {
+                ctx.status(400);
+                ctx.result("Animal ou serviço inválido.");
+                return;
+            }
+
+            if (agendamento.getData() == null || agendamento.getData().isBlank()
+                    || agendamento.getHora() == null || agendamento.getHora().isBlank()) {
+                ctx.status(400);
+                ctx.result("Data ou horário inválido.");
+                return;
+            }
+
+            agendamento.setStatus("Agendado");
+
+            boolean adicionado = agendamentoService.adicionar(agendamento);
+
+            if (!adicionado) {
+                ctx.status(409);
+                ctx.result("Horário lotado. Escolha outro horário.");
+                return;
+            }
+
+            agendamentoService.salvar();
+
+            ctx.status(201);
+            ctx.json(agendamento);
         });
 
         // =========================
