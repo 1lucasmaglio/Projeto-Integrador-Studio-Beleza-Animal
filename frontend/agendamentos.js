@@ -1,83 +1,116 @@
+
+/* Armazena os animais e serviços recebidos da API para utilizá-los em outras funções. */
 let animaisDisponiveis = [];
 let servicosDisponiveis = [];
 
+/* Busca os animais cadastrados e adiciona ao formulário apenas os do cliente logado. */
 function carregarAnimais() {
+    // Recupera o código do cliente salvo durante o login.
     const codigoCliente = Number(sessionStorage.getItem("codigoCliente"));
 
+    // Solicita à API Java a lista de animais cadastrados.
     fetch("http://localhost:7070/animais")
     .then(response => {
+        // Verifica se a consulta foi realizada com sucesso.
         if (!response.ok) {
             throw new Error("Erro ao buscar animais.");
         }
 
+        // Converte a resposta JSON em dados JavaScript.
         return response.json();
     })
     .then(animais => {
+        // Guarda os animais recebidos para utilizá-los posteriormente.
         animaisDisponiveis = animais;
 
+        // Localiza o campo de seleção de animais no HTML.
         const selecao = document.getElementById("animal");
 
+        // Percorre todos os animais recebidos da API.
         animais.forEach(animal => {
+            // Verifica se o animal pertence ao cliente logado.
             if (animal.codigoCliente === codigoCliente) {
+                // Cria uma nova opção no campo de seleção.
                 const opcao = document.createElement("option");
 
+                // Usa o código do animal como valor e seu nome como texto visível.
                 opcao.value = animal.codigo;
                 opcao.textContent = animal.nome;
 
+                // Adiciona a opção ao campo de seleção.
                 selecao.appendChild(opcao);
             }
         });
         
+        // Carrega os agendamentos após obter os dados dos animais.
         listarAgendamentos();
     }) 
     .catch(erro => {
+        // Registra possíveis erros no console.
         console.error(erro);
     });
 }
 
+/* Busca os serviços cadastrados e preenche o campo de seleção do formulário. */
 function carregarServicos() {
 
+    // Solicita à API Java a lista de serviços disponíveis.
     fetch("http://localhost:7070/servicos")
     .then(response => {
+        // Verifica se ocorreu algum erro na consulta.
         if (!response.ok) {
             throw new Error("Erro ao buscar serviços.");
         }
 
+        // Converte a resposta JSON em dados JavaScript.
         return response.json();
     })
     .then(servicos => {
+        // Guarda os serviços recebidos para calcular os preços posteriormente.
         servicosDisponiveis = servicos;
 
+        // Localiza o campo de seleção de serviços no HTML.
         const selecao = document.getElementById("servico");
 
+        // Percorre os serviços cadastrados.
         servicos.forEach(servico => {
+            // Cria uma opção para cada serviço.
             const opcao = document.createElement("option");
 
+            // Usa o código do serviço como valor e seu nome como texto visível.
             opcao.value = servico.codigo;
             opcao.textContent = servico.nome;
 
+            // Adiciona a opção ao campo de seleção.
             selecao.appendChild(opcao);
         });
     })
     .catch(erro => {
+        // Registra possíveis erros no console.
         console.error(erro);
     });
 }
 
 
+/* Calcula e exibe o preço do serviço de acordo com o porte do animal. */
 function atualizarPreco() {
+    // Obtém os códigos do animal e do serviço selecionados.
     const codigoAnimal = Number(document.getElementById("animal").value);
     const codigoServico = Number(document.getElementById("servico").value);
 
+    // Procura os objetos correspondentes aos códigos selecionados.
     const animal = animaisDisponiveis.find(a => a.codigo === codigoAnimal);
     const servico = servicosDisponiveis.find(s => s.codigo === codigoServico);
 
+    // Encerra a função se o animal ou o serviço ainda não estiver selecionado.
     if (!animal || !servico) {
     return;
     }
 
+    // Variável que receberá o preço correspondente ao porte do animal.
     let valor = 0;
 
+    // Seleciona o preço cadastrado para o porte P, M ou G.
     if (animal.porte === "P") {
         valor = servico.valorP;
     } else if (animal.porte === "M") {
@@ -86,54 +119,80 @@ function atualizarPreco() {
         valor = servico.valorG;
     }
 
+    // Localiza o elemento HTML responsável por mostrar o preço.
     const preco = document.getElementById("precoServico");
+
+    // Exibe o preço com duas casas decimais e vírgula no lugar do ponto.
     preco.textContent = "Preço: R$ " + valor.toFixed(2).replace(".", ",");
 }
 
+/* Consulta os agendamentos e mostra aqueles associados aos animais do cliente logado. */
 function listarAgendamentos() {
+    // Recupera o código do cliente armazenado durante o login.
     const codigoCliente = Number(sessionStorage.getItem("codigoCliente"));
 
+    // Solicita à API Java os agendamentos cadastrados.
     fetch("http://localhost:7070/agendamentos")
     .then(response => {
+        // Verifica se a consulta foi realizada com sucesso.
         if (!response.ok) {
             throw new Error("Erro ao buscar agendamentos.");
         }
 
+        // Converte a resposta JSON em uma lista de agendamentos.
         return response.json();
         })
 
         .then(agendamentos => {
+            // Exibe os agendamentos no console para auxiliar nos testes.
             console.log(agendamentos);
         
+            // Localiza a área onde os agendamentos serão apresentados.
             const lista = document.getElementById("listaAgendamentos");
+
+            // Limpa a lista antes de preenchê-la novamente.
             lista.innerHTML = "";
 
+        // Percorre todos os agendamentos recebidos da API.
         agendamentos.forEach(agendamento => {
+            // Encontra o animal associado ao agendamento pelo código.
             const animal = animaisDisponiveis.find(a => a.codigo === agendamento.codigoAnimal);
 
+            // Mostra somente os agendamentos de animais pertencentes ao cliente logado.
             if (animal && animal.codigoCliente === codigoCliente) {
+                // Cria um parágrafo para representar o agendamento na página.
                 const item = document.createElement("p");
+
+                // Mostra o nome do animal, a data e o horário agendados.
                 item.textContent = animal.nome + " - " + agendamento.data + " - " + agendamento.hora;
+
+                // Adiciona o agendamento à lista exibida no HTML.
                 lista.appendChild(item);
             }
         });
     });
 }
 
+// Carrega os animais e serviços quando a página é aberta.
 carregarAnimais();
 carregarServicos();
 
+// Atualiza o preço sempre que o cliente troca o animal ou o serviço selecionado.
 document.getElementById("animal").addEventListener("change", atualizarPreco);
 document.getElementById("servico").addEventListener("change", atualizarPreco);
 
+/* Executa o cadastro de um agendamento quando o formulário é enviado. */
 document.getElementById("formAgendamento").addEventListener("submit", function(event) {
+    // Impede que o formulário recarregue a página automaticamente.
     event.preventDefault();
 
+    // Obtém os dados selecionados pelo cliente no formulário.
     const codigoAnimal = Number(document.getElementById("animal").value);
     const codigoServico = Number(document.getElementById("servico").value);
     const data = document.getElementById("data").value;
     const hora = document.getElementById("hora").value;
 
+    // Organiza os dados necessários para cadastrar o agendamento.
     const agendamento = {
     codigoAnimal: codigoAnimal,
     codigoServico: codigoServico,
@@ -141,29 +200,39 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
     hora: hora
     };
 
+    // Envia o agendamento para a API Java.
     fetch("http://localhost:7070/agendamentos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
+        // Converte o objeto agendamento para JSON antes do envio.
         body: JSON.stringify(agendamento)
     })
 
     .then(response => {
+        // Verifica se o servidor recusou o agendamento.
         if (!response.ok) {
             throw new Error("Erro ao agendar serviço.");
         }
 
+        // Converte a resposta JSON em um objeto JavaScript.
         return response.json();
     })
 
     .then(agendamentoCriado => {
+        // Mostra o agendamento criado no console para auxiliar nos testes.
         console.log("Agendamento criado:", agendamentoCriado);
+
+        // Informa ao cliente que o agendamento foi realizado.
         alert("Agendamento realizado com sucesso!");
+
+        // Atualiza a lista para incluir o novo agendamento.
         listarAgendamentos();
     })
 
     .catch(erro => {
+        // Registra o erro no console e informa o cliente.
         console.error(erro);
         alert("Não foi possível realizar o agendamento.");
     });
