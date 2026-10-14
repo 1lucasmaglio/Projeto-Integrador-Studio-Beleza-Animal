@@ -1,4 +1,6 @@
 
+console.log("AGENDAMENTOS.JS INICIADO");
+
 /* Armazena os animais e serviços recebidos da API para utilizá-los em outras funções. */
 let animaisDisponiveis = [];
 let servicosDisponiveis = [];
@@ -183,13 +185,26 @@ document.getElementById("servico").addEventListener("change", atualizarPreco);
 
 /* Executa o cadastro de um agendamento quando o formulário é enviado. */
 document.getElementById("formAgendamento").addEventListener("submit", function(event) {
+    
     // Impede que o formulário recarregue a página automaticamente.
     event.preventDefault();
+    console.log("Form submitted. Default prevented:", event.defaultPrevented);
+    // Localiza a área onde será exibida a mensagem do agendamento.
+    const mensagem = document.getElementById("mensagemAgendamento");
+    // Limpa a mensagem anterior.
+    mensagem.textContent = "";
 
     // Obtém os dados selecionados pelo cliente no formulário.
     const codigoAnimal = Number(document.getElementById("animal").value);
     const codigoServico = Number(document.getElementById("servico").value);
-    const data = document.getElementById("data").value;
+    // Obtém a data selecionada no formato yyyy-MM-dd.
+    const dataOriginal = document.getElementById("data").value;
+
+    // Separa o ano, o mês e o dia.
+    const [ano, mes, dia] = dataOriginal.split("-");
+
+    // Converte a data para o formato dd/MM/yyyy esperado pelo Java.
+    const data = `${dia}/${mes}/${ano}`;
     const hora = document.getElementById("hora").value;
 
     // Organiza os dados necessários para cadastrar o agendamento.
@@ -210,13 +225,12 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
         body: JSON.stringify(agendamento)
     })
 
-    .then(response => {
-        // Verifica se o servidor recusou o agendamento.
+    .then(async response => {
         if (!response.ok) {
-            throw new Error("Erro ao agendar serviço.");
+            const erro = await response.text();
+            throw new Error(erro);
         }
 
-        // Converte a resposta JSON em um objeto JavaScript.
         return response.json();
     })
 
@@ -225,16 +239,20 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
         console.log("Agendamento criado:", agendamentoCriado);
 
         // Informa ao cliente que o agendamento foi realizado.
-        alert("Agendamento realizado com sucesso!");
+        mensagem.textContent = "Agendamento realizado com sucesso!";
+        mensagem.style.color = "green";
 
         // Atualiza a lista para incluir o novo agendamento.
         listarAgendamentos();
     })
 
     .catch(erro => {
-        // Registra o erro no console e informa o cliente.
         console.error(erro);
-        alert("Não foi possível realizar o agendamento.");
+
+        mensagem.textContent = erro.message;
+        mensagem.style.color = "red";
+
+        console.log("Mensagem exibida no HTML:", mensagem.textContent);
     });
 
 });

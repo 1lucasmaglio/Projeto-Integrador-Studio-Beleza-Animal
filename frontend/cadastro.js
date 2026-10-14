@@ -20,7 +20,7 @@ formulario.addEventListener("submit", function(event) {
         telefone: telefone,
         email: email,
         senha: senha
-    };
+    };  
 
     // Mostra alguns dados no console para auxiliar durante os testes.
     console.log(nome, telefone, email);

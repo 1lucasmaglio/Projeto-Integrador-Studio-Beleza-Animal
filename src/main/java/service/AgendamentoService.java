@@ -1,5 +1,8 @@
 package service;
-
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +42,42 @@ public class AgendamentoService {
             }
         }
 
-        return quantidade < 5;
+        return quantidade < 2;
+    }
+
+    public boolean diaAberto(String data) {
+
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+    LocalDate dataAgendamento = LocalDate.parse(data, formato);
+
+    DayOfWeek diaSemana = dataAgendamento.getDayOfWeek();
+
+    return diaSemana != DayOfWeek.SATURDAY
+            && diaSemana != DayOfWeek.SUNDAY
+            && diaSemana != DayOfWeek.MONDAY;
+    }   
+
+    public boolean horarioFuncionamento(String hora) {
+
+        LocalTime horario = LocalTime.parse(hora);
+
+        LocalTime abertura = LocalTime.of(7, 0);
+        LocalTime fechamento = LocalTime.of(18, 0);
+
+        return !horario.isBefore(abertura)
+                && horario.isBefore(fechamento);
     }
 
     public boolean adicionar(Agendamento agendamento) {
+
+        if (!diaAberto(agendamento.getData())) {
+        return false;
+        }
+
+        if (!horarioFuncionamento(agendamento.getHora())) {
+        return false;
+        }
 
         if (!horarioDisponivel(
                 agendamento.getData(),
@@ -63,6 +98,7 @@ public class AgendamentoService {
         agendamentos.add(agendamento);
 
         return true;
+
     }
 
     public List<Agendamento> listar() {

@@ -470,7 +470,7 @@ public class api {
 
             // Define o status inicial do novo agendamento.
             agendamento.setStatus("Agendado");
-
+            
             // Solicita ao AgendamentoService a inclusão do agendamento.
             // O retorno boolean informa se a operação foi aceita.
             boolean adicionado = agendamentoService.adicionar(agendamento);
@@ -479,7 +479,7 @@ public class api {
             // HTTP 409 representa um conflito com o estado atual do sistema.
             if (!adicionado) {
                 ctx.status(409);
-                ctx.result("Horário lotado. Escolha outro horário.");
+                ctx.result("Data ou horário indisponível. Escolha outra opção.");
                 return;
             }
 
