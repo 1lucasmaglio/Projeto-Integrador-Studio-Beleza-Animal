@@ -4,6 +4,7 @@ console.log("AGENDAMENTOS.JS INICIADO");
 /* Armazena os animais e serviços recebidos da API para utilizá-los em outras funções. */
 let animaisDisponiveis = [];
 let servicosDisponiveis = [];
+let agendamentoParaCancelar = null;
 
 /* Busca os animais cadastrados e adiciona ao formulário apenas os do cliente logado. */
 function carregarAnimais() {
@@ -43,10 +44,10 @@ function carregarAnimais() {
                 selecao.appendChild(opcao);
             }
         });
-        
+
         // Carrega os agendamentos após obter os dados dos animais.
         listarAgendamentos();
-    }) 
+    })
     .catch(erro => {
         // Registra possíveis erros no console.
         console.error(erro);
@@ -55,7 +56,6 @@ function carregarAnimais() {
 
 /* Busca os serviços cadastrados e preenche o campo de seleção do formulário. */
 function carregarServicos() {
-
     // Solicita à API Java a lista de serviços disponíveis.
     fetch("http://localhost:7070/servicos")
     .then(response => {
@@ -93,7 +93,6 @@ function carregarServicos() {
     });
 }
 
-
 /* Calcula e exibe o preço do serviço de acordo com o porte do animal. */
 function atualizarPreco() {
     // Obtém os códigos do animal e do serviço selecionados.
@@ -106,7 +105,7 @@ function atualizarPreco() {
 
     // Encerra a função se o animal ou o serviço ainda não estiver selecionado.
     if (!animal || !servico) {
-    return;
+        return;
     }
 
     // Variável que receberá o preço correspondente ao porte do animal.
@@ -121,12 +120,94 @@ function atualizarPreco() {
         valor = servico.valorG;
     }
 
+    // Acrescenta R$10 ao preço quando Leva e Traz estiver selecionado.
+    if (document.getElementById("levaETraz").checked) {
+        valor = valor + 10;
+    }
+
     // Localiza o elemento HTML responsável por mostrar o preço.
     const preco = document.getElementById("precoServico");
 
     // Exibe o preço com duas casas decimais e vírgula no lugar do ponto.
     preco.textContent = "Preço: R$ " + valor.toFixed(2).replace(".", ",");
 }
+
+/* Abre a janela de confirmação do cancelamento. */
+function abrirModalCancelamento(agendamento) {
+    // Guarda o agendamento selecionado.
+    agendamentoParaCancelar = agendamento;
+
+    // Localiza a janela no HTML.
+    const modal = document.getElementById("modalCancelamento");
+
+    // Localiza o texto da janela.
+    const texto = document.getElementById("textoCancelamento");
+
+    // Mostra a data e o horário do agendamento.
+    texto.textContent = "Deseja cancelar o agendamento do dia " +
+        agendamento.data + " às " + agendamento.hora + "?";
+
+    // Mostra a janela de confirmação.
+    modal.hidden = false;
+}
+
+/* Fecha a janela de confirmação do cancelamento. */
+function fecharModalCancelamento() {
+    // Esconde a janela.
+    document.getElementById("modalCancelamento").hidden = true;
+
+    // Limpa o agendamento selecionado.
+    agendamentoParaCancelar = null;
+}
+
+// Fecha a janela quando o cliente clica em Voltar.
+document.getElementById("voltarCancelamento").addEventListener("click", function() {
+    fecharModalCancelamento();
+});
+
+// Confirma o cancelamento do agendamento.
+document.getElementById("confirmarCancelamento").addEventListener("click", function() {
+    // Verifica se existe um agendamento selecionado.
+    if (agendamentoParaCancelar === null) {
+        return;
+    }
+
+    // Recupera o código do agendamento selecionado.
+    const codigo = agendamentoParaCancelar.codigo;
+
+    // Envia a solicitação de cancelamento para a API Java.
+fetch(`http://localhost:7070/agendamentos/${codigo}/cancelar`, {
+    method: "PUT"
+})
+.then(async response => {
+    // Verifica se o cancelamento foi aceito.
+    if (!response.ok) {
+        const erro = await response.text();
+        throw new Error(erro);
+    }
+
+    // Recupera a mensagem enviada pelo Java.
+    return response.text();
+})
+.then(mensagem => {
+    // Fecha a janela e atualiza os agendamentos.
+    fecharModalCancelamento();
+    listarAgendamentos();
+
+    // Mostra a mensagem de sucesso na página.
+    const aviso = document.getElementById("mensagemAgendamento");
+    aviso.textContent = mensagem;
+    aviso.style.color = "green";
+})
+.catch(erro => {
+    // Mostra o erro dentro da janela de confirmação.
+    const texto = document.getElementById("textoCancelamento");
+    texto.textContent = erro.message;
+    texto.style.color = "red";
+});
+
+    console.log("Agendamento selecionado para cancelamento:", codigo);
+});
 
 /* Consulta os agendamentos e mostra aqueles associados aos animais do cliente logado. */
 function listarAgendamentos() {
@@ -143,30 +224,47 @@ function listarAgendamentos() {
 
         // Converte a resposta JSON em uma lista de agendamentos.
         return response.json();
-        })
+    })
+    .then(agendamentos => {
+        // Exibe os agendamentos no console para auxiliar nos testes.
+        console.log(agendamentos);
 
-        .then(agendamentos => {
-            // Exibe os agendamentos no console para auxiliar nos testes.
-            console.log(agendamentos);
-        
-            // Localiza a área onde os agendamentos serão apresentados.
-            const lista = document.getElementById("listaAgendamentos");
+        // Localiza a área onde os agendamentos serão apresentados.
+        const lista = document.getElementById("listaAgendamentos");
 
-            // Limpa a lista antes de preenchê-la novamente.
-            lista.innerHTML = "";
+        // Limpa a lista antes de preenchê-la novamente.
+        lista.innerHTML = "";
 
         // Percorre todos os agendamentos recebidos da API.
         agendamentos.forEach(agendamento => {
             // Encontra o animal associado ao agendamento pelo código.
             const animal = animaisDisponiveis.find(a => a.codigo === agendamento.codigoAnimal);
 
-            // Mostra somente os agendamentos de animais pertencentes ao cliente logado.
-            if (animal && animal.codigoCliente === codigoCliente) {
+            // Mostra somente os agendamentos de animais pertencentes ao cliente logado e que não estejam cancelados.
+            if (animal && animal.codigoCliente === codigoCliente
+        && agendamento.status !== "Cancelado") {
                 // Cria um parágrafo para representar o agendamento na página.
                 const item = document.createElement("p");
 
                 // Mostra o nome do animal, a data e o horário agendados.
                 item.textContent = animal.nome + " - " + agendamento.data + " - " + agendamento.hora;
+
+                // Cria o botão de cancelamento para agendamentos ativos.
+                if (agendamento.status === "Agendado") {
+                    const botaoCancelar = document.createElement("button");
+
+                    botaoCancelar.textContent = "✕";
+                    botaoCancelar.className = "botao-cancelar";
+                    botaoCancelar.title = "Cancelar agendamento";
+                    botaoCancelar.setAttribute("aria-label", "Cancelar agendamento");
+
+                        // Abre a janela de confirmação quando o cliente clica no botão.
+                        botaoCancelar.addEventListener("click", function() {
+                            abrirModalCancelamento(agendamento);
+                        });
+
+                    item.appendChild(botaoCancelar);
+                }
 
                 // Adiciona o agendamento à lista exibida no HTML.
                 lista.appendChild(item);
@@ -183,20 +281,32 @@ carregarServicos();
 document.getElementById("animal").addEventListener("change", atualizarPreco);
 document.getElementById("servico").addEventListener("change", atualizarPreco);
 
+// Atualiza o preço quando o cliente seleciona ou desmarca Leva e Traz.
+document.getElementById("levaETraz").addEventListener("change", atualizarPreco);
+
 /* Executa o cadastro de um agendamento quando o formulário é enviado. */
 document.getElementById("formAgendamento").addEventListener("submit", function(event) {
     
+    // Limpa o formulário após criar o agendamento.
+    document.getElementById("formAgendamento").reset();
+
+    // Atualiza o preço exibido.
+    atualizarPreco();
+
     // Impede que o formulário recarregue a página automaticamente.
     event.preventDefault();
     console.log("Form submitted. Default prevented:", event.defaultPrevented);
+
     // Localiza a área onde será exibida a mensagem do agendamento.
     const mensagem = document.getElementById("mensagemAgendamento");
+
     // Limpa a mensagem anterior.
     mensagem.textContent = "";
 
     // Obtém os dados selecionados pelo cliente no formulário.
     const codigoAnimal = Number(document.getElementById("animal").value);
     const codigoServico = Number(document.getElementById("servico").value);
+
     // Obtém a data selecionada no formato yyyy-MM-dd.
     const dataOriginal = document.getElementById("data").value;
 
@@ -207,12 +317,16 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
     const data = `${dia}/${mes}/${ano}`;
     const hora = document.getElementById("hora").value;
 
+    // Verifica se o cliente selecionou Leva e Traz.
+    const levaETraz = document.getElementById("levaETraz").checked;
+
     // Organiza os dados necessários para cadastrar o agendamento.
     const agendamento = {
-    codigoAnimal: codigoAnimal,
-    codigoServico: codigoServico,
-    data: data,
-    hora: hora
+        codigoAnimal: codigoAnimal,
+        codigoServico: codigoServico,
+        data: data,
+        hora: hora,
+        levaETraz: levaETraz
     };
 
     // Envia o agendamento para a API Java.
@@ -224,7 +338,6 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
         // Converte o objeto agendamento para JSON antes do envio.
         body: JSON.stringify(agendamento)
     })
-
     .then(async response => {
         if (!response.ok) {
             const erro = await response.text();
@@ -233,7 +346,6 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
 
         return response.json();
     })
-
     .then(agendamentoCriado => {
         // Mostra o agendamento criado no console para auxiliar nos testes.
         console.log("Agendamento criado:", agendamentoCriado);
@@ -245,7 +357,6 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
         // Atualiza a lista para incluir o novo agendamento.
         listarAgendamentos();
     })
-
     .catch(erro => {
         console.error(erro);
 
@@ -254,5 +365,4 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
 
         console.log("Mensagem exibida no HTML:", mensagem.textContent);
     });
-
 });

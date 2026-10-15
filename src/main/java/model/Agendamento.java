@@ -8,29 +8,32 @@ public class Agendamento {
     private String status;
     private int codigoAnimal;
     private int codigoServico;
+    private boolean levaETraz;
 
     public Agendamento() {
     }
 
     public Agendamento(int codigo, String data, String hora,
                        String status, int codigoAnimal,
-                       int codigoServico) {
+                       int codigoServico, boolean levaETraz) {
         this.codigo = codigo;
         this.data = data;
         this.hora = hora;
         this.status = status;
         this.codigoAnimal = codigoAnimal;
         this.codigoServico = codigoServico;
+        this.levaETraz = levaETraz;
     }
 
     public Agendamento(String data, String hora,
                        String status, int codigoAnimal,
-                       int codigoServico) {
+                       int codigoServico, boolean levaETraz) {
         this.data = data;
         this.hora = hora;
         this.status = status;
         this.codigoAnimal = codigoAnimal;
         this.codigoServico = codigoServico;
+        this.levaETraz = levaETraz;
     }
 
     public int getCodigo() {
@@ -80,4 +83,13 @@ public class Agendamento {
     public void setCodigoServico(int codigoServico) {
         this.codigoServico = codigoServico;
     }
+
+    public boolean isLevaETraz() {
+        return levaETraz;
+    }
+
+    public void setLevaETraz(boolean levaETraz) {
+        this.levaETraz = levaETraz;
+    }
 }
+

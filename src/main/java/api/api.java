@@ -491,6 +491,41 @@ public class api {
             ctx.json(agendamento);
         });
 
+        // PUT /agendamentos/{id}/cancelar: cancela um agendamento existente.
+
+        app.put("/agendamentos/{id}/cancelar", ctx -> {
+
+            // Recupera o código do agendamento informado na URL.
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            // Busca o agendamento pelo código.
+            Agendamento agendamento = agendamentoService.buscarPorId(id);
+
+            // Verifica se o agendamento existe.
+            if (agendamento == null) {
+                ctx.status(404);
+                ctx.result("Agendamento não encontrado.");
+                return;
+            }
+
+            // Solicita ao Service o cancelamento do agendamento.
+            boolean cancelado = agendamentoService.cancelar(id);
+
+            // Verifica se o cancelamento foi recusado.
+            if (!cancelado) {
+                ctx.status(409);
+                ctx.result("Não foi possível cancelar. Verifique o prazo de 24 horas.");
+                return;
+            }
+
+            // Salva a alteração no arquivo CSV.
+            agendamentoService.salvar();
+
+            // Confirma que o agendamento foi cancelado.
+            ctx.status(200);
+            ctx.result("Agendamento cancelado com sucesso.");
+        });
+
         // =========================
         // ADMINISTRADORES
         // =========================

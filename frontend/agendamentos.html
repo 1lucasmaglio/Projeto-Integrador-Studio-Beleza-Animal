@@ -45,6 +45,12 @@
                 <option value="17:00">17:00</option>
             </select>
 
+            <label for="levaETraz">
+                <input type="checkbox" id="levaETraz">
+                Leva e Traz (+R$10,00)
+            </label>
+
+
             <button type="submit">Agendar Serviço</button>
             <p id="mensagemAgendamento" role="status" aria-live="polite"></p>
         </form>
@@ -54,6 +60,31 @@
 
         <p><a href="cliente.html">Voltar para Área do Cliente</a></p>
     </main>
+
+    <!-- Janela de confirmação de cancelamento -->
+<div id="modalCancelamento" class="modal-cancelamento" hidden>
+    <div class="modal-conteudo" role="dialog"
+         aria-modal="true" aria-labelledby="tituloCancelamento">
+
+        <div class="modal-icone">✕</div>
+
+        <h3 id="tituloCancelamento">Cancelar agendamento?</h3>
+
+        <p id="textoCancelamento"></p>
+
+        <p class="modal-aviso">Esta ação não poderá ser desfeita.</p>
+
+        <div class="modal-botoes">
+            <button type="button" id="voltarCancelamento">
+                Voltar
+            </button>
+
+            <button type="button" id="confirmarCancelamento">
+                Sim, cancelar
+            </button>
+        </div>
+    </div>
+</div>
 
     <script src="agendamentos.js"></script>
 </body>

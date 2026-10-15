@@ -124,6 +124,28 @@ public class AgendamentoService {
             return false;
         }
 
+        // Impede o cancelamento de agendamentos já cancelados.
+        if (agendamento.getStatus().equalsIgnoreCase("Cancelado")) {
+            return false;
+        }
+
+        // Converte a data e a hora do agendamento.
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        LocalDate data = LocalDate.parse(agendamento.getData(), formato);
+        LocalTime hora = LocalTime.parse(agendamento.getHora());
+
+        // Calcula o momento exato do agendamento.
+        java.time.LocalDateTime dataHoraAgendamento = data.atTime(hora);
+
+        // Calcula o limite mínimo de 24 horas.
+        java.time.LocalDateTime limite = java.time.LocalDateTime.now().plusHours(24);
+
+        // Impede o cancelamento quando faltam menos de 24 horas.
+        if (dataHoraAgendamento.isBefore(limite)) {
+            return false;
+        }
+
         agendamento.setStatus("Cancelado");
         return true;
     }
