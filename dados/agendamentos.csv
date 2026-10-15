@@ -5,3 +5,4 @@ codigo;data;hora;status;codigoAnimal;codigoServico;levaETraz
 4;27/10/2026;10:00;Cancelado;1;2;true
 5;27/10/2026;10:00;Cancelado;1;2;true
 6;27/10/2026;10:00;Cancelado;1;2;true
+7;20/10/2026;12:00;Agendado;1;3;true

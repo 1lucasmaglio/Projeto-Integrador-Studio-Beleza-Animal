@@ -286,12 +286,6 @@ document.getElementById("levaETraz").addEventListener("change", atualizarPreco);
 
 /* Executa o cadastro de um agendamento quando o formulário é enviado. */
 document.getElementById("formAgendamento").addEventListener("submit", function(event) {
-    
-    // Limpa o formulário após criar o agendamento.
-    document.getElementById("formAgendamento").reset();
-
-    // Atualiza o preço exibido.
-    atualizarPreco();
 
     // Impede que o formulário recarregue a página automaticamente.
     event.preventDefault();
