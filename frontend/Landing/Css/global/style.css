@@ -4,6 +4,16 @@
    Aplicados a todas as páginas HTML
 ======================================== */
 
+/*======================================
+    OBS.: 15/10/2026
+    Criar um arquivo para as variáveis a
+    serem usadas pelos arquivos.
+    Por exemplo, uma paleta da cores com
+    cada cor atribuida a uma variável.
+    - Yann 
+    
+*/
+
 * {
     box-sizing: border-box;
 }
@@ -75,19 +85,6 @@ button {
 button:hover {
     background-color: #345580;
 }
-
-
-/* ========================================
-   PÁGINA DE LOGIN
-   Mensagens de sucesso ou erro
-======================================== */
-
-#mensagemLogin {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
 
 /* ========================================
    ÁREA DO CLIENTE
@@ -294,6 +291,8 @@ select {
    RESPONSIVIDADE PARA TABLETS E CELULARES
    Telas com largura de até 750px
 ======================================== */
+
+/* OBS.: Mover para um arquivo separado depois 14/10/2026*/
 
 @media (max-width: 750px) {
 
