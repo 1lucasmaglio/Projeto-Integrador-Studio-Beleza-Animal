@@ -4,7 +4,6 @@ console.log("AGENDAMENTOS.JS INICIADO");
 /* Armazena os animais e serviços recebidos da API para utilizá-los em outras funções. */
 let animaisDisponiveis = [];
 let servicosDisponiveis = [];
-let agendamentoParaCancelar = null;
 
 /* Busca os animais cadastrados e adiciona ao formulário apenas os do cliente logado. */
 function carregarAnimais() {
@@ -44,9 +43,6 @@ function carregarAnimais() {
                 selecao.appendChild(opcao);
             }
         });
-
-        // Carrega os agendamentos após obter os dados dos animais.
-        listarAgendamentos();
     })
     .catch(erro => {
         // Registra possíveis erros no console.
@@ -132,147 +128,6 @@ function atualizarPreco() {
     preco.textContent = "Preço: R$ " + valor.toFixed(2).replace(".", ",");
 }
 
-/* Abre a janela de confirmação do cancelamento. */
-function abrirModalCancelamento(agendamento) {
-    // Guarda o agendamento selecionado.
-    agendamentoParaCancelar = agendamento;
-
-    // Localiza a janela no HTML.
-    const modal = document.getElementById("modalCancelamento");
-
-    // Localiza o texto da janela.
-    const texto = document.getElementById("textoCancelamento");
-
-    // Mostra a data e o horário do agendamento.
-    texto.textContent = "Deseja cancelar o agendamento do dia " +
-        agendamento.data + " às " + agendamento.hora + "?";
-
-    // Mostra a janela de confirmação.
-    modal.hidden = false;
-}
-
-/* Fecha a janela de confirmação do cancelamento. */
-function fecharModalCancelamento() {
-    // Esconde a janela.
-    document.getElementById("modalCancelamento").hidden = true;
-
-    // Limpa o agendamento selecionado.
-    agendamentoParaCancelar = null;
-}
-
-// Fecha a janela quando o cliente clica em Voltar.
-document.getElementById("voltarCancelamento").addEventListener("click", function() {
-    fecharModalCancelamento();
-});
-
-// Confirma o cancelamento do agendamento.
-document.getElementById("confirmarCancelamento").addEventListener("click", function() {
-    // Verifica se existe um agendamento selecionado.
-    if (agendamentoParaCancelar === null) {
-        return;
-    }
-
-    // Recupera o código do agendamento selecionado.
-    const codigo = agendamentoParaCancelar.codigo;
-
-    // Envia a solicitação de cancelamento para a API Java.
-fetch(`http://localhost:7070/agendamentos/${codigo}/cancelar`, {
-    method: "PUT"
-})
-.then(async response => {
-    // Verifica se o cancelamento foi aceito.
-    if (!response.ok) {
-        const erro = await response.text();
-        throw new Error(erro);
-    }
-
-    // Recupera a mensagem enviada pelo Java.
-    return response.text();
-})
-.then(mensagem => {
-    // Fecha a janela e atualiza os agendamentos.
-    fecharModalCancelamento();
-    listarAgendamentos();
-
-    // Mostra a mensagem de sucesso na página.
-    const aviso = document.getElementById("mensagemAgendamento");
-    aviso.textContent = mensagem;
-    aviso.style.color = "green";
-})
-.catch(erro => {
-    // Mostra o erro dentro da janela de confirmação.
-    const texto = document.getElementById("textoCancelamento");
-    texto.textContent = erro.message;
-    texto.style.color = "red";
-});
-
-    console.log("Agendamento selecionado para cancelamento:", codigo);
-});
-
-/* Consulta os agendamentos e mostra aqueles associados aos animais do cliente logado. */
-function listarAgendamentos() {
-    // Recupera o código do cliente armazenado durante o login.
-    const codigoCliente = Number(sessionStorage.getItem("codigoCliente"));
-
-    // Solicita à API Java os agendamentos cadastrados.
-    fetch("http://localhost:7070/agendamentos")
-    .then(response => {
-        // Verifica se a consulta foi realizada com sucesso.
-        if (!response.ok) {
-            throw new Error("Erro ao buscar agendamentos.");
-        }
-
-        // Converte a resposta JSON em uma lista de agendamentos.
-        return response.json();
-    })
-    .then(agendamentos => {
-        // Exibe os agendamentos no console para auxiliar nos testes.
-        console.log(agendamentos);
-
-        // Localiza a área onde os agendamentos serão apresentados.
-        const lista = document.getElementById("listaAgendamentos");
-
-        // Limpa a lista antes de preenchê-la novamente.
-        lista.innerHTML = "";
-
-        // Percorre todos os agendamentos recebidos da API.
-        agendamentos.forEach(agendamento => {
-            // Encontra o animal associado ao agendamento pelo código.
-            const animal = animaisDisponiveis.find(a => a.codigo === agendamento.codigoAnimal);
-
-            // Mostra somente os agendamentos de animais pertencentes ao cliente logado e que não estejam cancelados.
-            if (animal && animal.codigoCliente === codigoCliente
-        && agendamento.status !== "Cancelado") {
-                // Cria um parágrafo para representar o agendamento na página.
-                const item = document.createElement("p");
-
-                // Mostra o nome do animal, a data e o horário agendados.
-                item.textContent = animal.nome + " - " + agendamento.data + " - " + agendamento.hora;
-
-                // Cria o botão de cancelamento para agendamentos ativos.
-                if (agendamento.status === "Agendado") {
-                    const botaoCancelar = document.createElement("button");
-
-                    botaoCancelar.textContent = "✕";
-                    botaoCancelar.className = "botao-cancelar";
-                    botaoCancelar.title = "Cancelar agendamento";
-                    botaoCancelar.setAttribute("aria-label", "Cancelar agendamento");
-
-                        // Abre a janela de confirmação quando o cliente clica no botão.
-                        botaoCancelar.addEventListener("click", function() {
-                            abrirModalCancelamento(agendamento);
-                        });
-
-                    item.appendChild(botaoCancelar);
-                }
-
-                // Adiciona o agendamento à lista exibida no HTML.
-                lista.appendChild(item);
-            }
-        });
-    });
-}
-
 // Carrega os animais e serviços quando a página é aberta.
 carregarAnimais();
 carregarServicos();
@@ -347,9 +202,6 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
         // Informa ao cliente que o agendamento foi realizado.
         mensagem.textContent = "Agendamento realizado com sucesso!";
         mensagem.style.color = "green";
-
-        // Atualiza a lista para incluir o novo agendamento.
-        listarAgendamentos();
     })
     .catch(erro => {
         console.error(erro);

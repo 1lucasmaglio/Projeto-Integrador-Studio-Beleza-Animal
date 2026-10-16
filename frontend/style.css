@@ -14,8 +14,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #f5f7fb;
-    color: #333;
+    background-color: #151922;
+    color: #e6eaf2;
     margin: 0;
     padding: 40px;
     text-align: center;
@@ -23,11 +23,11 @@ body {
 }
 
 h1 {
-    color: #4a6fa5;
+    color: #89aef0;
 }
 
 h2 {
-    color: #333;
+    color: #e6eaf2;
 }
 
 main, form, .cartao-servico {
@@ -35,11 +35,11 @@ main, form, .cartao-servico {
 }
 
 a {
-    color: #4a6fa5;
+    color: #89aef0;
 }
 
 a:hover {
-    color: #345580;
+    color: #b0c8fa;
 }
 
 
@@ -50,13 +50,13 @@ a:hover {
 ======================================== */
 
 form {
-    background-color: white;
+    background-color: #202633;
     padding: 30px;
     border-radius: 12px;
     max-width: 400px;
     margin: 30px auto;
     text-align: left;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
 }
 
 label {
@@ -69,10 +69,10 @@ label {
 input, select {
     width: 100%;
     padding: 11px 12px;
-    border: 1px solid #ccd3df;
+    border: 1px solid #485367;
     border-radius: 7px;
-    background-color: white;
-    color: #333;
+    background-color: #202633;
+    color: #e6eaf2;
     font-family: inherit;
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -80,8 +80,8 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #4a6fa5;
-    box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.15);
+    border-color: #89aef0;
+    box-shadow: 0 0 0 3px rgba(137, 174, 240, 0.22);
 }
 
 /* Checkbox do Leva e Traz */
@@ -90,7 +90,7 @@ input[type="checkbox"] {
     width: auto;
     padding: 0;
     margin-right: 8px;
-    accent-color: #4a6fa5;
+    accent-color: #89aef0;
     vertical-align: middle;
 }
 
@@ -100,8 +100,8 @@ button {
     width: 100%;
     padding: 12px;
     margin-top: 25px;
-    background-color: #4a6fa5;
-    color: white;
+    background-color: #89aef0;
+    color: #101722;
     border: none;
     border-radius: 7px;
     font-family: inherit;
@@ -112,7 +112,7 @@ button {
 }
 
 button:hover {
-    background-color: #345580;
+    background-color: #b0c8fa;
     transform: translateY(-1px);
 }
 
@@ -121,7 +121,7 @@ button:active {
 }
 
 button:focus-visible, a:focus-visible {
-    outline: 3px solid #7b9ed0;
+    outline: 3px solid #a9c4ff;
     outline-offset: 3px;
 }
 
@@ -147,9 +147,9 @@ main {
     max-width: 500px;
     margin: 30px auto;
     padding: 30px;
-    background-color: white;
+    background-color: #202633;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -166,8 +166,8 @@ nav {
 
 nav a {
     padding: 12px;
-    background-color: #4a6fa5;
-    color: white;
+    background-color: #89aef0;
+    color: #101722;
     text-decoration: none;
     border-radius: 7px;
     font-weight: 500;
@@ -175,8 +175,8 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #345580;
-    color: white;
+    background-color: #b0c8fa;
+    color: #101722;
     transform: translateY(-1px);
 }
 
@@ -186,7 +186,7 @@ nav a:hover {
 ======================================== */
 
 #precoServico {
-    color: #345580;
+    color: #b0c8fa;
     font-weight: 600;
     font-size: 16px;
 }
@@ -196,47 +196,110 @@ nav a:hover {
     font-size: 14px;
 }
 
-/* Organiza os agendamentos do cliente */
+/* Cartão de cada agendamento. */
 
-#listaAgendamentos p {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background-color: #f5f7fb;
-    padding: 14px 16px;
-    border: 1px solid #e4e9f1;
+.cartao-agendamento {
+    position: relative;
+    background-color: #283142;
+    border: 1px solid #384357;
     border-radius: 8px;
+    padding: 20px 45px 20px 20px;
+    margin: 15px 0;
     text-align: left;
-    margin: 10px 0;
 }
 
-/* Botão discreto de cancelamento */
+/* Cabeçalho do agendamento. */
 
-#listaAgendamentos .botao-cancelar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 28px;
-    min-width: 28px;
-    height: 28px;
-    padding: 0;
-    margin: 0 0 0 auto;
-    background-color: transparent;
-    color: #b96a70;
-    border: none;
-    border-radius: 6px;
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1;
-    box-shadow: none;
+.cabecalho-agendamento {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Nome do animal. */
+
+.cabecalho-agendamento h3 {
+    margin: 0;
+    color: #89aef0;
+    text-align: left;
+}
+
+/* Nome do serviço. */
+
+.cabecalho-agendamento p {
+    margin: 5px 0;
+    text-align: left;
+}
+
+/* Detalhes do agendamento. */
+
+.detalhes-agendamento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-top: 1px solid #384357;
+    padding-top: 15px;
+}
+
+/* Informações do agendamento. */
+
+.detalhes-agendamento p {
+    margin: 0;
+    text-align: left;
+}
+
+/* Botão para editar o agendamento. */
+
+#listaAgendamentos .botao-editar {
+    display: block;
+    width: auto;
+    padding: 8px 18px;
+    margin-top: 20px;
+    background-color: #2a364a;
+    color: #d9e6ff;
+    border: 1px solid #394b65;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
 }
 
+/* Destaque do botão de edição. */
+
+#listaAgendamentos .botao-editar:hover {
+    background-color: #394b65;
+    transform: none;
+}
+
+/* Mantém o botão na posição original ao clicar. */
+
+#listaAgendamentos .botao-editar:active {
+    transform: none;
+}
+
+/* Botão de cancelamento. */
+
+#listaAgendamentos .botao-cancelar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    color: #efa0a7;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Destaque do botão de cancelamento. */
+
 #listaAgendamentos .botao-cancelar:hover {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
+    background-color: #4b2b36;
+    color: #f07783;
     transform: none;
 }
 
@@ -247,34 +310,34 @@ nav a:hover {
 
 /* ========================================
    JANELA DE CONFIRMAÇÃO DE CANCELAMENTO
-   Novo código
 ======================================== */
 
-/* Esconde a janela quando não está sendo utilizada */
+/* Esconde a janela quando não está sendo utilizada. */
 
 .modal-cancelamento[hidden] {
     display: none;
 }
 
-/* Fundo escuro atrás da janela */
+/* Fundo escuro atrás da janela. */
 
 .modal-cancelamento {
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
-/* Caixa central da confirmação */
+/* Caixa central da confirmação. */
 
 .modal-conteudo {
-    background-color: white;
+    background-color: #202633;
     padding: 30px;
     border-radius: 12px;
     width: 100%;
@@ -283,11 +346,11 @@ nav a:hover {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Ícone de cancelamento */
+/* Ícone de cancelamento. */
 
 .modal-icone {
-    background-color: #fce8e9;
-    color: #dc3545;
+    background-color: #4b2b36;
+    color: #f07783;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -298,26 +361,26 @@ nav a:hover {
     font-size: 24px;
 }
 
-/* Título e descrição */
+/* Título e descrição. */
 
 .modal-conteudo h3 {
-    color: #333;
+    color: #e6eaf2;
     margin-bottom: 10px;
 }
 
 #textoCancelamento {
-    color: #555;
+    color: #b8c2d2;
     font-size: 15px;
 }
 
-/* Aviso de cancelamento */
+/* Aviso de cancelamento. */
 
 .modal-aviso {
-    color: #b96a70;
+    color: #efa0a7;
     font-size: 14px;
 }
 
-/* Organiza os dois botões */
+/* Organiza os dois botões. */
 
 .modal-botoes {
     display: flex;
@@ -329,26 +392,90 @@ nav a:hover {
     margin-top: 0;
 }
 
-/* Botão para voltar */
+/* Botão para voltar. */
 
 #voltarCancelamento {
-    background-color: #e8eef7;
-    color: #345580;
+    background-color: #2a364a;
+    color: #d9e6ff;
 }
 
 #voltarCancelamento:hover {
-    background-color: #d7e2f2;
+    background-color: #394b65;
 }
 
-/* Botão para confirmar o cancelamento */
+/* Botão para confirmar o cancelamento. */
 
 #confirmarCancelamento {
-    background-color: #dc3545;
-    color: white;
+    background-color: #f07783;
+    color: #101722;
 }
 
 #confirmarCancelamento:hover {
-    background-color: #b52a38;
+    background-color: #ff9ca5;
+}
+
+
+/* ========================================
+   JANELA DE EDIÇÃO DO AGENDAMENTO
+======================================== */
+
+/* Organiza os campos da janela de edição. */
+
+#modalEdicao .modal-conteudo {
+    text-align: left;
+}
+
+/* Centraliza o título da janela de edição. */
+
+#modalEdicao h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Organiza os rótulos dos campos. */
+
+#modalEdicao label {
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+/* Organiza os campos de data e horário. */
+
+#modalEdicao input,
+#modalEdicao select {
+    width: 100%;
+}
+
+/* Exibe as mensagens de validação. */
+
+#mensagemEdicao {
+    color: #ff9ca5;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Botão para voltar sem salvar as alterações. */
+
+#voltarEdicao {
+    background-color: #2a364a;
+    color: #d9e6ff;
+}
+
+#voltarEdicao:hover {
+    background-color: #394b65;
+}
+
+/* Botão para salvar as alterações. */
+
+#confirmarEdicao {
+    background-color: #89aef0;
+    color: #101722;
+}
+
+#confirmarEdicao:hover {
+    background-color: #b0c8fa;
 }
 
 
@@ -362,16 +489,16 @@ nav a:hover {
     text-align: left;
 }
 
-/* Cabeçalho */
+/* Cabeçalho. */
 
 .cabecalho {
-    background-color: white;
+    background-color: #202633;
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 .cabecalho h1 {
@@ -379,7 +506,7 @@ nav a:hover {
     font-size: 24px;
 }
 
-/* Menu horizontal */
+/* Menu horizontal. */
 
 .menu-inicial {
     display: flex;
@@ -390,7 +517,7 @@ nav a:hover {
 
 .menu-inicial a {
     background-color: transparent;
-    color: #333;
+    color: #e6eaf2;
     padding: 8px;
     text-decoration: none;
     border-radius: 5px;
@@ -398,12 +525,12 @@ nav a:hover {
 }
 
 .menu-inicial a:hover {
-    background-color: #eef3fa;
-    color: #4a6fa5;
+    background-color: #2a364a;
+    color: #89aef0;
     transform: none;
 }
 
-/* Conteúdo principal */
+/* Conteúdo principal. */
 
 .pagina-inicial .conteudo-inicial {
     max-width: none;
@@ -414,10 +541,10 @@ nav a:hover {
     box-shadow: none;
 }
 
-/* Apresentação */
+/* Apresentação. */
 
 .apresentacao {
-    background: linear-gradient(135deg, #e8eef7, #f5f8fc);
+    background: linear-gradient(135deg, #263449, #1b2331);
     text-align: center;
     padding: 100px 20px;
 }
@@ -425,7 +552,7 @@ nav a:hover {
 .apresentacao h2 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #294a78;
+    color: #b0c8fa;
 }
 
 .apresentacao p {
@@ -434,12 +561,12 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* Botões da página inicial */
+/* Botões da página inicial. */
 
 .botao-inicial {
     display: inline-block;
-    background-color: #4a6fa5;
-    color: white;
+    background-color: #89aef0;
+    color: #101722;
     padding: 14px 25px;
     border-radius: 7px;
     text-decoration: none;
@@ -448,12 +575,12 @@ nav a:hover {
 }
 
 .botao-inicial:hover {
-    background-color: #345580;
-    color: white;
+    background-color: #b0c8fa;
+    color: #101722;
     transform: translateY(-2px);
 }
 
-/* Seções */
+/* Seções. */
 
 .secao-inicial {
     padding: 60px 8%;
@@ -468,7 +595,7 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* Serviços */
+/* Serviços. */
 
 .servicos-iniciais {
     display: flex;
@@ -478,13 +605,13 @@ nav a:hover {
 }
 
 .cartao-servico {
-    background-color: white;
+    background-color: #202633;
     padding: 30px;
     border-radius: 12px;
     width: 220px;
     max-width: 100%;
-    border: 1px solid #edf0f5;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+    border: 1px solid #384357;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -494,13 +621,13 @@ nav a:hover {
 }
 
 .cartao-servico h3 {
-    color: #4a6fa5;
+    color: #89aef0;
 }
 
-/* Chamada final */
+/* Chamada final. */
 
 .chamada-final {
-    background-color: #e8eef7;
+    background-color: #2a364a;
     padding: 60px 20px;
     text-align: center;
 }
@@ -509,11 +636,11 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* Rodapé */
+/* Rodapé. */
 
 .rodape-inicial {
-    background-color: #293344;
-    color: white;
+    background-color: #10141c;
+    color: #e6eaf2;
     padding: 25px;
     text-align: center;
 }
@@ -649,7 +776,7 @@ nav a:hover {
         padding: 20px;
     }
 
-    /* Mantém os botões da confirmação dentro da tela */
+    /* Mantém os botões da janela dentro da tela. */
 
     .modal-conteudo {
         padding: 20px;
@@ -657,6 +784,12 @@ nav a:hover {
 
     .modal-botoes {
         flex-direction: column;
+    }
+
+    /* Organiza os detalhes em uma coluna em telas pequenas. */
+
+    .detalhes-agendamento {
+        grid-template-columns: 1fr;
     }
 }
 

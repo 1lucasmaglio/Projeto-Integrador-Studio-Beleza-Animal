@@ -116,6 +116,53 @@ public class AgendamentoService {
         return null;
     }
 
+
+    // Atualiza a data e o horário de um agendamento existente.
+    public boolean atualizar(int codigo, String data, String hora) {
+
+        Agendamento agendamento = buscarPorId(codigo);
+
+        if (agendamento == null) {
+            return false;
+        }
+
+        if (!agendamento.getStatus().equalsIgnoreCase("Agendado")) {
+            return false;
+        }
+
+        // Verifica se a data e o horário são válidos.
+        try {
+            if (!diaAberto(data) || !horarioFuncionamento(hora)) {
+                return false;
+            }
+        } catch (java.time.format.DateTimeParseException erro) {
+            return false;
+        }
+
+        // Verifica a disponibilidade sem contar o próprio agendamento.
+        int quantidade = 0;
+
+        for (Agendamento a : agendamentos) {
+            if (a.getCodigo() != codigo
+                    && a.getData().equals(data)
+                    && a.getHora().equals(hora)
+                    && !a.getStatus().equalsIgnoreCase("Cancelado")) {
+
+                quantidade++;
+            }
+        }
+
+        if (quantidade >= 2) {
+            return false;
+        }
+
+        agendamento.setData(data);
+        agendamento.setHora(hora);
+
+        return true;
+    }
+
+
     public boolean cancelar(int codigo) {
 
         Agendamento agendamento = buscarPorId(codigo);
