@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Meu Perfil</h1>
+
+    <main>
+
+        <h2>Meus Dados</h2>
+
+        <p>
+            Consulte e atualize suas informações pessoais.
+        </p>
+
+        <!-- Formulário com os dados do cliente. -->
+        <form id="formPerfil">
+
+            <label for="nome">Nome completo</label>
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                autocomplete="name"
+                required
+            >
+
+            <label for="email">E-mail</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+            >
+
+            <label for="telefone">Telefone</label>
+            <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                autocomplete="tel"
+            >
+
+            <button type="submit" id="salvarPerfil">
+                Salvar Alterações
+            </button>
+
+            <p id="mensagemPerfil" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <!-- Área para alteração de senha. -->
+        <h2>Segurança</h2>
+
+        <p>
+            Deseja alterar sua senha?
+        </p>
+
+        <button type="button" id="botaoAlterarSenha">
+            Alterar Senha
+        </button>
+
+        <form id="formSenha" hidden>
+
+            <label for="senhaAtual">Senha atual</label>
+            <input
+                type="password"
+                id="senhaAtual"
+                name="senhaAtual"
+                autocomplete="current-password"
+                required
+            >
+
+            <label for="novaSenha">Nova senha</label>
+            <input
+                type="password"
+                id="novaSenha"
+                name="novaSenha"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="confirmarSenha">Confirmar nova senha</label>
+            <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit">
+                Salvar Nova Senha
+            </button>
+
+            <p id="mensagemSenha" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <!-- Navegação para a área do cliente. -->
+        <nav>
+            <a href="cliente.html">Voltar para Minha Conta</a>
+            <a href="index.html">Página Inicial</a>
+        </nav>
+
+    </main>
+
+    <script>
+        // Seleciona os elementos da página.
+        const botaoAlterarSenha = document.getElementById("botaoAlterarSenha");
+        const formSenha = document.getElementById("formSenha");
+        const formPerfil = document.getElementById("formPerfil");
+
+        // Exibe ou esconde o formulário de alteração de senha.
+        botaoAlterarSenha.addEventListener("click", function() {
+            formSenha.hidden = !formSenha.hidden;
+        });
+
+        // Impede o envio enquanto a integração com o backend não está pronta.
+        formPerfil.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            document.getElementById("mensagemPerfil").textContent =
+                "A atualização dos dados ainda não está disponível.";
+        });
+
+        // Impede a alteração de senha sem validação no backend.
+        formSenha.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const novaSenha = document.getElementById("novaSenha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+            if (novaSenha !== confirmarSenha) {
+                document.getElementById("mensagemSenha").textContent =
+                    "As senhas não coincidem.";
+                return;
+            }
+
+            document.getElementById("mensagemSenha").textContent =
+                "A alteração de senha ainda não está disponível.";
+        });
+    </script>
+
+</body>
+</html>

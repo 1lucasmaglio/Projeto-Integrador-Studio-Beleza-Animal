@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,21 +8,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <h1>Studio de Beleza Animal</h1>
     <h2>Login de Cliente</h2>
 
+    <!-- Formulário de autenticação do cliente. -->
     <form id="formLogin">
+
         <label for="email">E-mail:</label>
-        <input type="email" id="email" required>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+        >
 
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" required>
+        <input
+            type="password"
+            id="senha"
+            name="senha"
+            autocomplete="current-password"
+            required
+        >
 
         <button type="submit">Entrar</button>
-        <p id="mensagemLogin"></p>
 
-        <script src="login.js"></script>
+        <p id="mensagemLogin" role="status" aria-live="polite"></p>
 
     </form>
+
+    <p>
+        Ainda não possui uma conta?
+        <a href="cadastro.html">Cadastre-se</a>
+    </p>
+
+    <p>
+        <a href="index.html">Voltar para a Página Inicial</a>
+    </p>
+
+    <script src="login.js"></script>
+
 </body>
 </html>

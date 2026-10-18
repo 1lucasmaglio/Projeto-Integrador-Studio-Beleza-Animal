@@ -530,6 +530,112 @@ nav a:hover {
     transform: none;
 }
 
+
+/* ========================================
+   BOTÃO E MENU DO PERFIL
+   Exibidos no cabeçalho da página inicial
+======================================== */
+
+/* Container que posiciona o menu abaixo do botão. */
+
+.perfil-container {
+    position: relative;
+}
+
+/* Botão circular com ícone do usuário. */
+
+.menu-inicial .botao-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    padding: 0;
+    margin: 0;
+    background-color: #2a364a;
+    color: #d9e6ff;
+    border: 1px solid #394b65;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Destaque ao passar o mouse. */
+
+.menu-inicial .botao-perfil:hover {
+    background-color: #394b65;
+    border-color: #89aef0;
+    transform: none;
+}
+
+/* Mantém o botão na posição original ao clicar. */
+
+.menu-inicial .botao-perfil:active {
+    transform: none;
+}
+
+/* Tamanho do ícone dentro do botão. */
+
+.menu-inicial .botao-perfil svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Esconde o menu quando não está sendo utilizado. */
+
+.menu-perfil[hidden] {
+    display: none;
+}
+
+/* Caixa do menu suspenso. */
+
+.menu-perfil {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 210px;
+    padding: 8px;
+    background-color: #202633;
+    border: 1px solid #394b65;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Links dentro do menu suspenso. */
+
+.menu-inicial .menu-perfil a {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin: 0;
+    background-color: transparent;
+    color: #e6eaf2;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Destaque dos links ao passar o mouse. */
+
+.menu-inicial .menu-perfil a:hover {
+    background-color: #2a364a;
+    color: #89aef0;
+    transform: none;
+}
+
+
+/* ========================================
+   CONTEÚDO DA PÁGINA INICIAL
+======================================== */
+
 /* Conteúdo principal. */
 
 .pagina-inicial .conteudo-inicial {
@@ -754,6 +860,10 @@ nav a:hover {
         text-align: center;
     }
 
+    .menu-inicial .menu-perfil a {
+        text-align: left;
+    }
+
     .apresentacao {
         padding: 50px 15px;
     }
@@ -808,4 +918,80 @@ nav a:hover {
     button:hover, nav a:hover, .botao-inicial:hover, .cartao-servico:hover {
         transform: none;
     }
+}
+
+
+/* ========================================
+   PÁGINA MEU PERFIL
+   Espaçamento entre botões e navegação
+======================================== */
+
+/* Separa a área de segurança dos links de navegação. */
+
+#botaoAlterarSenha {
+    margin-bottom: 25px;
+}
+
+/* Mantém os links de navegação organizados. */
+
+body:has(#formPerfil) main > nav {
+    margin-top: 25px;
+    gap: 15px;
+}
+
+/* Melhora o espaçamento do formulário de senha. */
+
+#formSenha {
+    margin-top: 20px;
+}
+
+/* Mantém o formulário escondido quando necessário. */
+
+#formSenha[hidden] {
+    display: none;
+}
+
+
+/* ========================================
+   TÍTULO CLICÁVEL
+   Retorna à página inicial
+======================================== */
+
+.link-titulo {
+    color: #89aef0;
+    text-decoration: none;
+}
+
+.link-titulo:hover {
+    color: #b0c8fa;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   VISIBILIDADE DO MENU CONFORME O LOGIN
+======================================== */
+
+/* Esconde os links e o perfil quando necessário. */
+
+.menu-inicial [hidden] {
+    display: none;
+}
+
+/* Botão para sair da conta. */
+
+.menu-inicial #botaoSair {
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    background-color: transparent;
+    color: #efa0a7;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-inicial #botaoSair:hover {
+    background-color: #4b2b36;
+    transform: none;
 }
