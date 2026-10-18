@@ -13,8 +13,8 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #141625;
-    color: #e8e7f3;
+    background-color: #f5f9ff;
+    color: #263548;
     margin: 0;
     padding: 40px;
     text-align: center;
@@ -22,11 +22,11 @@ body {
 }
 
 h1 {
-    color: #b9a6ff;
+    color: #2563b8;
 }
 
 h2 {
-    color: #e8e7f3;
+    color: #263548;
 }
 
 main, form, .cartao-servico {
@@ -34,11 +34,11 @@ main, form, .cartao-servico {
 }
 
 a {
-    color: #b9a6ff;
+    color: #2563b8;
 }
 
 a:hover {
-    color: #d2c6ff;
+    color: #174b94;
 }
 
 
@@ -47,14 +47,14 @@ a:hover {
 ======================================== */
 
 form {
-    background-color: #222438;
+    background-color: #ffffff;
     padding: 30px;
-    border: 1px solid #383a55;
+    border: 1px solid #d5e2f2;
     border-radius: 12px;
     max-width: 400px;
     margin: 30px auto;
     text-align: left;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(32, 83, 143, 0.08);
 }
 
 label {
@@ -67,10 +67,10 @@ label {
 input, select {
     width: 100%;
     padding: 11px 12px;
-    border: 1px solid #50516e;
+    border: 1px solid #b9cce3;
     border-radius: 7px;
-    background-color: #191b2c;
-    color: #e8e7f3;
+    background-color: #ffffff;
+    color: #263548;
     font-family: inherit;
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -78,8 +78,8 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #b9a6ff;
-    box-shadow: 0 0 0 3px rgba(185, 166, 255, 0.18);
+    border-color: #347bd1;
+    box-shadow: 0 0 0 3px rgba(52, 123, 209, 0.15);
 }
 
 /* Checkbox do Leva e Traz */
@@ -88,7 +88,7 @@ input[type="checkbox"] {
     width: auto;
     padding: 0;
     margin-right: 8px;
-    accent-color: #b9a6ff;
+    accent-color: #2563b8;
     vertical-align: middle;
 }
 
@@ -98,8 +98,8 @@ button {
     width: 100%;
     padding: 12px;
     margin-top: 25px;
-    background-color: #a995f0;
-    color: #171426;
+    background-color: #2563b8;
+    color: #ffffff;
     border: none;
     border-radius: 7px;
     font-family: inherit;
@@ -110,7 +110,7 @@ button {
 }
 
 button:hover {
-    background-color: #c3b3ff;
+    background-color: #174b94;
     transform: translateY(-1px);
 }
 
@@ -119,7 +119,7 @@ button:active {
 }
 
 button:focus-visible, a:focus-visible {
-    outline: 3px solid #d2c6ff;
+    outline: 3px solid #74a9ed;
     outline-offset: 3px;
 }
 
@@ -143,10 +143,10 @@ main {
     max-width: 500px;
     margin: 30px auto;
     padding: 30px;
-    background-color: #222438;
-    border: 1px solid #383a55;
+    background-color: #ffffff;
+    border: 1px solid #d5e2f2;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(32, 83, 143, 0.08);
 }
 
 
@@ -162,18 +162,18 @@ nav {
 
 nav a {
     padding: 12px;
-    background-color: #34324f;
-    color: #e0d9ff;
+    background-color: #e8f2ff;
+    color: #205aa8;
     text-decoration: none;
-    border: 1px solid #514d75;
+    border: 1px solid #c6daf2;
     border-radius: 7px;
     font-weight: 500;
     transition: background-color 0.2s, transform 0.2s;
 }
 
 nav a:hover {
-    background-color: #454166;
-    color: #ffffff;
+    background-color: #d5e8ff;
+    color: #174b94;
     transform: translateY(-1px);
 }
 
@@ -183,7 +183,7 @@ nav a:hover {
 ======================================== */
 
 #precoServico {
-    color: #c3b3ff;
+    color: #205aa8;
     font-weight: 600;
     font-size: 16px;
 }
@@ -197,8 +197,8 @@ nav a:hover {
 
 .cartao-agendamento {
     position: relative;
-    background-color: #2a2c43;
-    border: 1px solid #444560;
+    background-color: #f7faff;
+    border: 1px solid #d5e2f2;
     border-radius: 10px;
     padding: 20px 45px 20px 20px;
     margin: 15px 0;
@@ -214,7 +214,7 @@ nav a:hover {
 
 .cabecalho-agendamento h3 {
     margin: 0;
-    color: #b9a6ff;
+    color: #2563b8;
     text-align: left;
 }
 
@@ -229,7 +229,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    border-top: 1px solid #444560;
+    border-top: 1px solid #d5e2f2;
     padding-top: 15px;
 }
 
@@ -245,9 +245,9 @@ nav a:hover {
     width: auto;
     padding: 8px 18px;
     margin-top: 20px;
-    background-color: #34324f;
-    color: #e0d9ff;
-    border: 1px solid #514d75;
+    background-color: #e8f2ff;
+    color: #205aa8;
+    border: 1px solid #c6daf2;
     border-radius: 7px;
     font-size: 14px;
     font-weight: 600;
@@ -255,7 +255,7 @@ nav a:hover {
 }
 
 #listaAgendamentos .botao-editar:hover {
-    background-color: #454166;
+    background-color: #d5e8ff;
     transform: none;
 }
 
@@ -274,7 +274,7 @@ nav a:hover {
     padding: 0;
     margin: 0;
     background-color: transparent;
-    color: #f29aa8;
+    color: #c44758;
     border: none;
     border-radius: 6px;
     font-size: 18px;
@@ -283,8 +283,8 @@ nav a:hover {
 }
 
 #listaAgendamentos .botao-cancelar:hover {
-    background-color: #4a293a;
-    color: #ffb2be;
+    background-color: #ffe6e9;
+    color: #a72e40;
     transform: none;
 }
 
@@ -310,7 +310,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(10, 10, 22, 0.8);
+    background-color: rgba(22, 44, 73, 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,20 +320,20 @@ nav a:hover {
 /* Caixa central */
 
 .modal-conteudo {
-    background-color: #25263c;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 30px rgba(22, 44, 73, 0.2);
 }
 
 /* Ícone de cancelamento */
 
 .modal-icone {
-    background-color: #4a293a;
-    color: #f29aa8;
+    background-color: #ffe6e9;
+    color: #c44758;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -347,17 +347,17 @@ nav a:hover {
 /* Título e descrição */
 
 .modal-conteudo h3 {
-    color: #e8e7f3;
+    color: #263548;
     margin-bottom: 10px;
 }
 
 #textoCancelamento {
-    color: #c1bfd5;
+    color: #526579;
     font-size: 15px;
 }
 
 .modal-aviso {
-    color: #f29aa8;
+    color: #c44758;
     font-size: 14px;
 }
 
@@ -376,23 +376,23 @@ nav a:hover {
 /* Botão para voltar */
 
 #voltarCancelamento {
-    background-color: #34324f;
-    color: #e0d9ff;
+    background-color: #e8f2ff;
+    color: #205aa8;
 }
 
 #voltarCancelamento:hover {
-    background-color: #454166;
+    background-color: #d5e8ff;
 }
 
 /* Botão para confirmar o cancelamento */
 
 #confirmarCancelamento {
-    background-color: #d76d82;
+    background-color: #c44758;
     color: #ffffff;
 }
 
 #confirmarCancelamento:hover {
-    background-color: #eb8497;
+    background-color: #a72e40;
 }
 
 
@@ -421,28 +421,28 @@ nav a:hover {
 }
 
 #mensagemEdicao {
-    color: #f29aa8;
+    color: #c44758;
     font-size: 14px;
     text-align: center;
     margin-top: 15px;
 }
 
 #voltarEdicao {
-    background-color: #34324f;
-    color: #e0d9ff;
+    background-color: #e8f2ff;
+    color: #205aa8;
 }
 
 #voltarEdicao:hover {
-    background-color: #454166;
+    background-color: #d5e8ff;
 }
 
 #confirmarEdicao {
-    background-color: #a995f0;
-    color: #171426;
+    background-color: #2563b8;
+    color: #ffffff;
 }
 
 #confirmarEdicao:hover {
-    background-color: #c3b3ff;
+    background-color: #174b94;
 }
 
 
@@ -458,14 +458,14 @@ nav a:hover {
 /* Cabeçalho */
 
 .cabecalho {
-    background-color: #1d2033;
+    background-color: #ffffff;
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    border-bottom: 1px solid #353751;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid #d5e2f2;
+    box-shadow: 0 2px 10px rgba(32, 83, 143, 0.06);
 }
 
 .cabecalho h1 {
@@ -484,7 +484,7 @@ nav a:hover {
 
 .menu-inicial a {
     background-color: transparent;
-    color: #e8e7f3;
+    color: #263548;
     padding: 8px;
     text-decoration: none;
     border: none;
@@ -493,23 +493,23 @@ nav a:hover {
 }
 
 .menu-inicial a:hover {
-    background-color: #34324f;
-    color: #c3b3ff;
+    background-color: #e8f2ff;
+    color: #2563b8;
     transform: none;
 }
 
 /* Destaque para o cadastro */
 
 .menu-inicial #linkCadastro {
-    background-color: #a995f0;
-    color: #171426;
+    background-color: #2563b8;
+    color: #ffffff;
     padding: 10px 15px;
     border-radius: 7px;
 }
 
 .menu-inicial #linkCadastro:hover {
-    background-color: #c3b3ff;
-    color: #171426;
+    background-color: #174b94;
+    color: #ffffff;
 }
 
 
@@ -532,17 +532,17 @@ nav a:hover {
     min-width: 42px;
     padding: 0;
     margin: 0;
-    background-color: #34324f;
-    color: #c3b3ff;
-    border: 1px solid #514d75;
+    background-color: #e8f2ff;
+    color: #2563b8;
+    border: 1px solid #c6daf2;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }
 
 .menu-inicial .botao-perfil:hover {
-    background-color: #454166;
-    border-color: #b9a6ff;
+    background-color: #d5e8ff;
+    border-color: #347bd1;
     transform: none;
 }
 
@@ -573,10 +573,10 @@ nav a:hover {
     gap: 4px;
     width: 210px;
     padding: 8px;
-    background-color: #25263c;
-    border: 1px solid #444560;
+    background-color: #ffffff;
+    border: 1px solid #d5e2f2;
     border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 24px rgba(32, 83, 143, 0.15);
 }
 
 /* Links dentro do menu */
@@ -587,7 +587,7 @@ nav a:hover {
     padding: 10px 12px;
     margin: 0;
     background-color: transparent;
-    color: #e8e7f3;
+    color: #263548;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
@@ -597,8 +597,8 @@ nav a:hover {
 }
 
 .menu-inicial .menu-perfil a:hover {
-    background-color: #34324f;
-    color: #c3b3ff;
+    background-color: #e8f2ff;
+    color: #2563b8;
     transform: none;
 }
 
@@ -609,14 +609,14 @@ nav a:hover {
     margin: 0;
     padding: 10px 12px;
     background-color: transparent;
-    color: #f29aa8;
+    color: #c44758;
     text-align: left;
     font-size: 14px;
     font-weight: 500;
 }
 
 .menu-inicial #botaoSair:hover {
-    background-color: #4a293a;
+    background-color: #ffe6e9;
     transform: none;
 }
 
@@ -638,7 +638,7 @@ nav a:hover {
 /* Apresentação */
 
 .apresentacao {
-    background: linear-gradient(135deg, #302c50, #1b2038);
+    background: linear-gradient(135deg, #eaf4ff, #cfe5ff);
     text-align: center;
     padding: 100px 20px;
 }
@@ -646,13 +646,13 @@ nav a:hover {
 .apresentacao h2 {
     font-size: 38px;
     margin-bottom: 20px;
-    color: #d2c6ff;
+    color: #174b94;
 }
 
 .apresentacao p {
     max-width: 550px;
     margin: 0 auto 30px;
-    color: #cbc9df;
+    color: #465d77;
     line-height: 1.7;
     font-size: 17px;
 }
@@ -661,8 +661,8 @@ nav a:hover {
 
 .botao-inicial {
     display: inline-block;
-    background-color: #a995f0;
-    color: #171426;
+    background-color: #2563b8;
+    color: #ffffff;
     padding: 14px 27px;
     border-radius: 8px;
     text-decoration: none;
@@ -671,8 +671,8 @@ nav a:hover {
 }
 
 .botao-inicial:hover {
-    background-color: #c3b3ff;
-    color: #171426;
+    background-color: #174b94;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -701,29 +701,29 @@ nav a:hover {
 }
 
 .cartao-servico {
-    background-color: #25263c;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 12px;
     width: 240px;
     max-width: 100%;
-    border: 1px solid #3c3c59;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    border: 1px solid #d5e2f2;
+    box-shadow: 0 5px 18px rgba(32, 83, 143, 0.08);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cartao-servico:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 24px rgba(32, 83, 143, 0.14);
 }
 
 .cartao-servico h3 {
-    color: #b9a6ff;
+    color: #2563b8;
 }
 
 /* Sobre nós */
 
 #sobre {
-    background-color: #1c2033;
+    background-color: #edf5ff;
 }
 
 #sobre p {
@@ -734,13 +734,13 @@ nav a:hover {
 /* Chamada final */
 
 .chamada-final {
-    background-color: #2b2945;
+    background-color: #dcecff;
     padding: 65px 20px;
     text-align: center;
 }
 
 .chamada-final h2 {
-    color: #d2c6ff;
+    color: #174b94;
 }
 
 .chamada-final p {
@@ -750,14 +750,14 @@ nav a:hover {
 /* Rodapé */
 
 .rodape-inicial {
-    background-color: #111321;
-    color: #e8e7f3;
+    background-color: #20518d;
+    color: #ffffff;
     padding: 25px;
     text-align: center;
 }
 
 .rodape-inicial p {
-    color: #cbc9df;
+    color: #e6f1ff;
 }
 
 
@@ -950,12 +950,12 @@ body:has(#formPerfil) main > nav {
 ======================================== */
 
 .link-titulo {
-    color: #b9a6ff;
+    color: #2563b8;
     text-decoration: none;
 }
 
 .link-titulo:hover {
-    color: #d2c6ff;
+    color: #174b94;
     text-decoration: none;
 }
 
