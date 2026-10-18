@@ -1,7 +1,6 @@
 
 /* ========================================
    ESTILOS GERAIS
-   Aplicados a todas as páginas HTML
 ======================================== */
 
 * {
@@ -13,9 +12,9 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #151922;
-    color: #e6eaf2;
+    font-family: Arial, sans-serif;
+    background-color: #141625;
+    color: #e8e7f3;
     margin: 0;
     padding: 40px;
     text-align: center;
@@ -23,11 +22,11 @@ body {
 }
 
 h1 {
-    color: #89aef0;
+    color: #b9a6ff;
 }
 
 h2 {
-    color: #e6eaf2;
+    color: #e8e7f3;
 }
 
 main, form, .cartao-servico {
@@ -35,28 +34,27 @@ main, form, .cartao-servico {
 }
 
 a {
-    color: #89aef0;
+    color: #b9a6ff;
 }
 
 a:hover {
-    color: #b0c8fa;
+    color: #d2c6ff;
 }
 
 
 /* ========================================
    FORMULÁRIOS
-   Utilizados nas páginas de cadastro,
-   login, animais e agendamentos
 ======================================== */
 
 form {
-    background-color: #202633;
+    background-color: #222438;
     padding: 30px;
+    border: 1px solid #383a55;
     border-radius: 12px;
     max-width: 400px;
     margin: 30px auto;
     text-align: left;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 label {
@@ -69,10 +67,10 @@ label {
 input, select {
     width: 100%;
     padding: 11px 12px;
-    border: 1px solid #485367;
+    border: 1px solid #50516e;
     border-radius: 7px;
-    background-color: #202633;
-    color: #e6eaf2;
+    background-color: #191b2c;
+    color: #e8e7f3;
     font-family: inherit;
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -80,8 +78,8 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: #89aef0;
-    box-shadow: 0 0 0 3px rgba(137, 174, 240, 0.22);
+    border-color: #b9a6ff;
+    box-shadow: 0 0 0 3px rgba(185, 166, 255, 0.18);
 }
 
 /* Checkbox do Leva e Traz */
@@ -90,7 +88,7 @@ input[type="checkbox"] {
     width: auto;
     padding: 0;
     margin-right: 8px;
-    accent-color: #89aef0;
+    accent-color: #b9a6ff;
     vertical-align: middle;
 }
 
@@ -100,8 +98,8 @@ button {
     width: 100%;
     padding: 12px;
     margin-top: 25px;
-    background-color: #89aef0;
-    color: #101722;
+    background-color: #a995f0;
+    color: #171426;
     border: none;
     border-radius: 7px;
     font-family: inherit;
@@ -112,7 +110,7 @@ button {
 }
 
 button:hover {
-    background-color: #b0c8fa;
+    background-color: #c3b3ff;
     transform: translateY(-1px);
 }
 
@@ -121,14 +119,13 @@ button:active {
 }
 
 button:focus-visible, a:focus-visible {
-    outline: 3px solid #a9c4ff;
+    outline: 3px solid #d2c6ff;
     outline-offset: 3px;
 }
 
 
 /* ========================================
    PÁGINA DE LOGIN
-   Mensagens de sucesso ou erro
 ======================================== */
 
 #mensagemLogin {
@@ -140,22 +137,21 @@ button:focus-visible, a:focus-visible {
 
 /* ========================================
    ÁREA DO CLIENTE
-   Conteúdo principal de cliente.html
 ======================================== */
 
 main {
     max-width: 500px;
     margin: 30px auto;
     padding: 30px;
-    background-color: #202633;
+    background-color: #222438;
+    border: 1px solid #383a55;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 
 /* ========================================
    MENU DE NAVEGAÇÃO
-   Links para animais e agendamentos
 ======================================== */
 
 nav {
@@ -166,17 +162,18 @@ nav {
 
 nav a {
     padding: 12px;
-    background-color: #89aef0;
-    color: #101722;
+    background-color: #34324f;
+    color: #e0d9ff;
     text-decoration: none;
+    border: 1px solid #514d75;
     border-radius: 7px;
     font-weight: 500;
     transition: background-color 0.2s, transform 0.2s;
 }
 
 nav a:hover {
-    background-color: #b0c8fa;
-    color: #101722;
+    background-color: #454166;
+    color: #ffffff;
     transform: translateY(-1px);
 }
 
@@ -186,7 +183,7 @@ nav a:hover {
 ======================================== */
 
 #precoServico {
-    color: #b0c8fa;
+    color: #c3b3ff;
     font-weight: 600;
     font-size: 16px;
 }
@@ -196,87 +193,77 @@ nav a:hover {
     font-size: 14px;
 }
 
-/* Cartão de cada agendamento. */
+/* Cartão de cada agendamento */
 
 .cartao-agendamento {
     position: relative;
-    background-color: #283142;
-    border: 1px solid #384357;
-    border-radius: 8px;
+    background-color: #2a2c43;
+    border: 1px solid #444560;
+    border-radius: 10px;
     padding: 20px 45px 20px 20px;
     margin: 15px 0;
     text-align: left;
 }
 
-/* Cabeçalho do agendamento. */
+/* Cabeçalho do agendamento */
 
 .cabecalho-agendamento {
     margin-bottom: 15px;
     text-align: left;
 }
 
-/* Nome do animal. */
-
 .cabecalho-agendamento h3 {
     margin: 0;
-    color: #89aef0;
+    color: #b9a6ff;
     text-align: left;
 }
-
-/* Nome do serviço. */
 
 .cabecalho-agendamento p {
     margin: 5px 0;
     text-align: left;
 }
 
-/* Detalhes do agendamento. */
+/* Detalhes do agendamento */
 
 .detalhes-agendamento {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    border-top: 1px solid #384357;
+    border-top: 1px solid #444560;
     padding-top: 15px;
 }
-
-/* Informações do agendamento. */
 
 .detalhes-agendamento p {
     margin: 0;
     text-align: left;
 }
 
-/* Botão para editar o agendamento. */
+/* Botão para editar o agendamento */
 
 #listaAgendamentos .botao-editar {
     display: block;
     width: auto;
     padding: 8px 18px;
     margin-top: 20px;
-    background-color: #2a364a;
-    color: #d9e6ff;
-    border: 1px solid #394b65;
+    background-color: #34324f;
+    color: #e0d9ff;
+    border: 1px solid #514d75;
     border-radius: 7px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
 }
 
-/* Destaque do botão de edição. */
-
 #listaAgendamentos .botao-editar:hover {
-    background-color: #394b65;
+    background-color: #454166;
     transform: none;
 }
-
-/* Mantém o botão na posição original ao clicar. */
 
 #listaAgendamentos .botao-editar:active {
     transform: none;
 }
 
-/* Botão de cancelamento. */
+/* Botão de cancelamento */
 
 #listaAgendamentos .botao-cancelar {
     position: absolute;
@@ -287,7 +274,7 @@ nav a:hover {
     padding: 0;
     margin: 0;
     background-color: transparent;
-    color: #efa0a7;
+    color: #f29aa8;
     border: none;
     border-radius: 6px;
     font-size: 18px;
@@ -295,11 +282,9 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* Destaque do botão de cancelamento. */
-
 #listaAgendamentos .botao-cancelar:hover {
-    background-color: #4b2b36;
-    color: #f07783;
+    background-color: #4a293a;
+    color: #ffb2be;
     transform: none;
 }
 
@@ -312,13 +297,11 @@ nav a:hover {
    JANELA DE CONFIRMAÇÃO DE CANCELAMENTO
 ======================================== */
 
-/* Esconde a janela quando não está sendo utilizada. */
-
 .modal-cancelamento[hidden] {
     display: none;
 }
 
-/* Fundo escuro atrás da janela. */
+/* Fundo atrás da janela */
 
 .modal-cancelamento {
     position: fixed;
@@ -327,30 +310,30 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(10, 10, 22, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
-/* Caixa central da confirmação. */
+/* Caixa central */
 
 .modal-conteudo {
-    background-color: #202633;
+    background-color: #25263c;
     padding: 30px;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Ícone de cancelamento. */
+/* Ícone de cancelamento */
 
 .modal-icone {
-    background-color: #4b2b36;
-    color: #f07783;
+    background-color: #4a293a;
+    color: #f29aa8;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -361,26 +344,24 @@ nav a:hover {
     font-size: 24px;
 }
 
-/* Título e descrição. */
+/* Título e descrição */
 
 .modal-conteudo h3 {
-    color: #e6eaf2;
+    color: #e8e7f3;
     margin-bottom: 10px;
 }
 
 #textoCancelamento {
-    color: #b8c2d2;
+    color: #c1bfd5;
     font-size: 15px;
 }
 
-/* Aviso de cancelamento. */
-
 .modal-aviso {
-    color: #efa0a7;
+    color: #f29aa8;
     font-size: 14px;
 }
 
-/* Organiza os dois botões. */
+/* Botões da janela */
 
 .modal-botoes {
     display: flex;
@@ -392,26 +373,26 @@ nav a:hover {
     margin-top: 0;
 }
 
-/* Botão para voltar. */
+/* Botão para voltar */
 
 #voltarCancelamento {
-    background-color: #2a364a;
-    color: #d9e6ff;
+    background-color: #34324f;
+    color: #e0d9ff;
 }
 
 #voltarCancelamento:hover {
-    background-color: #394b65;
+    background-color: #454166;
 }
 
-/* Botão para confirmar o cancelamento. */
+/* Botão para confirmar o cancelamento */
 
 #confirmarCancelamento {
-    background-color: #f07783;
-    color: #101722;
+    background-color: #d76d82;
+    color: #ffffff;
 }
 
 #confirmarCancelamento:hover {
-    background-color: #ff9ca5;
+    background-color: #eb8497;
 }
 
 
@@ -419,13 +400,9 @@ nav a:hover {
    JANELA DE EDIÇÃO DO AGENDAMENTO
 ======================================== */
 
-/* Organiza os campos da janela de edição. */
-
 #modalEdicao .modal-conteudo {
     text-align: left;
 }
-
-/* Centraliza o título da janela de edição. */
 
 #modalEdicao h3 {
     text-align: center;
@@ -433,55 +410,44 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-/* Organiza os rótulos dos campos. */
-
 #modalEdicao label {
     margin-top: 15px;
     margin-bottom: 6px;
 }
-
-/* Organiza os campos de data e horário. */
 
 #modalEdicao input,
 #modalEdicao select {
     width: 100%;
 }
 
-/* Exibe as mensagens de validação. */
-
 #mensagemEdicao {
-    color: #ff9ca5;
+    color: #f29aa8;
     font-size: 14px;
     text-align: center;
     margin-top: 15px;
 }
 
-/* Botão para voltar sem salvar as alterações. */
-
 #voltarEdicao {
-    background-color: #2a364a;
-    color: #d9e6ff;
+    background-color: #34324f;
+    color: #e0d9ff;
 }
 
 #voltarEdicao:hover {
-    background-color: #394b65;
+    background-color: #454166;
 }
 
-/* Botão para salvar as alterações. */
-
 #confirmarEdicao {
-    background-color: #89aef0;
-    color: #101722;
+    background-color: #a995f0;
+    color: #171426;
 }
 
 #confirmarEdicao:hover {
-    background-color: #b0c8fa;
+    background-color: #c3b3ff;
 }
 
 
 /* ========================================
    PÁGINA INICIAL
-   Estilos exclusivos de index.html
 ======================================== */
 
 .pagina-inicial {
@@ -489,16 +455,17 @@ nav a:hover {
     text-align: left;
 }
 
-/* Cabeçalho. */
+/* Cabeçalho */
 
 .cabecalho {
-    background-color: #202633;
+    background-color: #1d2033;
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid #353751;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .cabecalho h1 {
@@ -506,43 +473,55 @@ nav a:hover {
     font-size: 24px;
 }
 
-/* Menu horizontal. */
+/* Menu horizontal */
 
 .menu-inicial {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .menu-inicial a {
     background-color: transparent;
-    color: #e6eaf2;
+    color: #e8e7f3;
     padding: 8px;
     text-decoration: none;
+    border: none;
     border-radius: 5px;
     font-weight: 500;
 }
 
 .menu-inicial a:hover {
-    background-color: #2a364a;
-    color: #89aef0;
+    background-color: #34324f;
+    color: #c3b3ff;
     transform: none;
+}
+
+/* Destaque para o cadastro */
+
+.menu-inicial #linkCadastro {
+    background-color: #a995f0;
+    color: #171426;
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+.menu-inicial #linkCadastro:hover {
+    background-color: #c3b3ff;
+    color: #171426;
 }
 
 
 /* ========================================
    BOTÃO E MENU DO PERFIL
-   Exibidos no cabeçalho da página inicial
 ======================================== */
-
-/* Container que posiciona o menu abaixo do botão. */
 
 .perfil-container {
     position: relative;
 }
 
-/* Botão circular com ícone do usuário. */
+/* Botão circular do perfil */
 
 .menu-inicial .botao-perfil {
     display: flex;
@@ -553,42 +532,36 @@ nav a:hover {
     min-width: 42px;
     padding: 0;
     margin: 0;
-    background-color: #2a364a;
-    color: #d9e6ff;
-    border: 1px solid #394b65;
+    background-color: #34324f;
+    color: #c3b3ff;
+    border: 1px solid #514d75;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }
 
-/* Destaque ao passar o mouse. */
-
 .menu-inicial .botao-perfil:hover {
-    background-color: #394b65;
-    border-color: #89aef0;
+    background-color: #454166;
+    border-color: #b9a6ff;
     transform: none;
 }
-
-/* Mantém o botão na posição original ao clicar. */
 
 .menu-inicial .botao-perfil:active {
     transform: none;
 }
-
-/* Tamanho do ícone dentro do botão. */
 
 .menu-inicial .botao-perfil svg {
     width: 22px;
     height: 22px;
 }
 
-/* Esconde o menu quando não está sendo utilizado. */
+/* Esconde o menu fechado */
 
 .menu-perfil[hidden] {
     display: none;
 }
 
-/* Caixa do menu suspenso. */
+/* Caixa do menu suspenso */
 
 .menu-perfil {
     position: absolute;
@@ -600,13 +573,13 @@ nav a:hover {
     gap: 4px;
     width: 210px;
     padding: 8px;
-    background-color: #202633;
-    border: 1px solid #394b65;
+    background-color: #25263c;
+    border: 1px solid #444560;
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Links dentro do menu suspenso. */
+/* Links dentro do menu */
 
 .menu-inicial .menu-perfil a {
     display: block;
@@ -614,7 +587,7 @@ nav a:hover {
     padding: 10px 12px;
     margin: 0;
     background-color: transparent;
-    color: #e6eaf2;
+    color: #e8e7f3;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
@@ -623,11 +596,27 @@ nav a:hover {
     white-space: nowrap;
 }
 
-/* Destaque dos links ao passar o mouse. */
-
 .menu-inicial .menu-perfil a:hover {
-    background-color: #2a364a;
-    color: #89aef0;
+    background-color: #34324f;
+    color: #c3b3ff;
+    transform: none;
+}
+
+/* Botão para sair da conta */
+
+.menu-inicial #botaoSair {
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    background-color: transparent;
+    color: #f29aa8;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-inicial #botaoSair:hover {
+    background-color: #4a293a;
     transform: none;
 }
 
@@ -636,60 +625,61 @@ nav a:hover {
    CONTEÚDO DA PÁGINA INICIAL
 ======================================== */
 
-/* Conteúdo principal. */
-
 .pagina-inicial .conteudo-inicial {
     max-width: none;
     margin: 0;
     padding: 0;
     border-radius: 0;
     background-color: transparent;
+    border: none;
     box-shadow: none;
 }
 
-/* Apresentação. */
+/* Apresentação */
 
 .apresentacao {
-    background: linear-gradient(135deg, #263449, #1b2331);
+    background: linear-gradient(135deg, #302c50, #1b2038);
     text-align: center;
     padding: 100px 20px;
 }
 
 .apresentacao h2 {
-    font-size: 36px;
+    font-size: 38px;
     margin-bottom: 20px;
-    color: #b0c8fa;
+    color: #d2c6ff;
 }
 
 .apresentacao p {
     max-width: 550px;
     margin: 0 auto 30px;
+    color: #cbc9df;
     line-height: 1.7;
+    font-size: 17px;
 }
 
-/* Botões da página inicial. */
+/* Botões da página inicial */
 
 .botao-inicial {
     display: inline-block;
-    background-color: #89aef0;
-    color: #101722;
-    padding: 14px 25px;
-    border-radius: 7px;
+    background-color: #a995f0;
+    color: #171426;
+    padding: 14px 27px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.2s, transform 0.2s;
 }
 
 .botao-inicial:hover {
-    background-color: #b0c8fa;
-    color: #101722;
+    background-color: #c3b3ff;
+    color: #171426;
     transform: translateY(-2px);
 }
 
-/* Seções. */
+/* Seções */
 
 .secao-inicial {
-    padding: 60px 8%;
+    padding: 65px 8%;
     text-align: center;
 }
 
@@ -701,7 +691,7 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* Serviços. */
+/* Serviços */
 
 .servicos-iniciais {
     display: flex;
@@ -711,50 +701,68 @@ nav a:hover {
 }
 
 .cartao-servico {
-    background-color: #202633;
+    background-color: #25263c;
     padding: 30px;
     border-radius: 12px;
-    width: 220px;
+    width: 240px;
     max-width: 100%;
-    border: 1px solid #384357;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+    border: 1px solid #3c3c59;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cartao-servico:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 .cartao-servico h3 {
-    color: #89aef0;
+    color: #b9a6ff;
 }
 
-/* Chamada final. */
+/* Sobre nós */
+
+#sobre {
+    background-color: #1c2033;
+}
+
+#sobre p {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Chamada final */
 
 .chamada-final {
-    background-color: #2a364a;
-    padding: 60px 20px;
+    background-color: #2b2945;
+    padding: 65px 20px;
     text-align: center;
+}
+
+.chamada-final h2 {
+    color: #d2c6ff;
 }
 
 .chamada-final p {
     margin-bottom: 30px;
 }
 
-/* Rodapé. */
+/* Rodapé */
 
 .rodape-inicial {
-    background-color: #10141c;
-    color: #e6eaf2;
+    background-color: #111321;
+    color: #e8e7f3;
     padding: 25px;
     text-align: center;
+}
+
+.rodape-inicial p {
+    color: #cbc9df;
 }
 
 
 /* ========================================
    RESPONSIVIDADE PARA TABLETS E CELULARES
-   Telas com largura de até 750px
 ======================================== */
 
 @media (max-width: 750px) {
@@ -797,7 +805,7 @@ nav a:hover {
     }
 
     .apresentacao h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .cartao-servico {
@@ -809,7 +817,6 @@ nav a:hover {
 
 /* ========================================
    RESPONSIVIDADE PARA CELULARES PEQUENOS
-   Telas com largura de até 480px
 ======================================== */
 
 @media (max-width: 480px) {
@@ -869,7 +876,7 @@ nav a:hover {
     }
 
     .apresentacao h2 {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .secao-inicial {
@@ -886,8 +893,6 @@ nav a:hover {
         padding: 20px;
     }
 
-    /* Mantém os botões da janela dentro da tela. */
-
     .modal-conteudo {
         padding: 20px;
     }
@@ -895,8 +900,6 @@ nav a:hover {
     .modal-botoes {
         flex-direction: column;
     }
-
-    /* Organiza os detalhes em uma coluna em telas pequenas. */
 
     .detalhes-agendamento {
         grid-template-columns: 1fr;
@@ -906,7 +909,6 @@ nav a:hover {
 
 /* ========================================
    ACESSIBILIDADE
-   Respeita a preferência por menos movimento
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -923,29 +925,20 @@ nav a:hover {
 
 /* ========================================
    PÁGINA MEU PERFIL
-   Espaçamento entre botões e navegação
 ======================================== */
-
-/* Separa a área de segurança dos links de navegação. */
 
 #botaoAlterarSenha {
     margin-bottom: 25px;
 }
-
-/* Mantém os links de navegação organizados. */
 
 body:has(#formPerfil) main > nav {
     margin-top: 25px;
     gap: 15px;
 }
 
-/* Melhora o espaçamento do formulário de senha. */
-
 #formSenha {
     margin-top: 20px;
 }
-
-/* Mantém o formulário escondido quando necessário. */
 
 #formSenha[hidden] {
     display: none;
@@ -954,16 +947,15 @@ body:has(#formPerfil) main > nav {
 
 /* ========================================
    TÍTULO CLICÁVEL
-   Retorna à página inicial
 ======================================== */
 
 .link-titulo {
-    color: #89aef0;
+    color: #b9a6ff;
     text-decoration: none;
 }
 
 .link-titulo:hover {
-    color: #b0c8fa;
+    color: #d2c6ff;
     text-decoration: none;
 }
 
@@ -972,26 +964,6 @@ body:has(#formPerfil) main > nav {
    VISIBILIDADE DO MENU CONFORME O LOGIN
 ======================================== */
 
-/* Esconde os links e o perfil quando necessário. */
-
 .menu-inicial [hidden] {
     display: none;
-}
-
-/* Botão para sair da conta. */
-
-.menu-inicial #botaoSair {
-    width: 100%;
-    margin: 0;
-    padding: 10px 12px;
-    background-color: transparent;
-    color: #efa0a7;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.menu-inicial #botaoSair:hover {
-    background-color: #4b2b36;
-    transform: none;
 }
