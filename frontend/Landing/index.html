@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="Css/global/style.css">
+</head>
+<body class="pagina-inicial">
+
+    <header class="cabecalho">
+        <h1>Studio de Beleza Animal</h1>
+
+        <nav class="menu-inicial">
+            <a href="index.html">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre Nós</a>
+
+            <!-- Links exibidos para visitantes. -->
+            <a href="login.html" id="linkEntrar">Entrar</a>
+            <a href="cadastro.html" id="linkCadastro">Cadastre-se</a>
+
+            <!-- Menu exibido quando o cliente está logado. -->
+            <div class="perfil-container" id="perfilContainer" hidden>
+
+                <button
+                    type="button"
+                    id="botaoPerfil"
+                    class="botao-perfil"
+                    aria-label="Abrir menu do perfil"
+                    aria-expanded="false"
+                    aria-controls="menuPerfil"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
+                    </svg>
+                </button>
+
+                <div id="menuPerfil" class="menu-perfil" hidden>
+                    <a href="perfil.html">Meu Perfil</a>
+                    <a href="meus-agendamentos.html">Meus Agendamentos</a>
+                    <a href="animais.html">Meus Animais</a>
+
+                    <button type="button" id="botaoSair">
+                        Sair da Conta
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="conteudo-inicial">
+
+        <section class="apresentacao">
+            <h2>Seu pet merece todo o cuidado!</h2>
+
+            <p>
+                Oferecemos serviços de banho e tosa para deixar
+                seu melhor amigo limpo, bonito e bem cuidado.
+            </p>
+
+            <a href="login.html" class="botao-inicial" id="botaoAgendar">
+                Agendar um Horário
+            </a>
+        </section>
+
+        <section id="servicos" class="secao-inicial">
+            <h2>Nossos Serviços</h2>
+
+            <div class="servicos-iniciais">
+                <article class="cartao-servico">
+                    <h3>Banho</h3>
+                    <p>
+                        Higiene e cuidado para o seu pet.
+                    </p>
+                </article>
+
+                <article class="cartao-servico">
+                    <h3>Tosa</h3>
+                    <p>
+                        Cuidados com a pelagem do seu animal.
+                    </p>
+                </article>
+
+                <article class="cartao-servico">
+                    <h3>Agendamento Online</h3>
+                    <p>
+                        Escolha o serviço e o horário desejado.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre" class="secao-inicial">
+            <h2>Sobre Nós</h2>
+
+            <p>
+                No Studio de Beleza Animal, nosso objetivo é
+                oferecer cuidado e carinho para os animais,
+                proporcionando uma experiência agradável
+                para os pets e seus tutores.
+            </p>
+        </section>
+
+        <section class="chamada-final">
+            <h2>Pronto para agendar?</h2>
+            <p id="textoChamadaFinal">
+                Entre na sua conta ou faça seu cadastro.
+            </p>
+
+            <a href="cadastro.html" class="botao-inicial" id="botaoComecar">
+                Começar Agora
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="rodape-inicial">
+        <p>Studio de Beleza Animal</p>
+    </footer>
+
+    <script>
+        // Seleciona os elementos do menu.
+        const botaoPerfil = document.getElementById("botaoPerfil");
+        const menuPerfil = document.getElementById("menuPerfil");
+        const perfilContainer = document.getElementById("perfilContainer");
+
+        const linkEntrar = document.getElementById("linkEntrar");
+        const linkCadastro = document.getElementById("linkCadastro");
+        const botaoSair = document.getElementById("botaoSair");
+
+        const botaoAgendar = document.getElementById("botaoAgendar");
+        const botaoComecar = document.getElementById("botaoComecar");
+        const textoChamadaFinal = document.getElementById("textoChamadaFinal");
+
+        // Recupera o código salvo pelo login.js.
+        const codigoCliente = sessionStorage.getItem("codigoCliente");
+
+        // Ajusta a página conforme a sessão do cliente.
+        if (codigoCliente) {
+            linkEntrar.hidden = true;
+            linkCadastro.hidden = true;
+            perfilContainer.hidden = false;
+
+            // Cliente logado pode acessar diretamente os agendamentos.
+            botaoAgendar.href = "agendamentos.html";
+
+            // Atualiza a chamada final para o cliente logado.
+            textoChamadaFinal.textContent =
+                "Escolha um serviço e agende um horário para seu pet.";
+
+            botaoComecar.href = "agendamentos.html";
+            botaoComecar.textContent = "Agendar Agora";
+        } else {
+            linkEntrar.hidden = false;
+            linkCadastro.hidden = false;
+            perfilContainer.hidden = true;
+        }
+
+        // Abre ou fecha o menu ao clicar no botão.
+        botaoPerfil.addEventListener("click", function() {
+            menuPerfil.hidden = !menuPerfil.hidden;
+
+            botaoPerfil.setAttribute(
+                "aria-expanded",
+                String(!menuPerfil.hidden)
+            );
+        });
+
+        // Fecha o menu ao clicar fora dele.
+        document.addEventListener("click", function(evento) {
+            if (!evento.target.closest(".perfil-container")) {
+                menuPerfil.hidden = true;
+                botaoPerfil.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Fecha o menu ao pressionar Escape.
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape") {
+                menuPerfil.hidden = true;
+                botaoPerfil.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Encerra a sessão do cliente.
+        botaoSair.addEventListener("click", function() {
+            sessionStorage.removeItem("codigoCliente");
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+</html>

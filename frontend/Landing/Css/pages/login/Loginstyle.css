@@ -1,0 +1,27 @@
+@import url("../../global/style.css");
+/* Esse ../ */
+
+/*  Importa um arquivo css para esse aqui
+    Quase igual a gente importa classes em java,
+    vamos utilizar isso para manter a organização do projeto
+    e não manter a estilização em um arquivo só.
+    Além disso, melhora a modularidade de cada página!
+    - Yann
+    
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+/* ========================================
+   PÁGINA DE LOGIN
+   Mensagens de sucesso ou erro
+======================================== */
+
+#mensagemLogin {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+

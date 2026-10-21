@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="Css/pages/login/Loginstyle.css">
+</head>
+<body>
+
+    <h1>Studio de Beleza Animal</h1>
+    <h2>Login de Cliente</h2>
+
+    <!-- Formulário de autenticação do cliente. -->
+    <form id="formLogin">
+
+        <label for="email">E-mail:</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+        >
+
+        <label for="senha">Senha:</label>
+        <input
+            type="password"
+            id="senha"
+            name="senha"
+            autocomplete="current-password"
+            required
+        >
+
+        <button type="submit">Entrar</button>
+
+        <script src="Js/login.js"></script>
+
+    </form>
+
+    <p>
+        Ainda não possui uma conta?
+        <a href="cadastro.html">Cadastre-se</a>
+    </p>
+
+    <p>
+        <a href="index.html">Voltar para a Página Inicial</a>
+    </p>
+
+    <script src="login.js"></script>
+
+</body>
+</html>
