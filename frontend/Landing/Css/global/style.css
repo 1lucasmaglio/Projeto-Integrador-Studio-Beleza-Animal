@@ -1,7 +1,6 @@
 
 /* ========================================
    ESTILOS GERAIS
-   Aplicados a todas as páginas HTML
 ======================================== */
 
 /*======================================
@@ -18,91 +17,151 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    background-color: #f5f9ff;
+    color: #263548;
     margin: 0;
     padding: 40px;
     text-align: center;
+    line-height: 1.6;
 }
 
 h1 {
-    color: #4a6fa5;
+    color: #2563b8;
 }
 
 h2 {
-    color: #333;
+    color: #263548;
 }
-
-/* Evita que textos longos ultrapassem a tela. */
 
 main, form, .cartao-servico {
     overflow-wrap: anywhere;
 }
 
+a {
+    color: #2563b8;
+}
+
+a:hover {
+    color: #174b94;
+}
+
 
 /* ========================================
    FORMULÁRIOS
-   Utilizados nas páginas de cadastro,
-   login, animais e agendamentos
 ======================================== */
 
 form {
-    background-color: white;
+    background-color: #ffffff;
     padding: 30px;
-    border-radius: 10px;
+    border: 1px solid #d5e2f2;
+    border-radius: 12px;
     max-width: 400px;
     margin: 30px auto;
     text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(32, 83, 143, 0.08);
 }
 
 label {
     display: block;
     margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 6px;
+    font-weight: 600;
 }
 
-input {
+input, select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 11px 12px;
+    border: 1px solid #b9cce3;
+    border-radius: 7px;
+    background-color: #ffffff;
+    color: #263548;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #347bd1;
+    box-shadow: 0 0 0 3px rgba(52, 123, 209, 0.15);
+}
+
+/* Checkbox do Leva e Traz */
+
+input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin-right: 8px;
+    accent-color: #2563b8;
+    vertical-align: middle;
+}
+
+/* Botões dos formulários */
 
 button {
     width: 100%;
     padding: 12px;
     margin-top: 25px;
-    background-color: #4a6fa5;
-    color: white;
+    background-color: #2563b8;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #345580;
+    background-color: #174b94;
+    transform: translateY(-1px);
 }
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible, a:focus-visible {
+    outline: 3px solid #74a9ed;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   PÁGINA DE LOGIN
+======================================== */
+
+#mensagemLogin {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
 
 /* ========================================
    ÁREA DO CLIENTE
-   Conteúdo principal de cliente.html
 ======================================== */
 
 main {
     max-width: 500px;
     margin: 30px auto;
     padding: 30px;
-    background-color: white;
-    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #d5e2f2;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(32, 83, 143, 0.08);
 }
 
 
 /* ========================================
    MENU DE NAVEGAÇÃO
-   Links para animais e agendamentos
 ======================================== */
 
 nav {
@@ -113,33 +172,292 @@ nav {
 
 nav a {
     padding: 12px;
-    background-color: #4a6fa5;
-    color: white;
+    background-color: #e8f2ff;
+    color: #205aa8;
     text-decoration: none;
-    border-radius: 5px;
+    border: 1px solid #c6daf2;
+    border-radius: 7px;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 nav a:hover {
-    background-color: #345580;
+    background-color: #d5e8ff;
+    color: #174b94;
+    transform: translateY(-1px);
 }
 
 
 /* ========================================
-   CADASTRO DE ANIMAIS
-   Campos de seleção
+   PÁGINA DE AGENDAMENTOS
 ======================================== */
 
-select {
+#precoServico {
+    color: #205aa8;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#mensagemAgendamento {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Cartão de cada agendamento */
+
+.cartao-agendamento {
+    position: relative;
+    background-color: #f7faff;
+    border: 1px solid #d5e2f2;
+    border-radius: 10px;
+    padding: 20px 45px 20px 20px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+/* Cabeçalho do agendamento */
+
+.cabecalho-agendamento {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.cabecalho-agendamento h3 {
+    margin: 0;
+    color: #2563b8;
+    text-align: left;
+}
+
+.cabecalho-agendamento p {
+    margin: 5px 0;
+    text-align: left;
+}
+
+/* Detalhes do agendamento */
+
+.detalhes-agendamento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-top: 1px solid #d5e2f2;
+    padding-top: 15px;
+}
+
+.detalhes-agendamento p {
+    margin: 0;
+    text-align: left;
+}
+
+/* Botão para editar o agendamento */
+
+#listaAgendamentos .botao-editar {
+    display: block;
+    width: auto;
+    padding: 8px 18px;
+    margin-top: 20px;
+    background-color: #e8f2ff;
+    color: #205aa8;
+    border: 1px solid #c6daf2;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#listaAgendamentos .botao-editar:hover {
+    background-color: #d5e8ff;
+    transform: none;
+}
+
+#listaAgendamentos .botao-editar:active {
+    transform: none;
+}
+
+/* Botão de cancelamento */
+
+#listaAgendamentos .botao-cancelar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    color: #c44758;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#listaAgendamentos .botao-cancelar:hover {
+    background-color: #ffe6e9;
+    color: #a72e40;
+    transform: none;
+}
+
+#listaAgendamentos .botao-cancelar:active {
+    transform: none;
+}
+
+
+/* ========================================
+   JANELA DE CONFIRMAÇÃO DE CANCELAMENTO
+======================================== */
+
+.modal-cancelamento[hidden] {
+    display: none;
+}
+
+/* Fundo atrás da janela */
+
+.modal-cancelamento {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 100%;
+    background-color: rgba(22, 44, 73, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Caixa central */
+
+.modal-conteudo {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(22, 44, 73, 0.2);
+}
+
+/* Ícone de cancelamento */
+
+.modal-icone {
+    background-color: #ffe6e9;
+    color: #c44758;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Título e descrição */
+
+.modal-conteudo h3 {
+    color: #263548;
+    margin-bottom: 10px;
+}
+
+#textoCancelamento {
+    color: #526579;
+    font-size: 15px;
+}
+
+.modal-aviso {
+    color: #c44758;
+    font-size: 14px;
+}
+
+/* Botões da janela */
+
+.modal-botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-botoes button {
+    margin-top: 0;
+}
+
+/* Botão para voltar */
+
+#voltarCancelamento {
+    background-color: #e8f2ff;
+    color: #205aa8;
+}
+
+#voltarCancelamento:hover {
+    background-color: #d5e8ff;
+}
+
+/* Botão para confirmar o cancelamento */
+
+#confirmarCancelamento {
+    background-color: #c44758;
+    color: #ffffff;
+}
+
+#confirmarCancelamento:hover {
+    background-color: #a72e40;
+}
+
+
+/* ========================================
+   JANELA DE EDIÇÃO DO AGENDAMENTO
+======================================== */
+
+#modalEdicao .modal-conteudo {
+    text-align: left;
+}
+
+#modalEdicao h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#modalEdicao label {
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+#modalEdicao input,
+#modalEdicao select {
+    width: 100%;
+}
+
+#mensagemEdicao {
+    color: #c44758;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#voltarEdicao {
+    background-color: #e8f2ff;
+    color: #205aa8;
+}
+
+#voltarEdicao:hover {
+    background-color: #d5e8ff;
+}
+
+#confirmarEdicao {
+    background-color: #2563b8;
+    color: #ffffff;
+}
+
+#confirmarEdicao:hover {
+    background-color: #174b94;
 }
 
 
 /* ========================================
    PÁGINA INICIAL
-   Estilos exclusivos de index.html
 ======================================== */
 
 .pagina-inicial {
@@ -150,12 +468,14 @@ select {
 /* Cabeçalho */
 
 .cabecalho {
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    border-bottom: 1px solid #d5e2f2;
+    box-shadow: 0 2px 10px rgba(32, 83, 143, 0.06);
 }
 
 .cabecalho h1 {
@@ -169,22 +489,151 @@ select {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .menu-inicial a {
     background-color: transparent;
-    color: #333;
+    color: #263548;
     padding: 8px;
     text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
 }
 
 .menu-inicial a:hover {
-    background-color: transparent;
-    color: #4a6fa5;
+    background-color: #e8f2ff;
+    color: #2563b8;
+    transform: none;
 }
 
-/* Conteúdo principal */
+/* Destaque para o cadastro */
+
+.menu-inicial #linkCadastro {
+    background-color: #2563b8;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+.menu-inicial #linkCadastro:hover {
+    background-color: #174b94;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   BOTÃO E MENU DO PERFIL
+======================================== */
+
+.perfil-container {
+    position: relative;
+}
+
+/* Botão circular do perfil */
+
+.menu-inicial .botao-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    padding: 0;
+    margin: 0;
+    background-color: #e8f2ff;
+    color: #2563b8;
+    border: 1px solid #c6daf2;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.menu-inicial .botao-perfil:hover {
+    background-color: #d5e8ff;
+    border-color: #347bd1;
+    transform: none;
+}
+
+.menu-inicial .botao-perfil:active {
+    transform: none;
+}
+
+.menu-inicial .botao-perfil svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Esconde o menu fechado */
+
+.menu-perfil[hidden] {
+    display: none;
+}
+
+/* Caixa do menu suspenso */
+
+.menu-perfil {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 210px;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #d5e2f2;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(32, 83, 143, 0.15);
+}
+
+/* Links dentro do menu */
+
+.menu-inicial .menu-perfil a {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin: 0;
+    background-color: transparent;
+    color: #263548;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu-inicial .menu-perfil a:hover {
+    background-color: #e8f2ff;
+    color: #2563b8;
+    transform: none;
+}
+
+/* Botão para sair da conta */
+
+.menu-inicial #botaoSair {
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    background-color: transparent;
+    color: #c44758;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-inicial #botaoSair:hover {
+    background-color: #ffe6e9;
+    transform: none;
+}
+
+
+/* ========================================
+   CONTEÚDO DA PÁGINA INICIAL
+======================================== */
 
 .pagina-inicial .conteudo-inicial {
     max-width: none;
@@ -192,46 +641,55 @@ select {
     padding: 0;
     border-radius: 0;
     background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 /* Apresentação */
 
 .apresentacao {
-    background-color: #e8eef7;
+    background: linear-gradient(135deg, #eaf4ff, #cfe5ff);
     text-align: center;
     padding: 100px 20px;
 }
 
 .apresentacao h2 {
-    font-size: 36px;
+    font-size: 38px;
     margin-bottom: 20px;
+    color: #174b94;
 }
 
 .apresentacao p {
     max-width: 550px;
     margin: 0 auto 30px;
-    line-height: 1.6;
+    color: #465d77;
+    line-height: 1.7;
+    font-size: 17px;
 }
 
-/* Botões */
+/* Botões da página inicial */
 
 .botao-inicial {
     display: inline-block;
-    background-color: #4a6fa5;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 5px;
+    background-color: #2563b8;
+    color: #ffffff;
+    padding: 14px 27px;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .botao-inicial:hover {
-    background-color: #345580;
+    background-color: #174b94;
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 /* Seções */
 
 .secao-inicial {
-    padding: 60px 8%;
+    padding: 65px 8%;
     text-align: center;
 }
 
@@ -240,7 +698,7 @@ select {
 }
 
 .secao-inicial p {
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* Serviços */
@@ -253,24 +711,46 @@ select {
 }
 
 .cartao-servico {
-    background-color: white;
+    background-color: #ffffff;
     padding: 30px;
-    border-radius: 10px;
-    width: 220px;
+    border-radius: 12px;
+    width: 240px;
     max-width: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #d5e2f2;
+    box-shadow: 0 5px 18px rgba(32, 83, 143, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cartao-servico:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(32, 83, 143, 0.14);
 }
 
 .cartao-servico h3 {
-    color: #4a6fa5;
+    color: #2563b8;
+}
+
+/* Sobre nós */
+
+#sobre {
+    background-color: #edf5ff;
+}
+
+#sobre p {
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 /* Chamada final */
 
 .chamada-final {
-    background-color: #e8eef7;
-    padding: 60px 20px;
+    background-color: #dcecff;
+    padding: 65px 20px;
     text-align: center;
+}
+
+.chamada-final h2 {
+    color: #174b94;
 }
 
 .chamada-final p {
@@ -280,16 +760,19 @@ select {
 /* Rodapé */
 
 .rodape-inicial {
-    background-color: #333;
-    color: white;
-    padding: 20px;
+    background-color: #20518d;
+    color: #ffffff;
+    padding: 25px;
     text-align: center;
+}
+
+.rodape-inicial p {
+    color: #e6f1ff;
 }
 
 
 /* ========================================
    RESPONSIVIDADE PARA TABLETS E CELULARES
-   Telas com largura de até 750px
 ======================================== */
 
 /* OBS.: Mover para um arquivo separado depois 14/10/2026*/
@@ -334,7 +817,7 @@ select {
     }
 
     .apresentacao h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .cartao-servico {
@@ -346,7 +829,6 @@ select {
 
 /* ========================================
    RESPONSIVIDADE PARA CELULARES PEQUENOS
-   Telas com largura de até 480px
 ======================================== */
 
 @media (max-width: 480px) {
@@ -397,12 +879,16 @@ select {
         text-align: center;
     }
 
+    .menu-inicial .menu-perfil a {
+        text-align: left;
+    }
+
     .apresentacao {
         padding: 50px 15px;
     }
 
     .apresentacao h2 {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .secao-inicial {
@@ -418,4 +904,78 @@ select {
         max-width: 300px;
         padding: 20px;
     }
+
+    .modal-conteudo {
+        padding: 20px;
+    }
+
+    .modal-botoes {
+        flex-direction: column;
+    }
+
+    .detalhes-agendamento {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    button, nav a, .botao-inicial, .cartao-servico {
+        transition: none;
+    }
+
+    button:hover, nav a:hover, .botao-inicial:hover, .cartao-servico:hover {
+        transform: none;
+    }
+}
+
+
+/* ========================================
+   PÁGINA MEU PERFIL
+======================================== */
+
+#botaoAlterarSenha {
+    margin-bottom: 25px;
+}
+
+body:has(#formPerfil) main > nav {
+    margin-top: 25px;
+    gap: 15px;
+}
+
+#formSenha {
+    margin-top: 20px;
+}
+
+#formSenha[hidden] {
+    display: none;
+}
+
+
+/* ========================================
+   TÍTULO CLICÁVEL
+======================================== */
+
+.link-titulo {
+    color: #2563b8;
+    text-decoration: none;
+}
+
+.link-titulo:hover {
+    color: #174b94;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   VISIBILIDADE DO MENU CONFORME O LOGIN
+======================================== */
+
+.menu-inicial [hidden] {
+    display: none;
 }

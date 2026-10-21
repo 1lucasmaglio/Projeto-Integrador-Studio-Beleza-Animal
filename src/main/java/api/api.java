@@ -491,6 +491,92 @@ public class api {
             ctx.json(agendamento);
         });
 
+        // PUT /agendamentos/{id}: atualiza a data e o horário de um agendamento.
+
+        app.put("/agendamentos/{id}", ctx -> {
+
+            // Recupera o código do agendamento informado na URL.
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            // Recebe os novos dados enviados pelo frontend.
+            Agendamento dadosAtualizados = ctx.bodyAsClass(Agendamento.class);
+
+            // Verifica se o agendamento existe.
+            Agendamento agendamento = agendamentoService.buscarPorId(id);
+
+            if (agendamento == null) {
+                ctx.status(404);
+                ctx.result("Agendamento não encontrado.");
+                return;
+            }
+
+            // Verifica se a data e o horário foram informados.
+            if (dadosAtualizados.getData() == null
+                    || dadosAtualizados.getData().isBlank()
+                    || dadosAtualizados.getHora() == null
+                    || dadosAtualizados.getHora().isBlank()) {
+
+                ctx.status(400);
+                ctx.result("Data ou horário inválido.");
+                return;
+            }
+
+            // Solicita ao Service a atualização do agendamento.
+            boolean atualizado = agendamentoService.atualizar(
+                id,
+                dadosAtualizados.getData(),
+                dadosAtualizados.getHora()
+            );
+
+            if (!atualizado) {
+                ctx.status(409);
+                ctx.result("Não foi possível atualizar o agendamento.");
+                return;
+            }
+
+            // Salva as alterações no CSV.
+            agendamentoService.salvar();
+
+            // Retorna o agendamento atualizado.
+            ctx.json(agendamentoService.buscarPorId(id));
+        });
+
+
+        // PUT /agendamentos/{id}/cancelar: cancela um agendamento existente.
+
+        app.put("/agendamentos/{id}/cancelar", ctx -> {
+
+            // Recupera o código do agendamento informado na URL.
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            // Busca o agendamento pelo código.
+            Agendamento agendamento = agendamentoService.buscarPorId(id);
+
+            // Verifica se o agendamento existe.
+            if (agendamento == null) {
+                ctx.status(404);
+                ctx.result("Agendamento não encontrado.");
+                return;
+            }
+
+            // Solicita ao Service o cancelamento do agendamento.
+            boolean cancelado = agendamentoService.cancelar(id);
+
+            // Verifica se o cancelamento foi recusado.
+            if (!cancelado) {
+                ctx.status(409);
+                ctx.result("Não foi possível cancelar. Verifique o prazo de 24 horas.");
+                return;
+            }
+
+            // Salva a alteração no arquivo CSV.
+            agendamentoService.salvar();
+
+            // Confirma que o agendamento foi cancelado.
+            ctx.status(200);
+            ctx.result("Agendamento cancelado com sucesso.");
+        });
+
         // =========================
         // ADMINISTRADORES
         // =========================

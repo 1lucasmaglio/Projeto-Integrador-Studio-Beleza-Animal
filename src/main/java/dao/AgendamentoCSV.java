@@ -21,7 +21,7 @@ public class AgendamentoCSV {
         List<String> linhas = new ArrayList<>();
 
         linhas.add(
-            "codigo;data;hora;status;codigoAnimal;codigoServico"
+            "codigo;data;hora;status;codigoAnimal;codigoServico;levaETraz"
         );
 
         for (Agendamento agendamento : agendamentos) {
@@ -32,7 +32,8 @@ public class AgendamentoCSV {
                     agendamento.getHora() + ";" +
                     agendamento.getStatus() + ";" +
                     agendamento.getCodigoAnimal() + ";" +
-                    agendamento.getCodigoServico();
+                    agendamento.getCodigoServico() + ";" +
+                    agendamento.isLevaETraz();
 
             linhas.add(linha);
         }
@@ -61,6 +62,7 @@ public class AgendamentoCSV {
             String status = dados[3];
             int codigoAnimal = Integer.parseInt(dados[4]);
             int codigoServico = Integer.parseInt(dados[5]);
+            boolean levaETraz = Boolean.parseBoolean(dados[6]);
 
             agendamentos.add(
                 new Agendamento(
@@ -69,9 +71,11 @@ public class AgendamentoCSV {
                     hora,
                     status,
                     codigoAnimal,
-                    codigoServico
+                    codigoServico,
+                    levaETraz
                 )
             );
+            
         }
 
         return agendamentos;

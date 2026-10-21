@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Agendamentos - Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Meus Agendamentos</h1>
+
+    <main>
+        <h2>Agendamentos cadastrados</h2>
+        <div id="listaAgendamentos"></div>
+    </main>
+
+    <!-- Janela de confirmação de cancelamento -->
+    <div id="modalCancelamento" class="modal-cancelamento" hidden>
+        <div class="modal-conteudo" role="dialog"
+             aria-modal="true" aria-labelledby="tituloCancelamento">
+
+            <div class="modal-icone">✕</div>
+
+            <h3 id="tituloCancelamento">Cancelar agendamento?</h3>
+
+            <p id="textoCancelamento"></p>
+
+            <p class="modal-aviso">Esta ação não poderá ser desfeita.</p>
+
+            <div class="modal-botoes">
+                <button type="button" id="voltarCancelamento">
+                    Voltar
+                </button>
+
+                <button type="button" id="confirmarCancelamento">
+                    Sim, cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Janela para editar um agendamento -->
+<div id="modalEdicao" class="modal-cancelamento" hidden>
+    <div class="modal-conteudo" role="dialog"
+         aria-modal="true" aria-labelledby="tituloEdicao">
+
+        <h3 id="tituloEdicao">Editar agendamento</h3>
+
+        <label for="novaData">Nova data:</label>
+        <input type="date" id="novaData">
+
+        <label for="novaHora">Novo horário:</label>
+        <select id="novaHora">
+            <option value="07:00">07:00</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+        </select>
+
+        <p id="mensagemEdicao" role="status"></p>
+
+        <div class="modal-botoes">
+            <button type="button" id="voltarEdicao">Voltar</button>
+            <button type="button" id="confirmarEdicao">Salvar alterações</button>
+        </div>
+    </div>
+</div>
+
+    <script src="meus-agendamentos.js"></script>
+</body>
+</html>

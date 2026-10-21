@@ -925,12 +925,15 @@ public class TelaPrincipal extends JFrame {
             }
 
             // Cria o objeto Agendamento com os dados preenchidos.
+            
+            boolean levaETraz = false;
             Agendamento agendamento = new Agendamento(
                 data,
                 hora,
                 status,
                 codigoAnimal,
-                codigoServico
+                codigoServico,
+                levaETraz
             );
 
             // Solicita ao Service a inclusão do agendamento.

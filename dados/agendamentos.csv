@@ -1,7 +1,9 @@
-codigo;data;hora;status;codigoAnimal;codigoServico
-1;15/10/2026;12:00;Agendado;5;1
-2;21/10/2026;11:00;Agendado;3;2
-3;21/10/2026;12:00;Agendado;3;3
-4;21/10/2026;10:00;Agendado;5;3
-5;20/10/2026;10:00;Agendado;4;3
-6;27/10/2026;15:00;Agendado;5;5
+codigo;data;hora;status;codigoAnimal;codigoServico;levaETraz
+1;16/10/2026;12:00;Agendado;1;1;true
+2;20/10/2026;11:00;Cancelado;1;1;true
+3;27/10/2026;12:00;Cancelado;1;4;true
+4;27/10/2026;10:00;Cancelado;1;2;true
+5;27/10/2026;10:00;Cancelado;1;2;true
+6;27/10/2026;10:00;Cancelado;1;2;true
+7;20/10/2026;12:00;Cancelado;1;3;true
+8;20/10/2026;12:00;Cancelado;1;1;true
