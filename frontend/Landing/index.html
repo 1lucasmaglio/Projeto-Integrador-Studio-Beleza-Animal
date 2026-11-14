@@ -5,11 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="Css/global/variables.css">
     <link rel="stylesheet" href="Css/global/style.css">
+    <link rel="stylesheet" href="Css/pages/pginicial/pginicialStyle.css">
+    <link rel="stylesheet" href="Css/global/screens.css"> <!-- Responsividade sem pre em último mais importante -->
 </head>
 <body class="pagina-inicial">
 
     <header class="cabecalho">
+        <!-- Logomarca do site aqui 'Talvez em png'-->
         <h1>Studio de Beleza Animal</h1>
 
         <nav class="menu-inicial">
@@ -30,8 +34,7 @@
                     class="botao-perfil"
                     aria-label="Abrir menu do perfil"
                     aria-expanded="false"
-                    aria-controls="menuPerfil"
-                >
+                    aria-controls="menuPerfil">
                     <svg width="24" height="24" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2"
                          stroke-linecap="round" stroke-linejoin="round"
@@ -58,16 +61,23 @@
     <main class="conteudo-inicial">
 
         <section class="apresentacao">
-            <h2>Seu pet merece todo o cuidado!</h2>
+            <h1 class="hero-titulo">
+                <span>Seu</span>
+                <span class="hero-vao">
+                    <img src="Img/dogHero.png" alt=" Imagem de um Golden Retriever" class="imagem-pet">
+                </span>
+                <span>Pet Limpo</span>
+            </h1>
 
-            <p>
-                Oferecemos serviços de banho e tosa para deixar
-                seu melhor amigo limpo, bonito e bem cuidado.
-            </p>
-
-            <a href="login.html" class="botao-inicial" id="botaoAgendar">
-                Agendar um Horário
-            </a>
+            <div class="hero-rodape">
+                <div class="hero-avaliacao">
+                    ★★★★★ <small>4,5 Média de avaliação</small>
+                </div>
+                <div class="hero-texto">
+                    <p>lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</p>
+                    <a href="login.html" class="botao-inicial" id="botaoAgendar">Saiba Mais →</a>
+                </div>
+            </div>
         </section>
 
         <section id="servicos" class="secao-inicial">
@@ -122,79 +132,12 @@
     </main>
 
     <footer class="rodape-inicial">
-        <p>Studio de Beleza Animal</p>
+        <h4>Studio de Beleza Animal</h4>
+        <p>All rights reserved projeto integrador 2026</p>
+        
     </footer>
 
-    <script>
-        // Seleciona os elementos do menu.
-        const botaoPerfil = document.getElementById("botaoPerfil");
-        const menuPerfil = document.getElementById("menuPerfil");
-        const perfilContainer = document.getElementById("perfilContainer");
-
-        const linkEntrar = document.getElementById("linkEntrar");
-        const linkCadastro = document.getElementById("linkCadastro");
-        const botaoSair = document.getElementById("botaoSair");
-
-        const botaoAgendar = document.getElementById("botaoAgendar");
-        const botaoComecar = document.getElementById("botaoComecar");
-        const textoChamadaFinal = document.getElementById("textoChamadaFinal");
-
-        // Recupera o código salvo pelo login.js.
-        const codigoCliente = sessionStorage.getItem("codigoCliente");
-
-        // Ajusta a página conforme a sessão do cliente.
-        if (codigoCliente) {
-            linkEntrar.hidden = true;
-            linkCadastro.hidden = true;
-            perfilContainer.hidden = false;
-
-            // Cliente logado pode acessar diretamente os agendamentos.
-            botaoAgendar.href = "agendamentos.html";
-
-            // Atualiza a chamada final para o cliente logado.
-            textoChamadaFinal.textContent =
-                "Escolha um serviço e agende um horário para seu pet.";
-
-            botaoComecar.href = "agendamentos.html";
-            botaoComecar.textContent = "Agendar Agora";
-        } else {
-            linkEntrar.hidden = false;
-            linkCadastro.hidden = false;
-            perfilContainer.hidden = true;
-        }
-
-        // Abre ou fecha o menu ao clicar no botão.
-        botaoPerfil.addEventListener("click", function() {
-            menuPerfil.hidden = !menuPerfil.hidden;
-
-            botaoPerfil.setAttribute(
-                "aria-expanded",
-                String(!menuPerfil.hidden)
-            );
-        });
-
-        // Fecha o menu ao clicar fora dele.
-        document.addEventListener("click", function(evento) {
-            if (!evento.target.closest(".perfil-container")) {
-                menuPerfil.hidden = true;
-                botaoPerfil.setAttribute("aria-expanded", "false");
-            }
-        });
-
-        // Fecha o menu ao pressionar Escape.
-        document.addEventListener("keydown", function(evento) {
-            if (evento.key === "Escape") {
-                menuPerfil.hidden = true;
-                botaoPerfil.setAttribute("aria-expanded", "false");
-            }
-        });
-
-        // Encerra a sessão do cliente.
-        botaoSair.addEventListener("click", function() {
-            sessionStorage.removeItem("codigoCliente");
-            window.location.href = "index.html";
-        });
+    <script src="Js/index.js">
     </script>
-
 </body>
 </html>

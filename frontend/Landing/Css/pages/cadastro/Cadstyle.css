@@ -1,3 +1,11 @@
-@import url("../../global/style.css")
+@import url("../../global/style.css");
+@import url("../../global/variables.css");
+@import url("../../global/screens.css");
 
 /* Estilização da página de cadastro*/
+
+.titulo{
+    Font-family: var(--font-principal);
+    font-size: 30px;
+    color: var(--cor-texto);
+}

@@ -6,8 +6,7 @@
     vamos utilizar isso para manter a organização do projeto
     e não manter a estilização em um arquivo só.
     Além disso, melhora a modularidade de cada página!
-    - Yann
-    
+    - Yann 
 */
 
 * {
@@ -24,4 +23,3 @@
     margin-top: 15px;
     font-size: 14px;
 }
-
