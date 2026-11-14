@@ -66,3 +66,37 @@
             sessionStorage.removeItem("codigoCliente");
             window.location.href = "index.html";
         });
+        // ==========================
+        
+        // Efeito de rotação dos cartões de serviço.
+
+        // ==========================
+   document.querySelectorAll(".cartao-servico").forEach(function (card)
+   // Seleciona todos os elementos com a classe "cartao-servico" e aplica a função 'card' para eles...
+   {
+
+    card.addEventListener("pointermove", function (e) 
+    // Adiciona um escutador de evento, que é o ponteiro do mouse, e quando ele se move faz...
+    {
+        if (e.pointerType !== "mouse") return;// ignora o touchscreen, só faz efeito com mouse
+
+        const r = card.getBoundingClientRect();
+        // cria uma constante r que recebe as dimensões do card, ou seja, a posição e tamanho do card na tela
+
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        // Depois disso cria a constante x ela vai recber a posição do ponteiro do mouse
+        // em relação ao card; depois ela faz uma divisão pelo tamanho do card e subtrai 0.5 para centralizar 
+        // o efeito, ou seja, quando o mouse estiver no centro do card, x será 0.
+        
+        // Mesma coisa para o eixo y, mas invertido, porque o eixo y é invertido na tela.
+        const y = (e.clientY - r.top) / r.height - 0.5;
+
+        card.style.setProperty("--ry", (x * 10) + "deg"); // até 10° para os lados
+        card.style.setProperty("--rx", (-y * 10) + "deg");
+    });
+
+    card.addEventListener("pointerleave", function () {
+        card.style.removeProperty("--rx");
+        card.style.removeProperty("--ry");
+    });
+});
