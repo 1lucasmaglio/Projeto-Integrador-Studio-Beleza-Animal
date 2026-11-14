@@ -1,0 +1,190 @@
+@import url("screens.css");
+@import url("variables.css");
+/* ========================================
+   ESTILOS GERAIS
+======================================== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    background-color: var(--cor-fundo);
+    margin: 0;
+    padding: 40px;
+    text-align: center;
+    line-height: 1.6;
+}
+main, form, .cartao-servico {
+    overflow-wrap: anywhere;
+}
+
+a {
+    color: var(--cor-secundaria-1);
+}
+
+a:hover {
+    color: var(--cor-secundaria-0);
+    font-size: 17px;
+}
+/* FIM DOS ESTILOS GERAIS, CADA PÁGINA TEM SEU CSS*/
+
+
+/* ========================================
+   FORMULÁRIOS
+======================================== */
+
+form {
+    background-color: var(--cor-fundo);
+    padding: 30px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 30px auto;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(32, 83, 143, 0.08);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 7px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--cor-principal-0);
+    box-shadow: 0 0 0 3px rgba(52, 123, 209, 0.15);
+}
+
+/* Checkbox do Leva e Traz */
+
+input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin-right: 8px;
+    accent-color: var(--cor-principal-0);
+    vertical-align: middle;
+}
+
+/* Botões dos formulários */
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: var(--cor-principal-0);
+    color: var(--cor-fundo);
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: var(--cor-principal-1);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible, a:focus-visible {
+    outline: 3px solid var(--cor-ativo);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   ÁREA DO CLIENTE
+======================================== */
+
+/* ========================================
+   MENU DE NAVEGAÇÃO
+======================================== */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+nav a {
+    padding: 12px;
+    background-color: #e8f2ff;
+    color: var(--cor-secundaria-1);
+    text-decoration: none;
+    border: 1px solid #c6daf2;
+    border-radius: 7px;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+nav a:hover {
+    background-color: #d5e8ff;
+    color: var(--cor-secundaria-0);
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    button, nav a, .botao-inicial, .cartao-servico {
+        transition: none;
+    }
+
+    button:hover, nav a:hover, .botao-inicial:hover, .cartao-servico:hover {
+        transform: none;
+    }
+}
+
+
+
+
+
+/* ========================================
+   TÍTULO CLICÁVEL
+======================================== */
+
+.link-titulo {
+    color: var(--cor-principal-0);
+    text-decoration: none;
+}
+
+.link-titulo:hover {
+    color: var(--cor-principal-1);
+    text-decoration: none;
+}
+
+
+/* ========================================
+   VISIBILIDADE DO MENU CONFORME O LOGIN
+======================================== */
+
+.menu-inicial [hidden] {
+    display: none;
+}

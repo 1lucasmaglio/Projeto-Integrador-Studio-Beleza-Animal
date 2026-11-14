@@ -1,0 +1,421 @@
+@import url("../../global/style.css");
+@import url("../../global/variables.css");
+
+/* ========================================
+   PÁGINA INICIAL
+======================================== */
+
+h1{
+    color: var(--cor-logotipo);
+    font-family: var(--fonte-logotipo);
+}
+
+h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(24px, 5vw, 38px); /* cresce e encolhe sozinho */
+}
+
+.pagina-inicial {
+    padding: 0;
+    text-align: left;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    background-color: var(--cor-principal-0);
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 26px;
+    box-shadow: 0 1px 10px rgba(32, 83, 143, 0.06);
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: clamp(24px, 5vw, 28px);
+}
+
+.cabecalho .menu-inicial {
+    flex-wrap: wrap;
+}
+
+/* Menu horizontal */
+
+.menu-inicial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-inicial a {
+    background-color: transparent;
+    color: var(--cor-texto-claro);
+    padding: 8px;
+    text-decoration: none;
+    border-bottom: 3px solid var(--cor-principal-1);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    transition: background-color 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+    border-radius: 16px;
+    font-weight: 500;
+}
+
+.menu-inicial a:hover {
+    background-color: var(--cor-secundaria-0);
+    color: var(--cor-texto);
+    transform: none;
+    border: none;
+}
+
+/* Destaque para o cadastro */
+
+.menu-inicial #linkCadastro {
+    background-color: var(--cor-logotipo);
+    color: var(--cor-texto-claro);
+    padding: 10px 15px;
+    border-radius: 7px;
+    transition: background-color 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+
+.menu-inicial #linkCadastro:hover {
+    background-color: var(--cor-principal-1);
+    color: var(--cor-texto-claro);
+}
+
+
+/* ========================================
+   BOTÃO E MENU DO PERFIL
+======================================== */
+
+.perfil-container {
+    position: relative;
+}
+
+/* Botão circular do perfil */
+
+.menu-inicial .botao-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    padding: 0;
+    margin: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-principal-0);
+    border: 1px solid #c6daf2;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.menu-inicial .botao-perfil:hover {
+    background-color: var(--cor-fundo);
+    border-color: var(--cor-principal-1);
+    transform: none;
+}
+
+.menu-inicial .botao-perfil:active {
+    transform: none;
+}
+
+.menu-inicial .botao-perfil svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Esconde o menu fechado */
+
+.menu-perfil[hidden] {
+    display: none;
+}
+
+/* Caixa do menu suspenso */
+
+.menu-perfil {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 210px;
+    padding: 8px;
+    background-color: var(--cor-texto-claro);
+    border: 1px solid #d5e2f2;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(32, 83, 143, 0.15);
+}
+
+/* Links dentro do menu */
+
+.menu-inicial .menu-perfil a {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin: 0;
+    background-color: transparent;
+    color: var(--cor-texto);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu-inicial .menu-perfil a:hover {
+    background-color: #e8f2ff;
+    color: var(--cor-principal-0);
+    transform: none;
+}
+
+/* Botão para sair da conta */
+
+.menu-inicial #botaoSair {
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    background-color: transparent;
+    color: var(--cor-erro);
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-inicial #botaoSair:hover {
+    background-color: var(--cor-fundo);
+    transform: none;
+}
+
+/* ========================================
+   CONTEÚDO DA PÁGINA INICIAL
+======================================== */
+
+
+.pagina-inicial .conteudo-inicial {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Apresentação */
+
+.apresentacao {
+    --fs: min(9vw, 8rem); /* Um tamanho único que controla tudo. */
+    background: linear-gradient(135deg, #62c1f4, #4a9ac4);
+    padding: 60px 5% 80px;
+    overflow: hidden; /*Impede que elementos invadam o espaço de outras sections*/
+}
+
+.hero-titulo{
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--cor-texto-claro);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-vao{
+    position: relative;
+    width: 2.0em;
+    height: 1em;
+    flex-shrink: 0;
+}
+
+.imagem-pet{
+    position: absolute;
+    left: 60%;
+    top: -0.35em; /* A cabeça do cachorrro passa no topo das letras*/
+    transform: translateX(-50%); /* centraliza horizontalmente  no vão*/
+    width: 3.1em;
+    height: auto; /* Mantém a proporção da imagem */
+    z-index: 2; /* Na frente do texto*/
+    pointer-events: none;
+}
+
+.hero-rodape{
+    min-height: calc(var(--fs) * 2.85); /*Reserva espaço para o corpo do doguinho*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    margin-top: 1.5rem;
+    align-items: start;
+}
+
+/* Botões da página inicial */
+
+.botao-inicial {
+    display: inline-block;
+    background-color: var(--cor-principal-0);
+    color: var(--cor-fundo);
+    padding: 14px 27px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.botao-inicial:hover {
+    background-color: var(--cor-principal-1);
+    color: var(--cor-fundo);
+    transform: translateY(-2px);
+}
+
+/* Seções */
+
+.secao-inicial {
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.secao-inicial h2 {
+    margin-bottom: 30px;
+}
+
+.secao-inicial p {
+    line-height: 1.7;
+}
+
+/* ===== 
+    SERVIÇOS
+===== */
+
+.titulo-servicos {
+    color: var(--cor-logotipo);
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.servicos-iniciais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(24px, 8vw, 120px);
+    max-width: 1100px;
+    margin: 0 auto;
+    perspective: 1000px;             
+    /* Tudo que for filho disso vai ter '3D' */
+}
+
+.cartao-servico {
+    background-color: var(--cor-fundo);
+    border: 2px solid var(--cor-borda);
+    border-radius: 6px;
+    overflow: hidden;                /* recorta a foto nos cantos arredondados */
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateZ(0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.cartao-imagem {
+    position: relative;              /* referência para o título */
+    aspect-ratio: 7 / 3;             /* altura proporcional, em qualquer largura */
+    overflow: hidden;
+}
+
+.cartao-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;               /* preenche sem distorcer */
+}
+
+.cartao-servico .cartao-imagem h3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 28px 16px 8px;
+    color: #ffffff;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.cartao-servico p {
+    margin: 0;
+    padding: 14px 16px 18px;
+    line-height: 1.5;
+}
+
+/* Efeito só com o mouse e sem reduzir o movimento */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+
+    .cartao-servico:hover,
+    .cartao-servico:focus-within {
+        transform: translateZ(60px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+        box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .servicos-iniciais:hover .cartao-servico:not(:hover) {
+        /* Servicos iniciais hover e cartao-serivo não está no estado hover, faça... */
+        transform: translateZ(-40px);
+        /* volta o card em Z, ou seja para "trás" */
+        filter: brightness(0.93);
+        /* Adiciona um efeito de brilho, bem simples*/
+    }
+}
+
+/* Sobre nós */
+
+#sobre {
+    background-color: var(--cor-fundo);
+}
+
+#sobre p {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Chamada final */
+
+.chamada-final {
+    background-color: var(--cor-fundo);
+    padding: 65px 20px;
+    text-align: center;
+}
+
+.chamada-final h2 {
+    color: var(--cor-principal-1);
+}
+
+.chamada-final p {
+    margin-bottom: 30px;
+}
+
+/* Rodapé */
+
+.rodape-inicial {
+    background-color: var(--cor-rodape);
+    color: var(--cor-texto);
+    padding: 25px;
+    text-align: left;
+}
+
+.rodape-inicial p {
+    color: var(--cor-texto);
+}
+
+/* Adiciona a responsividade mobile para essa página, ela está aqui porque
+ Recebe prioridade sobre os estilos globais, já que vem depois */
+@import url("../../global/screens.css");

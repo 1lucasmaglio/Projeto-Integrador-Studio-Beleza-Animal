@@ -1,9 +1,11 @@
+<details>
+<summary>🇧🇷 PT-BR</summary>
+
 # 🐾 Studio de Beleza Animal
 
 Sistema de gerenciamento e agendamento para um estabelecimento de banho e tosa, desenvolvido em **Java** como projeto acadêmico do curso de Análise e Desenvolvimento de Sistemas.
 
 ---
-
 ## Sobre o projeto
 
 O Studio de Beleza Animal é um sistema criado para facilitar o gerenciamento de um estabelecimento de banho e tosa.
@@ -57,7 +59,7 @@ O frontend se comunica com a API para cadastrar e consultar informações. Atual
 
 ## Arquitetura
 
-```text
+```
 Frontend (HTML, CSS e JavaScript)
               |
               v
@@ -103,37 +105,69 @@ Java Swing (Administração)
 
 ## Estrutura do projeto
 
-```text
+```
 StudioDeBelezaAnimalJava/
-├── dados/
+├── dados
 │   ├── administradores.csv
 │   ├── agendamentos.csv
 │   ├── animais.csv
 │   ├── clientes.csv
-│   └── servicos.csv
-│
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── login.js
-│   ├── cadastro.html
-│   ├── cadastro.js
-│   ├── cliente.html
-│   ├── animais.html
-│   ├── animais.js
-│   ├── agendamentos.html
-│   ├── agendamentos.js
-│   └── style.css
-│
-├── src/main/java/
-│   ├── api/
-│   ├── dao/
-│   ├── model/
-│   ├── service/
-│   ├── view/
-│   └── Main.java
-│
+│   ├── servicos.csv
+│   └── servicos_backup.csv
+├── frontend
+│   └── Landing
+│       ├── Css
+│       │   ├── global
+│       │   │   └── style.css
+│       │   └── pages
+│       │       ├── agendamentos
+│       │       │   └── agdstyle.css
+│       │       ├── animais
+│       │       │   └── animaistyle.css
+│       │       ├── cadastro
+│       │       │   └── Cadstyle.css
+│       │       ├── cliente
+│       │       │   └── clientestyle.css
+│       │       └── login
+│       │           └── Loginstyle.css
+│       ├── Js
+│       ├── agendamentos.html
+│       ├── agendamentos.js
+│       ├── animais.html
+│       ├── animais.js
+│       ├── cadastro.html
+│       ├── cadastro.js
+│       ├── cliente.html
+│       ├── index.html
+│       ├── login.html
+│       └── login.js
 ├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           ├── Main.java
+│           ├── api
+│           │   └── api.java
+│           ├── dao
+│           │   ├── AdministradorCSV.java
+│           │   ├── AgendamentoCSV.java
+│           │   ├── AnimalCSV.java
+│           │   ├── ClienteCSV.java
+│           │   └── ServicoCSV.java
+│           ├── model
+│           │   ├── Administrador.java
+│           │   ├── Agendamento.java
+│           │   ├── Animal.java
+│           │   ├── Cliente.java
+│           │   └── Servico.java
+│           ├── service
+│           │   ├── AdministradorService.java
+│           │   ├── AgendamentoService.java
+│           │   ├── AnimalService.java
+│           │   ├── ClienteService.java
+│           │   └── ServicoService.java
+│           └── view
+│               └── TelaPrincipal.java
 └── README.md
 ```
 
@@ -216,10 +250,249 @@ O projeto já conta com interface administrativa desktop, páginas web para clie
 As próximas etapas incluem a migração para banco de dados, melhorias nos agendamentos e testes de integração.
 
 ---
+</details>
 
-## Integrantes
+## 🐾 Animal Beauty Studio
 
-- Lucas Maglio Chiabai
-- Thiago Alexandre Marques Basílio
-- Thiago Santos de Almeida
-- Yann Sahmuel Escobar de Campos
+A management and appointment system for a pet bathing and grooming business, developed in **Java** as an academic project for the Software Development and Analysis program.
+
+---
+
+## About the project
+
+Animal Beauty Studio is a system created to make it easier to manage a pet bathing and grooming business.
+
+The system allows you to register clients, pets, services, and appointments. It also includes a web interface for customers and a Java Swing desktop interface for administration.
+
+## How it works
+
+The project is organized into layers:
+
+- `model` — represents the system’s objects, such as Client, Pet, Service, Appointment, and Administrator.
+- `dao` — handles reading and writing data to CSV files.
+- `service` — contains business operations and rules.
+- `view` — contains the administrative interface developed with Java Swing.
+- `api` — exposes the system’s functionality through an HTTP API using Javalin.
+- `frontend` — contains the web pages developed with HTML, CSS, and JavaScript.
+
+The frontend communicates with the API to register and query information. Currently, data is stored in CSV files.
+
+---
+
+## Features
+
+**Customer area (web)**
+
+- Client registration
+- Client login
+- Pet registration linked to the client
+- Viewing registered pets
+- Browsing available services
+- Booking appointments
+- Viewing the client’s appointments
+- Displaying service prices according to the pet’s size
+
+**Administrative area (desktop)**
+
+- Administrator registration and management
+- Client and pet management
+- Service registration and management
+- Service pricing by size (S, M, and L)
+- Appointment management
+
+**Backend**
+
+- HTTP API developed with Javalin
+- Frontend-backend communication
+- Layered architecture
+- Data persistence in CSV files
+
+---
+
+## Architecture
+
+```text
+Frontend (HTML, CSS, and JavaScript)
+              |
+              v
+        API (Javalin)
+              |
+              v
+           SERVICE
+              |
+              v
+             DAO
+              |
+              v
+        CSV Files
+
+
+Java Swing (Administration)
+              |
+              v
+           SERVICE
+              |
+              v
+             DAO
+              |
+              v
+        CSV Files
+```
+## Technologies used
+
+- **Java 21**: Backend development
+- **Java Swing**: Desktop administration interface
+- **Javalin**: HTTP API
+- **HTML**: Page structure
+- **CSS**: Styling
+- **JavaScript**: API interaction
+- **Maven**: Dependency management
+- **CSV**: Current data storage (in future change to mySQL)
+- **Git and GitHub**: Version control and collaboration
+
+## Project Structure
+```
+StudioDeBelezaAnimalJava/
+├── dados
+│   ├── administradores.csv
+│   ├── agendamentos.csv
+│   ├── animais.csv
+│   ├── clientes.csv
+│   ├── servicos.csv
+│   └── servicos\_backup.csv
+├── frontend
+│   └── Landing
+│       ├── Css
+│       │   ├── global
+│       │   │   └── style.css
+│       │   └── pages
+│       │       ├── agendamentos
+│       │       │   └── agdstyle.css
+│       │       ├── animais
+│       │       │   └── animaistyle.css
+│       │       ├── cadastro
+│       │       │   └── Cadstyle.css
+│       │       ├── cliente
+│       │       │   └── clientestyle.css
+│       │       └── login
+│       │           └── Loginstyle.css
+│       ├── Js
+│       ├── agendamentos.html
+│       ├── agendamentos.js
+│       ├── animais.html
+│       ├── animais.js
+│       ├── cadastro.html
+│       ├── cadastro.js
+│       ├── cliente.html
+│       ├── index.html
+│       ├── login.html
+│       └── login.js
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           ├── Main.java
+│           ├── api
+│           │   └── api.java
+│           ├── dao
+│           │   ├── AdministradorCSV.java
+│           │   ├── AgendamentoCSV.java
+│           │   ├── AnimalCSV.java
+│           │   ├── ClienteCSV.java
+│           │   └── ServicoCSV.java
+│           ├── model
+│           │   ├── Administrador.java
+│           │   ├── Agendamento.java
+│           │   ├── Animal.java
+│           │   ├── Cliente.java
+│           │   └── Servico.java
+│           ├── service
+│           │   ├── AdministradorService.java
+│           │   ├── AgendamentoService.java
+│           │   ├── AnimalService.java
+│           │   ├── ClienteService.java
+│           │   └── ServicoService.java
+│           └── view
+│               └── TelaPrincipal.java
+└── README.md
+```
+## How to run
+### 1. Administrative interface
+Run:
+```
+src/main/java/Main.java
+```
+The program will open the graphical interface developed with Java Swing.
+### 2. API
+Run:
+```
+src/main/java/api/api.java
+```
+
+The API will start at:
+http://localhost:7070
+
+Some of the available routes:
+```
+/clientes
+/animais
+/servicos
+/agendamentos
+/administradores
+```
+### 3. Web interface
+
+With the API running:
+
+    Open the project in Visual Studio Code.
+    Install the Live Server extension if you do not already have it.
+    Open the frontend/index.html file.
+    Click Open with Live Server.
+
+The home page will open in the browser and allow access to the customer features.
+
+## Status
+
+🚧 In development
+
+The project already includes a desktop administration interface, customer web pages, an HTTP API, and CSV-based storage.
+
+Upcoming work includes database migration, scheduling improvements, and integration testing.
+
+## Autors
+<table>
+  <tr>
+      <td align="center">
+            <a href="https://github.com/1lucasmaglio" title="Sobre">
+                  <img src="https://avatars.githubusercontent.com/u/266368513?v=4" width="100px;"   alt="Foto do Lucas Maglio no GitHub"/><br>
+                  <sub>
+                        <b>Lucas Maglio</b>
+                  </sub>
+            </a>
+     </td>
+     <td align="center">
+            <a href="https://github.com/YannEscobar" title="Sobre">
+        <img src="https://avatars.githubusercontent.com/u/240530528?v=4" width="100px;" alt="Foto do Yann no GitHub"/><br>
+        <sub>
+          <b>Yann Escobar</b>
+        </sub>
+            </a>
+      </td> 
+      <td align="center">
+            <a href="" title="Sobre">
+                  <img src="https://avatars.githubusercontent.com/u/288315951?v=4" width="100px" alt="Foto do Thiago Almeida no GitHub"><br>
+                  <sub>
+                        <b>Thiago Almeida</b>
+                  </sub>
+            </a>
+      </td>
+      <td align="center">
+            <a href="" title="Sobre">
+                  <img src="https://avatars.githubusercontent.com/u/288312813?v=4" width="100px" alt="Foto do Thiago Almeida no GitHub"><br>
+                  <sub>
+                        <b>Thiago Basilio</b>
+                  </sub>
+            </a>
+      </td>
+  </tr>
+</table>

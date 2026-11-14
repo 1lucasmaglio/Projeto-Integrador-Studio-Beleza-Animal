@@ -18,7 +18,7 @@ formulario.addEventListener("submit", function(event) {
     };
 
     // Envia os dados para a API Java verificar o login.
-    fetch("http://localhost:7070/login", {
+    fetch("http://localhost:7070/Client/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

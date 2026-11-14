@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="Css/global/variables.css">
+    <link rel="stylesheet" href="Css/global/style.css">
+    <link rel="stylesheet" href="Css/pages/pginicial/pginicialStyle.css">
+    <link rel="stylesheet" href="Css/global/screens.css"> <!-- Responsividade sem pre em último mais importante -->
+</head>
+<body class="pagina-inicial">
+
+    <header class="cabecalho">
+        <!-- Logomarca do site aqui 'Talvez em png'-->
+        <h1>Studio de Beleza Animal</h1>
+
+        <nav class="menu-inicial">
+            <a href="index.html">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre Nós</a>
+
+            <!-- Links exibidos para visitantes. -->
+            <a href="login.html" id="linkEntrar">Entrar</a>
+            <a href="cadastro.html" id="linkCadastro">Cadastre-se</a>
+
+            <!-- Menu exibido quando o cliente está logado. -->
+            <div class="perfil-container" id="perfilContainer" hidden>
+
+                <button
+                    type="button"
+                    id="botaoPerfil"
+                    class="botao-perfil"
+                    aria-label="Abrir menu do perfil"
+                    aria-expanded="false"
+                    aria-controls="menuPerfil">
+                    <svg width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
+                    </svg>
+                </button>
+
+                <div id="menuPerfil" class="menu-perfil" hidden>
+                    <a href="perfil.html">Meu Perfil</a>
+                    <a href="meus-agendamentos.html">Meus Agendamentos</a>
+                    <a href="animais.html">Meus Animais</a>
+
+                    <button type="button" id="botaoSair">
+                        Sair da Conta
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="conteudo-inicial">
+
+        <section class="apresentacao">
+            <h1 class="hero-titulo">
+                <span>Seu</span>
+                <span class="hero-vao">
+                    <img src="Img/dogHero.png" alt=" Imagem de um Golden Retriever" class="imagem-pet">
+                </span>
+                <span>Pet Limpo</span>
+            </h1>
+
+            <div class="hero-rodape">
+                <div class="hero-avaliacao">
+                    ★★★★★ <small>4,5 Média de avaliação</small>
+                </div>
+                <div class="hero-texto">
+                    <p>lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</p>
+                    <a href="login.html" class="botao-inicial" id="botaoAgendar">Saiba Mais →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="secao-inicial">
+            <h2 class="titulo-servicos">Nossos Serviços</h2>
+
+            <div class="servicos-iniciais">
+                <article class="cartao-servico">
+                    <div class="cartao-imagem">
+                        <img src="Img/banho.jpg" alt="Gato recebendo banho" loading="lazy">
+                        <h3>Banho</h3>
+                    </div>
+                    <p>Higiene e cuidado para o seu pet.</p>
+                </article>
+
+                <article class="cartao-servico">
+                    <div class="cartao-imagem">
+                        <img src="Img/tosa.jpg" alt="Cachorro sendo tosado" loading="lazy">
+                        <h3>Tosa</h3>
+                    </div>
+                    <p>Cuidados com a pelagem do seu animal.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre" class="secao-inicial">
+            <h2>Sobre Nós</h2>
+
+            <p>
+                No Studio de Beleza Animal, nosso objetivo é
+                oferecer cuidado e carinho para os animais,
+                proporcionando uma experiência agradável
+                para os pets e seus tutores.
+            </p>
+        </section>
+
+        <section class="chamada-final">
+            <h2>Pronto para agendar?</h2>
+            <p id="textoChamadaFinal">
+                Entre na sua conta ou faça seu cadastro.
+            </p>
+
+            <a href="cadastro.html" class="botao-inicial" id="botaoComecar">
+                Começar Agora
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="rodape-inicial">
+        <h4>Studio de Beleza Animal</h4>
+        <p>All rights reserved projeto integrador 2026</p>
+        
+    </footer>
+
+    <script src="Js/index.js">
+    </script>
+</body>
+</html>
