@@ -1,0 +1,199 @@
+package service;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.AgendamentoCSV;
+import model.Agendamento;
+
+public class AgendamentoService {
+
+    private List<Agendamento> agendamentos;
+    private AgendamentoCSV dao;
+
+    public AgendamentoService() {
+        agendamentos = new ArrayList<>();
+        dao = new AgendamentoCSV();
+    }
+
+    public void carregar() throws Exception {
+        agendamentos = dao.listar();
+    }
+
+    public void salvar() throws Exception {
+        dao.salvar(agendamentos);
+    }
+
+    public boolean horarioDisponivel(String data, String hora) {
+
+        int quantidade = 0;
+
+        for (Agendamento agendamento : agendamentos) {
+
+            if (agendamento.getData().equals(data)
+                    && agendamento.getHora().equals(hora)
+                    && !agendamento.getStatus()
+                        .equalsIgnoreCase("Cancelado")) {
+
+                quantidade++;
+            }
+        }
+
+        return quantidade < 2;
+    }
+
+    public boolean diaAberto(String data) {
+
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+    LocalDate dataAgendamento = LocalDate.parse(data, formato);
+
+    DayOfWeek diaSemana = dataAgendamento.getDayOfWeek();
+
+    return diaSemana != DayOfWeek.SATURDAY
+            && diaSemana != DayOfWeek.SUNDAY
+            && diaSemana != DayOfWeek.MONDAY;
+    }   
+
+    public boolean horarioFuncionamento(String hora) {
+
+        LocalTime horario = LocalTime.parse(hora);
+
+        LocalTime abertura = LocalTime.of(7, 0);
+        LocalTime fechamento = LocalTime.of(18, 0);
+
+        return !horario.isBefore(abertura)
+                && horario.isBefore(fechamento);
+    }
+
+    public boolean adicionar(Agendamento agendamento) {
+
+        if (!diaAberto(agendamento.getData())) {
+        return false;
+        }
+
+        if (!horarioFuncionamento(agendamento.getHora())) {
+        return false;
+        }
+
+        if (!horarioDisponivel(
+                agendamento.getData(),
+                agendamento.getHora())) {
+
+            return false;
+        }
+
+        int maiorId = 0;
+
+        for (Agendamento a : agendamentos) {
+            if (a.getCodigo() > maiorId) {
+                maiorId = a.getCodigo();
+            }
+        }
+
+        agendamento.setCodigo(maiorId + 1);
+        agendamentos.add(agendamento);
+
+        return true;
+
+    }
+
+    public List<Agendamento> listar() {
+        return agendamentos;
+    }
+
+    public Agendamento buscarPorId(int codigo) {
+
+        for (Agendamento agendamento : agendamentos) {
+            if (agendamento.getCodigo() == codigo) {
+                return agendamento;
+            }
+        }
+
+        return null;
+    }
+
+
+    // Atualiza a data e o horário de um agendamento existente.
+    public boolean atualizar(int codigo, String data, String hora) {
+
+        Agendamento agendamento = buscarPorId(codigo);
+
+        if (agendamento == null) {
+            return false;
+        }
+
+        if (!agendamento.getStatus().equalsIgnoreCase("Agendado")) {
+            return false;
+        }
+
+        // Verifica se a data e o horário são válidos.
+        try {
+            if (!diaAberto(data) || !horarioFuncionamento(hora)) {
+                return false;
+            }
+        } catch (java.time.format.DateTimeParseException erro) {
+            return false;
+        }
+
+        // Verifica a disponibilidade sem contar o próprio agendamento.
+        int quantidade = 0;
+
+        for (Agendamento a : agendamentos) {
+            if (a.getCodigo() != codigo
+                    && a.getData().equals(data)
+                    && a.getHora().equals(hora)
+                    && !a.getStatus().equalsIgnoreCase("Cancelado")) {
+
+                quantidade++;
+            }
+        }
+
+        if (quantidade >= 2) {
+            return false;
+        }
+
+        agendamento.setData(data);
+        agendamento.setHora(hora);
+
+        return true;
+    }
+
+
+    public boolean cancelar(int codigo) {
+
+        Agendamento agendamento = buscarPorId(codigo);
+
+        if (agendamento == null) {
+            return false;
+        }
+
+        // Impede o cancelamento de agendamentos já cancelados.
+        if (agendamento.getStatus().equalsIgnoreCase("Cancelado")) {
+            return false;
+        }
+
+        // Converte a data e a hora do agendamento.
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        LocalDate data = LocalDate.parse(agendamento.getData(), formato);
+        LocalTime hora = LocalTime.parse(agendamento.getHora());
+
+        // Calcula o momento exato do agendamento.
+        java.time.LocalDateTime dataHoraAgendamento = data.atTime(hora);
+
+        // Calcula o limite mínimo de 24 horas.
+        java.time.LocalDateTime limite = java.time.LocalDateTime.now().plusHours(24);
+
+        // Impede o cancelamento quando faltam menos de 24 horas.
+        if (dataHoraAgendamento.isBefore(limite)) {
+            return false;
+        }
+
+        agendamento.setStatus("Cancelado");
+        return true;
+    }
+}
