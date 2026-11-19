@@ -1,0 +1,24 @@
+@import url("../../global/style.css");
+
+/* Estilização da página do cliente*/
+
+/* ========================================
+   PÁGINA MEU PERFIL
+======================================== */
+
+#botaoAlterarSenha {
+    margin-bottom: 25px;
+}
+
+body:has(#formPerfil) main > nav {
+    margin-top: 25px;
+    gap: 15px;
+}
+
+#formSenha {
+    margin-top: 20px;
+}
+
+#formSenha[hidden] {
+    display: none;
+}

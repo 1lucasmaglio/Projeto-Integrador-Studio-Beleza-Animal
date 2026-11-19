@@ -1,0 +1,180 @@
+/* ========================================
+   RESPONSIVIDADE PARA TABLETS E CELULARES
+======================================== */
+
+/* OBS.: Mover para um arquivo separado depois 14/10/2026*/
+@import url("style.css");
+@media (max-width: 750px) {
+
+    body {
+        padding: 20px;
+    }
+
+    main {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    /* ========================================
+    RESPONSIVIDADE DO HERO
+    ======================================== */
+
+    .hero-titulo{
+        flex-direction: column; /* Muda a estrutura dos elementos, ficando com "seu" depois, imagem, e por fim: "Pet limpo"*/
+        align-items: center; /* Centraliza os elementos */
+        font-size: 17vw; /* ajusta conforme a largura da tela */
+        text-align: center;
+        color: var(--cor-texto-claro);
+        text-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    .hero-vao {
+        position: static; /* Remove o posicionamento absoluto, evita aqueles bugs visuai bizarros */
+        width: auto; /* Ajusta a largura conforme o conteúdo */
+        height: auto; /* Mesma coisa que a linha de cima, mas, tratando da altura*/
+    }
+
+    .imagem-pet{
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none; /* Remove a transformação de posição */
+        display: block; /* Imagem é exibida como bloco*/
+        width: 70vw;
+        max-width: 340px;
+        margin: -0.35em auto; /* Sobrepõe as duas palavras*/
+    }
+
+    .hero-rodape{
+        min-height: 0; /* Remove a altura mínima. Se ajusta naturalmente */
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+
+    form {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .pagina-inicial {
+        padding: 0;
+    }
+
+    .cabecalho {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-inicial {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .apresentacao {
+        padding: 60px 20px;
+    }
+
+    .apresentacao h2 {
+        font-size: 30px;
+    }
+
+    .cartao-servico {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVIDADE PARA CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    main {
+        width: 100%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    input, select, button {
+        font-size: 16px;
+    }
+
+    .cabecalho {
+        padding: 20px 12px;
+    }
+
+    .cabecalho h1 {
+        font-size: 22px;
+    }
+
+    .menu-inicial {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-inicial a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-inicial .menu-perfil a {
+        text-align: left;
+    }
+
+    .apresentacao {
+        padding: 50px 15px;
+    }
+
+    .secao-inicial {
+        padding: 40px 15px;
+    }
+
+    .chamada-final {
+        padding: 40px 15px;
+    }
+
+    .cartao-servico {
+        width: 100%;
+        max-width: 300px;
+        padding: 20px;
+    }
+
+    .modal-conteudo {
+        padding: 20px;
+    }
+
+    .modal-botoes {
+        flex-direction: column;
+    }
+
+    .detalhes-agendamento {
+        grid-template-columns: 1fr;
+    }
+}

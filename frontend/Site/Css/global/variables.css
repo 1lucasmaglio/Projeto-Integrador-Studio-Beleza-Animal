@@ -1,0 +1,45 @@
+:root {
+    /*===================
+        PALETA DE CORES
+    =====================
+    */
+    --cor-logotipo: #F15A24;
+    --cor-principal-0: #00488C;
+    --cor-principal-1: #022648;
+    --cor-secundaria-0: #61C4F2;
+    --cor-secundaria-1: #4594b9;
+    --cor-terciaria-0: #735F55;
+    --cor-terciaria-1: #5A4B42;
+
+    --cor-texto: #263548;
+    --cor-texto-promocao: #FFD25E;
+    --cor-texto-claro: #FFFFFF;
+    --cor-fundo: #f5f9ff;
+    --cor-rodape: #d0d6dd;
+    --cor-borda: #d5e2f2;
+
+    --cor-erro: #c44758;
+
+        --cor-marrom-claro: #735f55;   /* início do gradiente do Sobre Nós */
+    --cor-marrom-medio: #66544b;   /* fim do gradiente do Sobre Nós */
+    --cor-laranja: #f15a24;        /* fundo do "Como funciona?" */
+    --cor-painel: #782d12;         /* painel marrom */
+    --cor-passo: #54200d;          /* cartões dos 3 passos */
+    --cor-azul: #00478f;           /* azul do logo e dos textos do rodapé */
+    --cor-azul-claro: #4493b9;     /* divisor e ícones */
+
+    /*=================
+            FONTES
+    ===================*/
+    @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+    --fonte-destaque: 'Capriola', sans-serif;
+
+    @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+    --fonte-logotipo: 'Bagel Fat One', cursive;
+
+    @import url('https://fonts.googleapis.com/css2?family=Liter&display=swap');
+    --fonte-padrao: 'Liter', sans-serif;
+
+    @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+    --fonte-titulo: 'Momo Trust Display', sans-serif;
+}

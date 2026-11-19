@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio de Beleza Animal</title>
+    <link rel="stylesheet" href="Css/global/variables.css">
+    <link rel="stylesheet" href="Css/global/style.css">
+    <link rel="stylesheet" href="Css/pages/pginicial/pginicialStyle.css">
+    <link rel="stylesheet" href="Css/global/screens.css"> <!-- Responsividade sem pre em último mais importante -->
+</head>
+<body class="pagina-inicial">
+
+    <header class="cabecalho">
+        <!-- Logomarca do site aqui 'Talvez em png'-->
+        <h1>Studio de Beleza Animal</h1>
+
+        <nav class="menu-inicial">
+            <a href="index.html">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre Nós</a>
+
+            <!-- Links exibidos para visitantes. -->
+            <a href="login.html" id="linkEntrar">Entrar</a>
+            <a href="cadastro.html" id="linkCadastro">Cadastre-se</a>
+
+            <!-- Menu exibido quando o cliente está logado. -->
+            <div class="perfil-container" id="perfilContainer" hidden>
+
+                <button
+                    type="button"
+                    id="botaoPerfil"
+                    class="botao-perfil"
+                    aria-label="Abrir menu do perfil"
+                    aria-expanded="false"
+                    aria-controls="menuPerfil">
+                    <svg width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
+                    </svg>
+                </button>
+
+                <div id="menuPerfil" class="menu-perfil" hidden>
+                    <a href="perfil.html">Meu Perfil</a>
+                    <a href="meus-agendamentos.html">Meus Agendamentos</a>
+                    <a href="animais.html">Meus Animais</a>
+
+                    <button type="button" id="botaoSair">
+                        Sair da Conta
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="conteudo-inicial">
+        <section class="apresentacao">
+            <h1 class="hero-titulo">
+                <span>Seu</span>
+                <span class="hero-vao">
+                    <img src="Img/dogHero.png" alt=" Imagem de um Golden Retriever" class="imagem-pet">
+                </span>
+                <span>Pet Limpo</span>
+            </h1>
+
+            <div class="hero-rodape">
+                <div class="hero-avaliacao">
+                    ★★★★★ <small>4,5 Média de avaliação</small>
+                </div>
+                <div class="hero-texto">
+                    <p>lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</p>
+                    <a href="login.html" class="botao-inicial" id="botaoAgendar">Saiba Mais →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="secao-inicial">
+            <h2 class="titulo-servicos">Nossos Serviços</h2>
+
+            <div class="servicos-iniciais">
+                <article class="cartao-servico">
+                    <div class="cartao-imagem">
+                        <img src="Img/banho.jpg" alt="Gato recebendo banho" loading="lazy">
+                        <h3>Banho</h3>
+                    </div>
+                    <p>Higiene e cuidado para o seu pet.</p>
+                </article>
+
+                <article class="cartao-servico">
+                    <div class="cartao-imagem">
+                        <img src="Img/tosa.jpg" alt="Cachorro sendo tosado" loading="lazy">
+                        <h3>Tosa</h3>
+                    </div>
+                    <p>Cuidados com a pelagem do seu animal.</p>
+                </article>
+            </div>
+        </section>
+
+    <section id="sobre" class="sobre">
+ 
+        <div class="sobre-conteudo">
+            <h2>Sobre Nós</h2>
+ 
+            <div class="sobre-texto" id="textoSobre">
+                <p>
+                    No Studio de Beleza Animal, nosso objetivo é oferecer
+                    cuidado e carinho para os animais, proporcionando uma
+                    experiência agradável para os pets e seus tutores.
+                </p>
+                <!-- TEXTO DE EXEMPLO: troque pelo texto real -->
+                <p>
+                    Cada atendimento é feito com paciência e atenção ao
+                    conforto do animal, respeitando o tempo e o jeito de
+                    cada pet.
+                </p>
+                <p>
+                    Conheça nossos serviços e agende o melhor horário
+                    para você e para o seu amigo.
+                </p>
+            </div>
+ 
+            <!-- "hidden": o JS mostra o botão. Sem JS, ele não aparece. -->
+            <button type="button" id="botaoLerMais" class="botao-ler-mais"
+                    aria-expanded="false" aria-controls="textoSobre" hidden>
+                Ler Mais
+            </button>
+        </div>
+ 
+        <!-- CONFIRME se esses números são reais antes de publicar.
+             Em português o decimal usa vírgula: 1,5 mil (o mockup tem "1.5"). -->
+        <ul class="estatisticas">
+            <li>
+                <span class="estat-prefixo">Mais de:</span>
+                <strong class="estat-numero">1,5 mil</strong>
+                <span class="estat-legenda">Clientes satisfeitos</span>
+            </li>
+            <li>
+                <span class="estat-prefixo">Mais de:</span>
+                <strong class="estat-numero">5 mil</strong>
+                <span class="estat-legenda">Pets atendidos</span>
+            </li>
+        </ul>
+ 
+        <div class="sobre-imagem">
+            <img src="Img/Cachorro-tomando-banho.png"
+                 alt="Cachorro de olhos fechados recebendo banho"
+                 loading="lazy">
+        </div>
+    </section>
+ 
+ 
+    <!-- ===== COMO FUNCIONA ===== -->
+    <div class="fundo-laranja">
+        <section id="como-funciona" class="como-funciona">
+
+            <p class="logo-grande"><span class="inicial">S</span>tudio de Beleza Animal</p>
+ 
+            <!-- alt vazio: o gato é decorativo -->
+            <img src="Img/gatoAzul.png" alt="" class="gato" loading="lazy">
+ 
+            <div class="passos-painel">
+                <h2>Como funciona?</h2>
+ 
+                <ol class="passos">
+                    <li class="passo">
+                        <svg class="passo-icone" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+                        </svg>
+                        <h3>Cadastre-se</h3>
+                        <p>Crie sua conta e cadastre os dados do seu pet.</p>
+                    </li>
+ 
+                    <li class="passo">
+                        <svg class="passo-icone" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+                        </svg>
+                        <h3>Agende</h3>
+                        <p>Escolha o serviço, o dia e o horário que preferir.</p>
+                    </li>
+ 
+                    <li class="passo">
+                        <svg class="passo-icone" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+                        </svg>
+                        <h3>Pet limpinho</h3>
+                        <p>Leve seu pet no horário marcado e busque-o limpo e cheiroso.</p>
+ 
+                        <!-- Mantém o id "botaoComecar": o seu JS troca o destino
+                             para quem está logado. Sem texto visível, o aria-label
+                             é o que o leitor de tela lê. -->
+                        <a href="cadastro.html" id="botaoComecar" class="passo-seta"
+                           aria-label="Começar agora">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2.5" stroke-linecap="round"
+                                 stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </div>
+    </main>
+
+<footer class="rodape-inicial">
+ 
+    <div class="rodape-principal">
+        <p class="rodape-marca">Studio de Beleza Animal</p>
+ 
+        <div class="rodape-colunas">
+            <div>
+                <h3 class="rodape-titulo">Serviços</h3>
+                <ul>
+                    <li><a href="#servicos">Banho</a></li>
+                    <li><a href="#servicos">Tosa</a></li>
+                </ul>
+            </div>
+ 
+            <div>
+                <h3 class="rodape-titulo">Sobre nós</h3>
+                <ul>
+                    <li><a href="#sobre">Nossa história</a></li>
+                </ul>
+            </div>
+ 
+            <div>
+                <h3 class="rodape-titulo">Contato</h3>
+                <!-- DADOS DE EXEMPLO: troque pelos reais -->
+                <address>
+                    <a href="tel:+5511900000000">(11) 90000-0000</a><br>
+                    Av. Sei lá, Galpão A - Osasco
+                </address>
+            </div>
+        </div>
+ 
+        <!-- REVISAR antes de publicar: razão social, CNPJ e CEP são de exemplo.
+             A frase de segurança foi copiada de um modelo (fala em informações
+             financeiras): só mantenha se for verdade e se alguém responsável aprovar. -->
+        <div class="rodape-legal">
+            <p>
+                Studio de Beleza Animal garante segurança para suas
+                informações pessoais e financeiras.<br>
+                STUDIO DE BELEZA ANIMAL SERVIÇOS PARA ANIMAIS DOMÉSTICOS LTDA.
+            </p>
+            <p>
+                CNPJ 12.345.678/0000-64 - Av. Sei lá, Galpão A - Osasco,
+                São Paulo SP CEP: 00000-000
+            </p>
+            <p>
+                Studio de Beleza Animal, todos os direitos reservados
+                <span id="anoAtual">2026</span>
+            </p>
+        </div>
+    </div>
+ 
+    <div class="rodape-social">
+        <h2 class="rodape-titulo-grande">Redes Sociais:</h2>
+ 
+        <!-- Ícones genéricos. Troque pelos ícones oficiais de cada rede
+             e coloque os links reais em href. -->
+        <ul class="redes">
+            <li>
+                <a href="#" aria-label="Instagram do Studio de Beleza Animal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="#" aria-label="WhatsApp do Studio de Beleza Animal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+ 
+</footer>
+
+    <script src="Js/index.js">
+    </script>
+</body>
+</html>
