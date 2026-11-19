@@ -177,4 +177,83 @@
     .detalhes-agendamento {
         grid-template-columns: 1fr;
     }
+    .como-funciona {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "logo"
+            "painel"
+            "gato";
+        padding: 40px 5% 0;        /* sem padding embaixo: o gato encosta no fim */
+    }
+ 
+    .gato {
+        max-width: 220px;
+        margin-top: 8px;
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE SEÇÕES SOBRE NÓS E RODAPÉ
+========================================
+
+    /* Como funciona: tudo em coluna única */
+    .como-funciona {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "logo"
+            "painel"
+            "gato";
+        padding: 40px 5% 0;
+    }
+ 
+    .gato {
+        max-width: 220px;
+        margin-top: 8px;
+    }
+
+@media (max-width: 750px) {
+ 
+    /* Os 3 passos só empilham em telas de celular */
+    .passos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+ 
+    .passo {
+        min-height: 0;
+    }
+ 
+    /* Sobre Nós: texto, números e foto empilhados */
+    .sobre {
+        grid-template-columns: minmax(0, 1fr);
+    }
+ 
+    .sobre-conteudo {
+        padding: 40px 6% 0;
+    }
+ 
+    .estatisticas {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 28px 6%;
+    }
+ 
+    .sobre-imagem {
+        min-height: 260px;
+    }
+ 
+    /* Rodapé: o divisor vira uma linha horizontal */
+    .rodape-inicial {
+        grid-template-columns: minmax(0, 1fr);
+    }
+ 
+    .rodape-principal {
+        padding-right: 0;
+    }
+ 
+    .rodape-social {
+        margin-top: 24px;
+        padding: 20px 0 0;
+        border-left: 0;
+        border-top: 3px solid var(--cor-azul-claro);
+    }
 }
