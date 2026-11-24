@@ -525,7 +525,6 @@ h2 {
 .fundo-laranja {
     background-color: var(--cor-laranja);
 }
- 
 .logo-grande {
     grid-area: logo;
     margin: 0;
@@ -562,6 +561,7 @@ h2 {
     text-align: center;
 }
  
+/* Parte de "trás" dos passos, vai definir o layout dos seus filhos*/
 .passos {
     display: grid;
     grid-template-columns: 1fr 1.25fr 1fr;
@@ -580,7 +580,7 @@ h2 {
     color: #ffffff;
 }
  
-.passo-icone {
+.passo-icone { /* Disposição do ícone em cima de cada passo*/
     display: block;
     width: 34px;
     height: 34px;
@@ -599,7 +599,8 @@ h2 {
     line-height: 1.5;
 }
  
-/* Botão redondo do 3º passo. Os dois :hover garantem que o link
+/* Botão redondo do 3º passo. 
+   Os dois :hover garantem que o link
    global (a:hover) não troque a cor da seta. */
 .passo-seta,
 .passo-seta:hover {
@@ -623,8 +624,7 @@ h2 {
     outline: 3px solid #ffffff;
     outline-offset: 3px;
 }
- 
-.passo-seta svg {
+.passo-seta svg { /* Tamanho da seta */
     width: 18px;
     height: 18px;
 }

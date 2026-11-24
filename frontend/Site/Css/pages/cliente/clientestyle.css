@@ -1,4 +1,6 @@
 @import url("../../global/style.css");
+@import url("../../global/screens.css");
+@import url("../../global/variables.css");
 
 /* Estilização da página do cliente*/
 
@@ -21,4 +23,88 @@ body:has(#formPerfil) main > nav {
 
 #formSenha[hidden] {
     display: none;
+}
+
+
+/*
+========================
+    Nav Bar e afins
+========================
+*/
+body{
+    padding: 0;
+    margin: 0;
+}
+.cabecalho {
+    background-color: var(--cor-terciaria-1);
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 26px;
+    text-decoration: none;
+    flex-wrap: wrap;
+}
+/* 'link-titulo' está em global/style.css*/
+
+ul{
+    text-decoration: none;
+    list-style: none;
+}
+.menu{
+    display: flex;
+    a{
+        color: var(--cor-texto-claro);
+        font-size: 1.6rem;
+    }
+    a:hover{
+        color: var(--cor-texto-promocao);
+    }
+}
+
+/*
+=======================================
+    Painel Principal do Área clientes
+=======================================
+*/
+.painel-pai{
+    padding: 14px clamp(12px, 2vw, 22px) clamp(14px, 2vw, 22px);
+    border-radius: 22px;
+    background-color: var(--cor-rodape); /* PLace holder de cor */
+}
+.painel-pai h1{
+    margin: 0 32px 32px;              /* zera o margin-right*/
+    color: var(--cor-azul);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-align: center;
+}
+
+/*
+================
+    AÇÕES
+================
+*/
+.painel-acoes{
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(10px, 1.6vw, 18px);
+    margin: 0;
+    list-style: none;
+    padding: 16px; /* Evita que as ações fiquem muito próximas da borda*/
+}
+.acao{
+    background-color: var(--cor-fundo);
+    border-radius: 12px;
+    grid-column: 2;
+    a{
+        text-decoration: none;
+    }
+}
+.acao-animal{
+    background-color: darkslategrey;
+    border-radius: 22px;
+    grid-column: 1;
+    a{
+        text-decoration: none;
+    }
 }

@@ -6,30 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Cliente - Studio de Beleza Animal</title>
     <link rel="stylesheet" href="Css/global/variables.css">
-    <link rel="stylesheet" href="Css/pages/cliente/clientestyle.css">
     <link rel="stylesheet" href="Css/global/style.css">
+    <link rel="stylesheet" href="Css/pages/cliente/clientestyle.css">
 </head>
-<body>
-
     <!-- O título leva o cliente de volta à página inicial. -->
-    <h1>
-        <a href="index.html" class="link-titulo">
-            Studio de Beleza Animal
-        </a>
-    </h1>
-
-    <h2>Área do Cliente</h2>
-
-    <main>
-        <h3>Bem-vindo!</h3>
-        <p>O que você deseja fazer?</p>
-
+    <header class="cabecalho">
+        <h1>
+            <a href="index.html" class="link-titulo">
+                Studio de Beleza Animal
+            </a>
+        </h1>
         <nav>
-            <a href="animais.html">Meus Animais</a>
-            <a href="agendamentos.html">Agendamentos</a>
-            <a href="meus-agendamentos.html">Meus Agendamentos</a>
+            <ul class="menu">
+                <li><a href="perfil.html">Perfil</a></li>
+            </ul>
         </nav>
-    </main>
 
-</body>
+    </header>
+    <body>
+        <main>
+            <h2>Área do Cliente</h2>
+            <div class="painel-pai">
+                <h1>Olá, (nome do cliente)</h1>
+                <ol class="painel-acoes">
+                    <li class="acao-animal">
+                        <h3>
+                            <a href="animais.html">Animais</a>
+                        </h3>
+                    </li>
+                    <li class="acao">
+                        <h3> <!-- Apesar do nome meio confuso tem a função de agendar -->
+                            <a href="agendamentos.html">Agendar</a>
+                        </h3>
+                    </li>
+                    <li class="acao">
+                        <h3>
+                            <a href="meus-agendamentos.html">Agendamentos</a>
+                        </h3>
+                    </li>
+                </ol>
+            </div>
+        </main>
+    </body>
 </html>

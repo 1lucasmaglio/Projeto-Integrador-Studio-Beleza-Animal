@@ -13,14 +13,14 @@
 
     --cor-texto: #263548;
     --cor-texto-promocao: #FFD25E;
-    --cor-texto-claro: #FFFFFF;
+    --cor-texto-claro: #f8f8f8;
     --cor-fundo: #f5f9ff;
     --cor-rodape: #d0d6dd;
     --cor-borda: #d5e2f2;
 
     --cor-erro: #c44758;
 
-        --cor-marrom-claro: #735f55;   /* início do gradiente do Sobre Nós */
+    --cor-marrom-claro: #735f55;   /* início do gradiente do Sobre Nós */
     --cor-marrom-medio: #66544b;   /* fim do gradiente do Sobre Nós */
     --cor-laranja: #f15a24;        /* fundo do "Como funciona?" */
     --cor-painel: #782d12;         /* painel marrom */

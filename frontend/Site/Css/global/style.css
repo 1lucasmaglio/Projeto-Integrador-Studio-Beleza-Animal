@@ -22,18 +22,32 @@ body {
 main, form, .cartao-servico {
     overflow-wrap: anywhere;
 }
-
 a {
     color: var(--cor-secundaria-1);
+    text-decoration: none;
 }
 
 a:hover {
     color: var(--cor-secundaria-0);
     font-size: 17px;
 }
+
+/* ========================================
+   TÍTULO CLICÁVEL
+======================================== */
+
+.link-titulo {
+    color: var(--cor-logotipo);
+    text-decoration: none;
+    font-family: var(--fonte-logotipo);
+}
+
+.link-titulo:hover {
+    color: var(--cor-principal-1);
+    text-decoration: none;
+    font-size: 30px;
+}
 /* FIM DOS ESTILOS GERAIS, CADA PÁGINA TEM SEU CSS*/
-
-
 /* ========================================
    FORMULÁRIOS
 ======================================== */
@@ -74,6 +88,13 @@ input:focus, select:focus {
     box-shadow: 0 0 0 3px rgba(52, 123, 209, 0.15);
 }
 
+
+
+
+
+
+
+
 /* Checkbox do Leva e Traz */
 
 input[type="checkbox"] {
@@ -84,8 +105,10 @@ input[type="checkbox"] {
     vertical-align: middle;
 }
 
-/* Botões dos formulários */
 
+
+
+/* Botões dos formulários */
 button {
     width: 100%;
     padding: 12px;
@@ -115,38 +138,6 @@ button:focus-visible, a:focus-visible {
     outline-offset: 3px;
 }
 
-
-/* ========================================
-   ÁREA DO CLIENTE
-======================================== */
-
-/* ========================================
-   MENU DE NAVEGAÇÃO
-======================================== */
-
-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-nav a {
-    padding: 12px;
-    background-color: #e8f2ff;
-    color: var(--cor-secundaria-1);
-    text-decoration: none;
-    border: 1px solid #c6daf2;
-    border-radius: 7px;
-    font-weight: 500;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-nav a:hover {
-    background-color: #d5e8ff;
-    color: var(--cor-secundaria-0);
-    transform: translateY(-1px);
-}
-
 /* ========================================
    ACESSIBILIDADE
 ======================================== */
@@ -161,30 +152,9 @@ nav a:hover {
         transform: none;
     }
 }
-
-
-
-
-
-/* ========================================
-   TÍTULO CLICÁVEL
-======================================== */
-
-.link-titulo {
-    color: var(--cor-principal-0);
-    text-decoration: none;
-}
-
-.link-titulo:hover {
-    color: var(--cor-principal-1);
-    text-decoration: none;
-}
-
-
 /* ========================================
    VISIBILIDADE DO MENU CONFORME O LOGIN
 ======================================== */
-
 .menu-inicial [hidden] {
     display: none;
 }
