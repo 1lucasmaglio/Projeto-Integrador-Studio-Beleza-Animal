@@ -1,8 +1,3 @@
-@import url("../../global/style.css");
-@import url("../../global/screens.css");
-@import url("../../global/variables.css");
-
-/* Estilização da página do cliente*/
 
 /* ========================================
    PÁGINA MEU PERFIL
@@ -25,6 +20,11 @@ body:has(#formPerfil) main > nav {
     display: none;
 }
 
+*,
+*::before,
+*::after{
+    box-sizing: border-box;    
+}
 
 /*
 ========================
@@ -41,17 +41,23 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 26px;
+    gap: 16px;
     text-decoration: none;
     flex-wrap: wrap;
 }
+
 /* 'link-titulo' está em global/style.css*/
+
+.cabecalho nav {
+    margin-left: auto;
+}
 
 ul{
     text-decoration: none;
     list-style: none;
 }
 .menu{
+    justify-content: flex-end;
     display: flex;
     a{
         color: var(--cor-texto-claro);
@@ -62,11 +68,18 @@ ul{
     }
 }
 
+h2 {
+    font-family: var(--fonte-destaque);
+    color: var(--cor-texto-promocao);
+    text-shadow: rgba(0, 0, 0, 0.25);
+}
+
 /*
 =======================================
     Painel Principal do Área clientes
 =======================================
 */
+
 .painel-pai{
     padding: 14px clamp(12px, 2vw, 22px) clamp(14px, 2vw, 22px);
     border-radius: 22px;
@@ -84,27 +97,150 @@ ul{
     AÇÕES
 ================
 */
+
 .painel-acoes{
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1.5fr 1fr; /* Trata das dimenções e quantidades de COLUNAS no grid */
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+
+    aspect-ratio: 16 / 9; /* Uma altura definida ao painel, tipo a orientação de um monitor*/
     gap: clamp(10px, 1.6vw, 18px);
     margin: 0;
-    list-style: none;
     padding: 16px; /* Evita que as ações fiquem muito próximas da borda*/
+    list-style: none;
+    box-sizing: border-box;
+    list-style: none;
 }
+
+/* Card de "Animais" escolhi ele para ter destaque já que é um banho e tosa. */
+.acao-animal{
+    grid-column: 1;
+    grid-row: 1 / 3; /* Faz com que esse card ocupe duas linhas 'rows' */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-fundo);
+    border-radius: 22px;
+    border: 2px solid var(--cor-borda);
+    overflow: hidden;                /* recorta a foto nos cantos arredondados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.acao-animal p{
+    font-family: var(--fonte-padrao);
+    color: var(--cor-texto);
+    font-size: 1.5rem;
+    padding: 1px 10px;
+}
+
 .acao{
+    grid-column: 2; /* Coluna 2, leia-se direita */
+    display: flex;
+    flex-direction: column;
     background-color: var(--cor-fundo);
     border-radius: 12px;
-    grid-column: 2;
-    a{
-        text-decoration: none;
+    overflow: hidden;
+}
+
+.acao-animal a, .acao a{
+    text-decoration: none; /* Remove a decoração dos links*/
+}
+.acao-animal, .acao {
+    min-height: 0;
+    min-width: 0;
+}
+.acao-animal,
+.acao {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.acao-animal:hover,
+.acao:hover {
+    transform: translateY(-6px) scale(1.02);  /* sobe e cresce levemente */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+    z-index: 2;                               /* fica acima dos outros cards */
+}
+
+/* Imagem CLikavel*/
+
+.link-imagem::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 30px 6px rgba(255, 255, 255, 0.6); /* brilho interno */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;     /* o overlay não bloqueia o clique no link */
+}
+
+.link-imagem:hover::after {
+    opacity: 1;
+}
+
+/*
+================
+    Imagem
+================
+*/
+
+.ilustracao {
+    display: block;   /* remove o espaço extra que a imagem inline deixa embaixo */
+    width: 100%;      /* ocupa a largura possível do card */
+    max-width: 100%;  /* nunca ultrapassa o contêiner */
+    height: auto;     /* mantém a proporção original */
+    flex: 0.9;
+    min-height: 0;
+    object-fit: cover; /* Preenche sem distircer nada*/
+}
+
+.link-imagem {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: inherit;
+}
+
+.link-imagem .ilustracao {
+    height: 100%;
+    min-height: 0;
+}
+
+/*
+=====================
+    Responsividade
+=====================
+*/
+@media (max-width: 600px) {
+    .painel-acoes {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        aspect-ratio: auto;
+    }
+
+    .acao-animal,
+    .acao {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .ilustracao {
+        height: 160px;
     }
 }
-.acao-animal{
-    background-color: darkslategrey;
-    border-radius: 22px;
-    grid-column: 1;
-    a{
-        text-decoration: none;
+@media (max-width: 768px) {
+    .painel-acoes {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        aspect-ratio: auto;
+    }
+
+    .acao-animal,
+    .acao {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .link-imagem .ilustracao {
+        height: 160px;
     }
 }
