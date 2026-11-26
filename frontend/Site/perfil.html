@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Studio de Beleza Animal</title>
     <link rel="stylesheet" href="Css/global/variables.css">
-    <link rel="stylesheet" href="Css/pages/cliente/clientestyle.css">
+    <link rel="stylesheet" href="Css/global/style.css">
+    <link rel="stylesheet" href="Css/pages/perfil/perfilstyle.css">
 </head>
 <body>
 
-    <h1>Meu Perfil</h1>
+    <h1 class="h1form">Meu Perfil</h1>
 
     <main>
 
-        <h2>Meus Dados</h2>
+        <h2 class="h2form">Meus Dados</h2>
 
-        <p>
+        <p class="pform">
             Consulte e atualize suas informações pessoais.
         </p>
 
         <!-- Formulário com os dados do cliente. -->
         <form id="formPerfil">
-
             <label for="nome">Nome completo</label>
             <input
                 type="text"
@@ -96,13 +96,12 @@
                 autocomplete="new-password"
                 required
             >
-
+            
             <button type="submit">
                 Salvar Nova Senha
             </button>
 
             <p id="mensagemSenha" role="status" aria-live="polite"></p>
-
         </form>
 
         <!-- Navegação para a área do cliente. -->

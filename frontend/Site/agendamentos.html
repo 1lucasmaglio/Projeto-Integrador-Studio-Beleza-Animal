@@ -11,12 +11,10 @@
     <link rel="stylesheet" href="Css/global/screens.css">
 </head>
 <body>
-    <h1>Studio de Beleza Animal</h1>
-    <h2>Agendamentos</h2>
+    <h1 class="h1form">Studio de Beleza Animal</h1>
+    <h2 class="h2form">Agendar Serviço</h2>
 
     <main>
-        <h3>Agendar Serviço</h3>
-
         <form id="formAgendamento">
             <label for="animal">Animal:</label>
             <select id="animal" required>
@@ -27,11 +25,11 @@
             <select id="servico" required>
                 <option value="">Selecione um serviço</option>
             </select>
-            <p id="precoServico"></p>
+            <p class="pform" id="precoServico"></p>
 
             <label for="data">Data:</label>
             <input type="date" id="data" required>
-            <p>Funcionamento: terça a sexta-feira, das 07h às 18h.</p>
+            <p class="pform">Funcionamento: terça a sexta-feira, das 07h às 18h.</p>
 
             <label for="hora">Horário:</label>
             <select id="hora" required>
@@ -55,10 +53,10 @@
             </label>
 
             <button type="submit">Agendar Serviço</button>
-            <p id="mensagemAgendamento" role="status" aria-live="polite"></p>
+            <p class="pform" id="mensagemAgendamento" role="status" aria-live="polite"></p>
         </form>
 
-        <p><a href="cliente.html">Voltar para Área do Cliente</a></p>
+        <p><a href="clientearea.html">Voltar para Área do Cliente</a></p>
     </main>
 
     <script src="Js/agendamentos.js"></script>

@@ -48,12 +48,29 @@ a:hover {
     font-size: 30px;
 }
 /* FIM DOS ESTILOS GERAIS, CADA PÁGINA TEM SEU CSS*/
+
 /* ========================================
    FORMULÁRIOS
 ======================================== */
 
+/* cadastro, login, perfil e agendamentos*/
+.h1form{
+    font-family: var(--fonte-logotipo);
+}
+.h2form{
+    font-family: var(--fonte-destaque);
+}
+.pform{
+    font-family: var(--fonte-padrao);
+}
+.h1form, .h2form{
+    color: var(--cor-texto-promocao);
+}
+
+
 form {
-    background-color: var(--cor-fundo);
+    color: var(--cor-texto-claro);
+    background-color: var(--cor-texto);
     padding: 30px;
     border: 1px solid var(--cor-borda);
     border-radius: 12px;
@@ -64,15 +81,16 @@ form {
 }
 
 label {
+    font-family: var(--fonte-padrao);
     display: block;
-    margin-top: 15px;
-    margin-bottom: 6px;
+    margin-top: 12px;
+    margin-bottom: 10px;
     font-weight: 600;
 }
 
 input, select {
     width: 100%;
-    padding: 11px 12px;
+    padding: 10px 12px;
     border: 1px solid var(--cor-borda);
     border-radius: 7px;
     background-color: var(--cor-fundo);
@@ -84,40 +102,29 @@ input, select {
 
 input:focus, select:focus {
     outline: none;
-    border-color: var(--cor-principal-0);
-    box-shadow: 0 0 0 3px rgba(52, 123, 209, 0.15);
+    border-color: var(--cor-secundaria-0);
+    box-shadow: 0 0 0 3px var(--cor-secundaria-0);
 }
-
-
-
-
-
-
-
-
 /* Checkbox do Leva e Traz */
 
 input[type="checkbox"] {
     width: auto;
     padding: 0;
     margin-right: 8px;
-    accent-color: var(--cor-principal-0);
+    accent-color: var(--cor-logotipo);
     vertical-align: middle;
 }
-
-
-
 
 /* Botões dos formulários */
 button {
     width: 100%;
     padding: 12px;
     margin-top: 25px;
-    background-color: var(--cor-principal-0);
+    background-color: var(--cor-laranja);
     color: var(--cor-fundo);
     border: none;
     border-radius: 7px;
-    font-family: inherit;
+    font-family: var(--fonte-destaque);
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
@@ -126,7 +133,7 @@ button {
 
 button:hover {
     background-color: var(--cor-principal-1);
-    transform: translateY(-1px);
+    transform: translateY(-4px);
 }
 
 button:active {
@@ -134,7 +141,7 @@ button:active {
 }
 
 button:focus-visible, a:focus-visible {
-    outline: 3px solid var(--cor-ativo);
+    outline: 3px solid var(--cor-laranja);
     outline-offset: 3px;
 }
 
