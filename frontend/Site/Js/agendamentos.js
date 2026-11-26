@@ -1,4 +1,3 @@
-
 console.log("AGENDAMENTOS.JS INICIADO");
 
 /* Armazena os animais e serviços recebidos da API para utilizá-los em outras funções. */
@@ -7,125 +6,125 @@ let servicosDisponiveis = [];
 
 /* Busca os animais cadastrados e adiciona ao formulário apenas os do cliente logado. */
 function carregarAnimais() {
-    // Recupera o código do cliente salvo durante o login.
-    const codigoCliente = Number(sessionStorage.getItem("codigoCliente"));
+  // Recupera o código do cliente salvo durante o login.
+  const codigoCliente = Number(sessionStorage.getItem("codigoCliente"));
 
-    // Solicita à API Java a lista de animais cadastrados.
-    fetch("http://localhost:7070/animais")
-    .then(response => {
-        // Verifica se a consulta foi realizada com sucesso.
-        if (!response.ok) {
-            throw new Error("Erro ao buscar animais.");
+  // Solicita à API Java a lista de animais cadastrados.
+  fetch("http://localhost:7070/animais")
+    .then((response) => {
+      // Verifica se a consulta foi realizada com sucesso.
+      if (!response.ok) {
+        throw new Error("Erro ao buscar animais.");
+      }
+
+      // Converte a resposta JSON em dados JavaScript.
+      return response.json();
+    })
+    .then((animais) => {
+      // Guarda os animais recebidos para utilizá-los posteriormente.
+      animaisDisponiveis = animais;
+
+      // Localiza o campo de seleção de animais no HTML.
+      const selecao = document.getElementById("animal");
+
+      // Percorre todos os animais recebidos da API.
+      animais.forEach((animal) => {
+        // Verifica se o animal pertence ao cliente logado.
+        if (animal.codigoCliente === codigoCliente) {
+          // Cria uma nova opção no campo de seleção.
+          const opcao = document.createElement("option");
+
+          // Usa o código do animal como valor e seu nome como texto visível.
+          opcao.value = animal.codigo;
+          opcao.textContent = animal.nome;
+
+          // Adiciona a opção ao campo de seleção.
+          selecao.appendChild(opcao);
         }
-
-        // Converte a resposta JSON em dados JavaScript.
-        return response.json();
+      });
     })
-    .then(animais => {
-        // Guarda os animais recebidos para utilizá-los posteriormente.
-        animaisDisponiveis = animais;
-
-        // Localiza o campo de seleção de animais no HTML.
-        const selecao = document.getElementById("animal");
-
-        // Percorre todos os animais recebidos da API.
-        animais.forEach(animal => {
-            // Verifica se o animal pertence ao cliente logado.
-            if (animal.codigoCliente === codigoCliente) {
-                // Cria uma nova opção no campo de seleção.
-                const opcao = document.createElement("option");
-
-                // Usa o código do animal como valor e seu nome como texto visível.
-                opcao.value = animal.codigo;
-                opcao.textContent = animal.nome;
-
-                // Adiciona a opção ao campo de seleção.
-                selecao.appendChild(opcao);
-            }
-        });
-    })
-    .catch(erro => {
-        // Registra possíveis erros no console.
-        console.error(erro);
+    .catch((erro) => {
+      // Registra possíveis erros no console.
+      console.error(erro);
     });
 }
 
 /* Busca os serviços cadastrados e preenche o campo de seleção do formulário. */
 function carregarServicos() {
-    // Solicita à API Java a lista de serviços disponíveis.
-    fetch("http://localhost:7070/servicos")
-    .then(response => {
-        // Verifica se ocorreu algum erro na consulta.
-        if (!response.ok) {
-            throw new Error("Erro ao buscar serviços.");
-        }
+  // Solicita à API Java a lista de serviços disponíveis.
+  fetch("http://localhost:7070/servicos")
+    .then((response) => {
+      // Verifica se ocorreu algum erro na consulta.
+      if (!response.ok) {
+        throw new Error("Erro ao buscar serviços.");
+      }
 
-        // Converte a resposta JSON em dados JavaScript.
-        return response.json();
+      // Converte a resposta JSON em dados JavaScript.
+      return response.json();
     })
-    .then(servicos => {
-        // Guarda os serviços recebidos para calcular os preços posteriormente.
-        servicosDisponiveis = servicos;
+    .then((servicos) => {
+      // Guarda os serviços recebidos para calcular os preços posteriormente.
+      servicosDisponiveis = servicos;
 
-        // Localiza o campo de seleção de serviços no HTML.
-        const selecao = document.getElementById("servico");
+      // Localiza o campo de seleção de serviços no HTML.
+      const selecao = document.getElementById("servico");
 
-        // Percorre os serviços cadastrados.
-        servicos.forEach(servico => {
-            // Cria uma opção para cada serviço.
-            const opcao = document.createElement("option");
+      // Percorre os serviços cadastrados.
+      servicos.forEach((servico) => {
+        // Cria uma opção para cada serviço.
+        const opcao = document.createElement("option");
 
-            // Usa o código do serviço como valor e seu nome como texto visível.
-            opcao.value = servico.codigo;
-            opcao.textContent = servico.nome;
+        // Usa o código do serviço como valor e seu nome como texto visível.
+        opcao.value = servico.codigo;
+        opcao.textContent = servico.nome;
 
-            // Adiciona a opção ao campo de seleção.
-            selecao.appendChild(opcao);
-        });
+        // Adiciona a opção ao campo de seleção.
+        selecao.appendChild(opcao);
+      });
     })
-    .catch(erro => {
-        // Registra possíveis erros no console.
-        console.error(erro);
+    .catch((erro) => {
+      // Registra possíveis erros no console.
+      console.error(erro);
     });
 }
 
 /* Calcula e exibe o preço do serviço de acordo com o porte do animal. */
 function atualizarPreco() {
-    // Obtém os códigos do animal e do serviço selecionados.
-    const codigoAnimal = Number(document.getElementById("animal").value);
-    const codigoServico = Number(document.getElementById("servico").value);
+  // Obtém os códigos do animal e do serviço selecionados.
+  const codigoAnimal = Number(document.getElementById("animal").value);
+  const codigoServico = Number(document.getElementById("servico").value);
 
-    // Procura os objetos correspondentes aos códigos selecionados.
-    const animal = animaisDisponiveis.find(a => a.codigo === codigoAnimal);
-    const servico = servicosDisponiveis.find(s => s.codigo === codigoServico);
+  // Procura os objetos correspondentes aos códigos selecionados.
+  const animal = animaisDisponiveis.find((a) => a.codigo === codigoAnimal);
+  const servico = servicosDisponiveis.find((s) => s.codigo === codigoServico);
 
-    // Encerra a função se o animal ou o serviço ainda não estiver selecionado.
-    if (!animal || !servico) {
-        return;
-    }
+  // Encerra a função se o animal ou o serviço ainda não estiver selecionado.
+  if (!animal || !servico) {
+    return;
+  }
 
-    // Variável que receberá o preço correspondente ao porte do animal.
-    let valor = 0;
+  // Variável que receberá o preço correspondente ao porte do animal.
+  let valor = 0;
 
-    // Seleciona o preço cadastrado para o porte P, M ou G.
-    if (animal.porte === "P") {
-        valor = servico.valorP;
-    } else if (animal.porte === "M") {
-        valor = servico.valorM;
-    } else {
-        valor = servico.valorG;
-    }
+  // Seleciona o preço cadastrado para o porte P, M ou G.
+  if (animal.porte === "P") {
+    valor = servico.valorP;
+  } else if (animal.porte === "M") {
+    valor = servico.valorM;
+  } else {
+    valor = servico.valorG;
+  }
 
-    // Acrescenta R$10 ao preço quando Leva e Traz estiver selecionado.
-    if (document.getElementById("levaETraz").checked) {
-        valor = valor + 10;
-    }
+  // Acrescenta R$10 ao preço quando Leva e Traz estiver selecionado.
+  if (document.getElementById("levaETraz").checked) {
+    valor = valor + 10;
+  }
 
-    // Localiza o elemento HTML responsável por mostrar o preço.
-    const preco = document.getElementById("precoServico");
+  // Localiza o elemento HTML responsável por mostrar o preço.
+  const preco = document.getElementById("precoServico");
 
-    // Exibe o preço com duas casas decimais e vírgula no lugar do ponto.
-    preco.textContent = "Preço: R$ " + valor.toFixed(2).replace(".", ",");
+  // Exibe o preço com duas casas decimais e vírgula no lugar do ponto.
+  preco.textContent = "Preço: R$ " + valor.toFixed(2).replace(".", ",");
 }
 
 // Carrega os animais e serviços quando a página é aberta.
@@ -140,8 +139,9 @@ document.getElementById("servico").addEventListener("change", atualizarPreco);
 document.getElementById("levaETraz").addEventListener("change", atualizarPreco);
 
 /* Executa o cadastro de um agendamento quando o formulário é enviado. */
-document.getElementById("formAgendamento").addEventListener("submit", function(event) {
-
+document
+  .getElementById("formAgendamento")
+  .addEventListener("submit", function (event) {
     // Impede que o formulário recarregue a página automaticamente.
     event.preventDefault();
     console.log("Form submitted. Default prevented:", event.defaultPrevented);
@@ -171,44 +171,44 @@ document.getElementById("formAgendamento").addEventListener("submit", function(e
 
     // Organiza os dados necessários para cadastrar o agendamento.
     const agendamento = {
-        codigoAnimal: codigoAnimal,
-        codigoServico: codigoServico,
-        data: data,
-        hora: hora,
-        levaETraz: levaETraz
+      codigoAnimal: codigoAnimal,
+      codigoServico: codigoServico,
+      data: data,
+      hora: hora,
+      levaETraz: levaETraz,
     };
 
     // Envia o agendamento para a API Java.
     fetch("http://localhost:7070/agendamentos", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        // Converte o objeto agendamento para JSON antes do envio.
-        body: JSON.stringify(agendamento)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Converte o objeto agendamento para JSON antes do envio.
+      body: JSON.stringify(agendamento),
     })
-    .then(async response => {
+      .then(async (response) => {
         if (!response.ok) {
-            const erro = await response.text();
-            throw new Error(erro);
+          const erro = await response.text();
+          throw new Error(erro);
         }
 
         return response.json();
-    })
-    .then(agendamentoCriado => {
+      })
+      .then((agendamentoCriado) => {
         // Mostra o agendamento criado no console para auxiliar nos testes.
         console.log("Agendamento criado:", agendamentoCriado);
 
         // Informa ao cliente que o agendamento foi realizado.
         mensagem.textContent = "Agendamento realizado com sucesso!";
         mensagem.style.color = "green";
-    })
-    .catch(erro => {
+      })
+      .catch((erro) => {
         console.error(erro);
 
         mensagem.textContent = erro.message;
         mensagem.style.color = "red";
 
         console.log("Mensagem exibida no HTML:", mensagem.textContent);
-    });
-});
+      });
+  });
