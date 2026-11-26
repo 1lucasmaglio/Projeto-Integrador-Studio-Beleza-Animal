@@ -9,7 +9,6 @@ const botaoSair = document.getElementById("botaoSair");
 
 const botaoAgendar = document.getElementById("botaoAgendar");
 const botaoComecar = document.getElementById("botaoComecar");
-const textoChamadaFinal = document.getElementById("textoChamadaFinal");
 
 // Recupera o código salvo pelo login.js.
 const codigoCliente = sessionStorage.getItem("codigoCliente");
@@ -23,10 +22,6 @@ if (codigoCliente) {
   // Cliente logado pode acessar diretamente os agendamentos.
   botaoAgendar.href = "agendamentos.html";
 
-  // Atualiza a chamada final para o cliente logado.
-  textoChamadaFinal.textContent =
-    "Escolha um serviço e agende um horário para seu pet.";
-
   botaoComecar.href = "agendamentos.html";
   botaoComecar.textContent = "Agendar Agora";
 } else {
@@ -37,8 +32,7 @@ if (codigoCliente) {
 
 // Abre ou fecha o menu ao clicar no botão.
 botaoPerfil.addEventListener("click", function () {
-  
-  evento.stopPropagation();
+  console.log("BOTÃO CLICADO!");
   
   menuPerfil.hidden = !menuPerfil.hidden;
 
