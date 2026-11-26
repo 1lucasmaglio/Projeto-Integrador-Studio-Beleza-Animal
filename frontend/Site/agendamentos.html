@@ -1,65 +1,68 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agendamentos - Studio de Beleza Animal</title>
-    <link rel="stylesheet" href="Css/global/variables.css">
-    <link rel="stylesheet" href="Css/pages/agendamentos/agdstyle.css">
-    <link rel="stylesheet" href="Css/global/style.css">
-    <link rel="stylesheet" href="Css/global/screens.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../Site/Css/global/variables.css" />
+    <link rel="stylesheet" href="../Site/Css/pages/agendamentos/agdstyle.css" />
+    <link rel="stylesheet" href="../Site/Css/global/style.css" />
+    <link rel="stylesheet" href="../Site/Css/global/screens.css" />
+  </head>
+  <body>
     <h1 class="h1form">Studio de Beleza Animal</h1>
     <main>
-        <form id="formAgendamento">
-            
-            <h2 class="h2form">Agendar Serviço</h2>
+      <form id="formAgendamento">
+        <h2 class="h2form">Agendar Serviço</h2>
 
-            <label for="animal">Animal:</label>
-            <select id="animal" required>
-                <option value="">Selecione um animal</option>
-            </select>
+        <label for="animal">Animal:</label>
+        <select id="animal" required>
+          <option value="">Selecione um animal</option>
+        </select>
 
-            <label for="servico">Serviço:</label>
-            <select id="servico" required>
-                <option value="">Selecione um serviço</option>
-            </select>
-            <p class="pform" id="precoServico"></p>
+        <label for="servico">Serviço:</label>
+        <select id="servico" required>
+          <option value="">Selecione um serviço</option>
+        </select>
+        <p class="pform" id="precoServico"></p>
 
-            <label for="data">Data:</label>
-            <input type="date" id="data" required>
-            <p class="pform">Funcionamento: terça a sexta-feira, das 07h às 18h.</p>
+        <label for="data">Data:</label>
+        <input type="date" id="data" required />
+        <p class="pform">Funcionamento: terça a sexta-feira, das 07h às 18h.</p>
 
-            <label for="hora">Horário:</label>
-            <select id="hora" required>
-                <option value="">Selecione um horário</option>
-                <option value="07:00">07:00</option>
-                <option value="08:00">08:00</option>
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-            </select>
+        <label for="hora">Horário:</label>
+        <select id="hora" required>
+          <option value="">Selecione um horário</option>
+          <option value="07:00">07:00</option>
+          <option value="08:00">08:00</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+        </select>
 
-            <label for="levaETraz">
-                <input type="checkbox" id="levaETraz">
-                Leva e Traz (+R$10,00)
-            </label>
+        <label for="levaETraz">
+          <input type="checkbox" id="levaETraz" />
+          Leva e Traz (+R$10,00)
+        </label>
 
-            <button type="submit">Agendar Serviço</button>
-            <p class="pform" id="mensagemAgendamento" role="status" aria-live="polite"></p>
-        </form>
+        <button type="submit">Agendar Serviço</button>
+        <p
+          class="pform"
+          id="mensagemAgendamento"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </form>
 
-        <p><a href="clientearea.html">Voltar para Área do Cliente</a></p>
+      <p><a href="clientearea.html">Voltar para Área do Cliente</a></p>
     </main>
 
-    <script src="Js/agendamentos.js"></script>
-</body>
+    <script src="../Site/Js/agendamentos.js"></script>
+  </body>
 </html>
