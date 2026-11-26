@@ -145,6 +145,14 @@ button:focus-visible, a:focus-visible {
     outline-offset: 3px;
 }
 
+
+a:hover{
+    padding: 1px 6px;
+    color: var(--cor-principal-1);
+    border-bottom: 2px solid var(--cor-logotipo);
+    border-radius: 24px;
+}
+
 /* ========================================
    ACESSIBILIDADE
 ======================================== */

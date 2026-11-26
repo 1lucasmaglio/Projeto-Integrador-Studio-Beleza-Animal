@@ -65,6 +65,7 @@ h2 {
 }
 
 .menu-inicial a:hover {
+    padding: 7px 7px;
     background-color: var(--cor-secundaria-0);
     color: var(--cor-texto);
     transform: none;
@@ -274,6 +275,7 @@ h2 {
 }
 
 .botao-inicial:hover {
+    padding: 13px 23px;
     background-color: var(--cor-principal-1);
     color: var(--cor-fundo);
     transform: translateY(-2px);
@@ -667,8 +669,8 @@ h2 {
  
 .rodape-titulo {
     margin: 0 0 6px;
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 900;
     color: var(--cor-azul);
 }
  
@@ -692,8 +694,8 @@ h2 {
 }
  
 .rodape-inicial a:hover {
-    color: var(--cor-azul);
-    text-decoration: underline;
+    color: var(--cor-texto);
+    text-decoration: none;
 }
  
 .rodape-inicial a:focus-visible {
