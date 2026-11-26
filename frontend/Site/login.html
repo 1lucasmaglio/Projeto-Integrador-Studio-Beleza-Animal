@@ -1,57 +1,53 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Studio de Beleza Animal</title>
-    <link rel="stylesheet" href="Css/global/variables.css">
-    <link rel="stylesheet" href="Css/pages/login/Loginstyle.css">
-    <link rel="stylesheet" href="Css/global/style.css">
-    <link rel="stylesheet" href="Css/global/screens.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../Site/Css/global/variables.css" />
+    <link rel="stylesheet" href="../Site/Css/pages/login/Loginstyle.css" />
+    <link rel="stylesheet" href="../Site/Css/global/style.css" />
+    <link rel="stylesheet" href="../Site/Css/global/screens.css" />
+  </head>
+  <body>
     <h1 class="h1form">Studio de Beleza Animal</h1>
-    
+
     <!-- Formulário de autenticação do cliente. -->
     <form id="formLogin">
-        <h2 class="h2form">Login de Cliente</h2>
+      <h2 class="h2form">Login de Cliente</h2>
 
-        <label for="email">E-mail:</label>
-        <input
-            type="email"
-            id="email"
-            name="email"
-            autocomplete="email"
-            required
-        >
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+      />
 
-        <label for="senha">Senha:</label>
-        <input
-            type="password"
-            id="senha"
-            name="senha"
-            autocomplete="current-password"
-            required
-        >
+      <label for="senha">Senha:</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        autocomplete="current-password"
+        required
+      />
 
-        <button type="submit">Entrar</button>
+      <button type="submit">Entrar</button>
 
-        <p id="mensagemLogin" role="status" aria-live="polite"></p>
-
+      <p id="mensagemLogin" role="status" aria-live="polite"></p>
     </form>
 
     <p>
-        Ainda não possui uma conta?
-        <a href="cadastro.html">Cadastre-se</a>
+      Ainda não possui uma conta?
+      <a href="cadastro.html">Cadastre-se</a>
     </p>
 
     <p>
-        <a href="index.html">Voltar para a Página Inicial</a>
+      <a href="index.html">Voltar para a Página Inicial</a>
     </p>
 
-    <script src="Js/login.js"></script>
-
-</body>
+    <script src="../Site/Js/login.js"></script>
+  </body>
 </html>
